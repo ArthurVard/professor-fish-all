@@ -67,9 +67,6 @@ public class ArrayBased {
 				}
 			return false;
 		}
-		for (boolean y : c)
-			if (!y)
-				return false;
 		return true;
 	}
 
