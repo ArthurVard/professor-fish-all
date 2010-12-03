@@ -15,20 +15,20 @@ public class ComplexPolar implements Complex {
 	private double angle;
 
 	/**
-	 * Construct a complex number from real and imaginary parts
+	 * Construct a complex number from modulus and angle
 	 */
 	public ComplexPolar(double modulus, double angle) {
 		this.modulus = modulus;
 		this.angle = angle;
 	}
-
+	
 	/**
-	 * Construct a complex number from real and imaginary parts
+	 * A pseudo-constructor to start from real and imaginary ports
 	 */
 	public static ComplexPolar fromCartesian(double re, double im) {
 		return new ComplexPolar(
-				Math.hypot(re, im),
-				Math.atan2(im, re));
+						Math.hypot(re, im),
+						Math.atan2(im, re));		
 	}
 
 	/**
@@ -67,7 +67,11 @@ public class ComplexPolar implements Complex {
 	}
 
 	public Complex addTo(Complex c) {
-		return fromCartesian(this.getRe() + c.getRe(), this.getIm() + c.getIm());
+		double re = this.getRe() + c.getRe();
+		double im = this.getIm() + c.getIm();
+		return new ComplexPolar(
+						Math.hypot(re, im),
+						Math.atan2(im, re));
 	}
 
 	public String toString() {
