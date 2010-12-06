@@ -31,12 +31,16 @@ public class IntListEntry {
 		return this.item + ((this.next==null) ? 0 : this.next.sum2());
 	}
 	
-	public boolean equals(IntListEntry that) {
+	/*
+	 * See also here:
+	 * http://www.artima.com/lejava/articles/equality.html
+	 */
+	public boolean equalLists(IntListEntry that) {
 		return
 			that != null
 		&& 	this.item == that.item
 		&& 	(	(this.next == null && that.next == null) 
-			||	(this.next != null && that.next != null && this.next.equals(that.next)));
+			||	(this.next != null && that.next != null && this.next.equalLists(that.next)));
 	}
 	
 	// Recursive algorithm for finding an entry
@@ -125,7 +129,7 @@ public class IntListEntry {
 		System.out.println("clone");
 		IntListEntry e4 = e1.clone();
 		e4.println();				
-		System.out.println(e1.equals(e4));
+		System.out.println(e1.equalLists(e4));
 		
 		System.out.println("reverse");
 		IntListEntry reversed = e1.reverse();
@@ -136,7 +140,7 @@ public class IntListEntry {
 		rotated.println();		
 
 		System.out.println("equal");
-		System.out.println(rotated.equals(e4));		
+		System.out.println(rotated.equalLists(e4));		
 		
 		System.out.println("sharing");
 		IntListEntry l1a = new IntListEntry();

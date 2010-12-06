@@ -24,20 +24,25 @@ public class SimpleIntQueue implements IntQueue {
 		return first == null;
 	}
 	
-	public int dequeue() {
-		int result = first.item;
+	public int front() {
+		return first.item;
+	}
+		
+	public void dequeue() {
 		if (first==last)
 			last = null;
 		first = first.next;
-		return result;
 	}
 		
 	public static void main(String[] args) {
-		SimpleIntQueue q = new SimpleIntQueue();
+		SimpleIntQueue q =
+			new SimpleIntQueue();
 		q.enqueue(1);
 		q.enqueue(2);
 		q.enqueue(3);
-		while (!q.isEmpty())
-			System.out.println(q.dequeue());
+		while (!q.isEmpty()) {
+			System.out.println(q.front());
+			q.dequeue();
+		}
 	}
 }

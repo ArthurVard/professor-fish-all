@@ -1,43 +1,51 @@
-// (C) 2009 Ralf Laemmel
+// (C) 2010 Ralf Laemmel
 
 package data.tree;
 
 public class StringTree {
 
-	public String node = null;
-	public StringSubtrees subtrees = null;
-
+	private String info = null;
+	private StringTree[] subtrees = null;
+	
+	public StringTree(String info, StringTree[] subtrees) {
+		this.info = info;
+		this.subtrees = subtrees;
+	}
+		
 	public void print() {
 		print(0);
 	}
 
 	public void print(int indent) {
 		System.out.print('|');
-		for (int i=0; i<indent; i++) System.out.print('-'); 
+		for (int i=0; i<3*indent; i++) System.out.print('-'); 
 		System.out.print("- ");
-		System.out.println(node);
+		System.out.println(info);
 		indent++;
-		indent++;
-		for (StringSubtrees j=subtrees; j != null; j = j.rest)
-			j.first.print(indent);
+		for (int i=0; i<subtrees.length; i++)
+			subtrees[i].print(indent);
 	}	
 	
 	public static void main(String[] args) {
-		StringTree lisa = new StringTree();
-		StringTree dette = new StringTree();
-		StringTree ellen = new StringTree();
-		StringTree ralf = new StringTree();
-		lisa.node = "Lisa";
-		dette.node = "Dette";
-		ellen.node = "Ellen";
-		ralf.node = "Ralf";
-		lisa.subtrees = new StringSubtrees();
-		lisa.subtrees.first = dette;
-		dette.subtrees = new StringSubtrees();
-		dette.subtrees.first = ellen;
-		dette.subtrees.rest = new StringSubtrees();
-		dette.subtrees.rest.first = ralf;
-		lisa.print();
+		StringTree t1 =
+			new StringTree("Java types", new StringTree[] {
+			  new StringTree("Primitive types", new StringTree[] {
+			    new StringTree("boolean", new StringTree[] {}),
+			    new StringTree("char", new StringTree[] {}),
+			    new StringTree("short", new StringTree[] {}),
+			    new StringTree("int", new StringTree[] {}),
+			    new StringTree("long", new StringTree[] {}),
+			    new StringTree("float", new StringTree[] {}),
+			    new StringTree("double", new StringTree[] {})}),
+		      new StringTree("Reference types", new StringTree[] {
+			    new StringTree("String", new StringTree[] {}),
+			    new StringTree("Array types", new StringTree[] {
+		          new StringTree("int[]", new StringTree[] {}),
+			      new StringTree("...", new StringTree[] {})}),
+			    new StringTree("Wrapper types", new StringTree[] {
+			      new StringTree("Integer", new StringTree[] {}),
+				  new StringTree("...", new StringTree[] {})})})});
+		t1.print();
 	}
 
 }

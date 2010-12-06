@@ -15,8 +15,13 @@ public interface IntQueue {
 	public boolean isEmpty();
 
 	/**
-	 * Remove an item from the queue and return it
+	 * Return the item at the front of the queue
 	 */
-	public int dequeue();
+	public int front();
+
+	/**
+	 * Remove an item from the queue
+	 */
+	public void dequeue();
 		
 }
