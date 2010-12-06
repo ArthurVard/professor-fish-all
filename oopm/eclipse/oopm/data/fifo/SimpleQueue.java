@@ -23,13 +23,15 @@ public class SimpleQueue<T> implements Queue<T> {
 	public boolean isEmpty() {
 		return first == null;
 	}
-	
-	public T dequeue() {
-		T result = first.item;
+
+	public T front() {
+		return first.item;
+	}
+		
+	public void dequeue() {
 		if (first==last)
 			last = null;
 		first = first.next;
-		return result;
 	}
 		
 	public static void main(String[] args) {
@@ -37,7 +39,9 @@ public class SimpleQueue<T> implements Queue<T> {
 		q.enqueue(1);
 		q.enqueue(2);
 		q.enqueue(3);
-		while (!q.isEmpty())
-			System.out.println(q.dequeue());
+		while (!q.isEmpty()) {
+			System.out.println(q.front());
+			q.dequeue();
+		}
 	}
 }

@@ -1,18 +1,39 @@
-// (C) 2009 Ralf Laemmel
+// (C) 2009-10 Ralf Laemmel
 
 package data.tree;
 
 public class BinIntTree {
 
-	public int info;
-	public BinIntTree left, right;
+	private int info;
+	private BinIntTree left, right;
 	
+	public BinIntTree(int info, BinIntTree left, BinIntTree right) {
+		this.info = info;
+		this.left = left;
+		this.right = right;
+	}
+
 	public void print() {
-		System.out.println(this.info);
-		if (left != null)
-			left.print();
-		if (right != null)
-			right.print();
+		print(0);
+	}
+
+	public void print(int indent) {
+		System.out.print('|');
+		for (int i=0; i<3*indent; i++) System.out.print('-'); 
+		System.out.print("- ");
+		System.out.println(info);
+		indent++;
+		if (left!=null) left.print(indent);
+		if (right!=null) right.print(indent);
+	}	
+		
+	public boolean find(int x) {
+		return
+			(x < info) ?
+			 	  left!=null && left.find(x)
+				: (x > info) ?
+				 	  right!=null && right.find(x)
+					: (x==info);
 	}
 	
 	public int sum() {
@@ -22,18 +43,22 @@ public class BinIntTree {
 	}
 	
 	public static void main(String[] args) {
-		BinIntTree t1 = new BinIntTree();
-		BinIntTree t11 = new BinIntTree();
-		BinIntTree t12 = new BinIntTree();
-		BinIntTree t121 = new BinIntTree();
-		t1.info = 1;
-		t1.left = t11;
-		t1.right = t12;
-		t11.info = 2;
-		t12.info = 3;		
-		t12.left = t121;
-		t121.info = 4;
+		BinIntTree t1 = 
+			new BinIntTree(4,
+				new BinIntTree(2,
+					new BinIntTree(1,null,null),
+					new BinIntTree(3,null,null)),
+				new BinIntTree(5,
+					null,
+					null));
 		t1.print();
+		System.out.println(t1.find(0));
+		System.out.println(t1.find(1));
+		System.out.println(t1.find(2));
+		System.out.println(t1.find(3));
+		System.out.println(t1.find(4));
+		System.out.println(t1.find(5));
+		System.out.println(t1.find(6));
 		System.out.println(t1.sum());
 	}
 }

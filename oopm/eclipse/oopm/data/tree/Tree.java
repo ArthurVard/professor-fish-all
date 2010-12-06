@@ -1,4 +1,4 @@
-// (C) 2009 Ralf Laemmel
+// (C) 2009-10 Ralf Laemmel
 
 package data.tree;
 
