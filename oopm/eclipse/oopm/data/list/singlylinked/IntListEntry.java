@@ -1,4 +1,4 @@
-// (C) 2009 Ralf Laemmel
+// (C) 2009-2010 Ralf Laemmel
 
 package data.list.singlylinked;
 
