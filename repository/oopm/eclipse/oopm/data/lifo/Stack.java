@@ -7,21 +7,21 @@ public interface Stack<T> {
 	/**
 	 * Add an item on top of the stack
 	 */
-	public void push(T item);
+	void push(T item);
 	
 	/**
 	 * Test a stack to be empty
 	 */
-	public boolean isEmpty();
+	boolean isEmpty();
 	
 	/**
 	 * Return the item at the top of the stack
 	 */
-	public T top();
+	T top();
 
 	/**
 	 * Pop the top of the stack
 	 */
-	public void pop();
+	void pop();
 	
 }
