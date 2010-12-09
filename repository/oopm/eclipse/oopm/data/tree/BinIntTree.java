@@ -33,7 +33,7 @@ public class BinIntTree {
 			 	  left!=null && left.find(x)
 				: (x > info) ?
 				 	  right!=null && right.find(x)
-					: (x==info);
+					: true;
 	}
 	
 	public int sum() {
