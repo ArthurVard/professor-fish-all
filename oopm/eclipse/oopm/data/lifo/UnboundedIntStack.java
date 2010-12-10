@@ -29,9 +29,9 @@ public class UnboundedIntStack implements IntStack {
 	
 	public static void main(String[] args) {
 		UnboundedIntStack s = new UnboundedIntStack();
-		s.push(1);
-		s.push(2);
-		s.push(3);
+		s.push(1); System.out.println(s.top());
+		s.push(2); System.out.println(s.top());
+		s.push(3); System.out.println(s.top());
 		while (!s.isEmpty()) {
 			System.out.println(s.top());
 			s.pop();
