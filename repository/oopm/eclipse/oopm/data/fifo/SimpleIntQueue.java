@@ -37,9 +37,9 @@ public class SimpleIntQueue implements IntQueue {
 	public static void main(String[] args) {
 		SimpleIntQueue q =
 			new SimpleIntQueue();
-		q.enqueue(1);
-		q.enqueue(2);
-		q.enqueue(3);
+		q.enqueue(1); System.out.println(q.front());
+		q.enqueue(2); System.out.println(q.front());
+		q.enqueue(3); System.out.println(q.front());
 		while (!q.isEmpty()) {
 			System.out.println(q.front());
 			q.dequeue();
