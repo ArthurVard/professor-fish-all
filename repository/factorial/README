@@ -3,6 +3,8 @@
 This is a fun collection of different factorial implementations.
 The focus is on demonstrating some abstraction, OO and Java idioms.
 A few Haskell implementations are included as points of reference.
+The svn location of this repository is this (use for svn co):
+https://developers.svn.sourceforge.net/svnroot/developers/repository/
 
 All implementations are tested with 5! (=120)
 
