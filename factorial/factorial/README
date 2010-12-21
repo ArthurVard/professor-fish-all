@@ -1,0 +1,49 @@
+(C) 2010, Ralf Laemmel
+
+This is a fun collection of different factorial implementations.
+The focus is on demonstrating some abstraction, OO and Java idioms.
+A few Haskell implementations are included as points of reference.
+
+All implementations are tested with 5! (=120)
+
+Here is a list of implementations grouped by package/folder:
+
+trivial: 
+  trivial iterative or recursive implementations in Java.
+
+haskell:
+  some more or less serious reference implementations in Haskell.
+  For instance:
+  factorial n = product (enumFromTo 1 n)
+  We call this the product-based model.
+
+list:
+  We implement the product-based model (see above) in Java.
+  We use actual (linked) lists to represent enumeration results.
+
+iterator:
+  Very much like "list".
+  We use an iterator instead of a physical list for enumeration results.
+  In this manner, we demonstrate the Iterator design pattern.
+  
+iterable:
+  Very much like "iterator".
+  We use an extra iterable capsule.
+  In this manner, we demonstrate Java's design pattern for iterables.
+  
+oo:
+  A datatype "Int" is defined to replace the primitive typ int.
+  We do not use basic operations such as "+" and "-".
+  Rather we assume test for zero and operations pred and succ as basic operations.
+  Functions for addition, multiplication, factorial are defined on top of Int.
+  This is an OO approach in that even numbers are objects now.
+
+peano:
+  Very much like "oo" but not even private state uses "int" anymore.
+  We define an interface "Nat" for natural numbers.
+  Again, we assume test for zero and operations pred and succ as basic operations.
+  There are two classes: one for zero, another (recursive one) for non-zero numbers.
+  
+bananas:
+  This is a refinement of "peano".
+  We put to work catamorphisms and paramorphisms.
