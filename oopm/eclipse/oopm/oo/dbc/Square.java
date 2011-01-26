@@ -1,4 +1,4 @@
-package oo.dbc.square;
+package oo.dbc;
 
 public class Square extends Rectangle {
 	
