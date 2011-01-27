@@ -10,7 +10,7 @@ public class AssertiveAccount {
 
 	private float balance;
 
-	private void Invariant() {
+	private void invariant() {
 		assert balance >= 0;
 	}
 	
@@ -18,7 +18,7 @@ public class AssertiveAccount {
 	 * Return balance in account
 	 */
 	public float getBalance() {
-		Invariant();
+		// invariant(); // Not needed!
 		return balance;
 	}
 	
@@ -27,7 +27,7 @@ public class AssertiveAccount {
 	 */
 	public void deposit(float amount) {
 	
-		Invariant();
+		// invariant(); // Not needed!
 		
 		// Precondition
 		assert amount >= 0;
@@ -37,7 +37,7 @@ public class AssertiveAccount {
 		
 		balance += amount;
 
-		Invariant();
+		invariant();
 		
 		// Postcondition
 		assert balance >= oldBalance
@@ -49,7 +49,7 @@ public class AssertiveAccount {
 	 */
 	public void withdraw(float amount) {
 		
-		Invariant();
+		invariant();
 		
 		// Precondition
 		assert amount >= 0
@@ -60,7 +60,7 @@ public class AssertiveAccount {
    
 		balance -= amount;
 
-		Invariant();
+		invariant();
 		
 		// Postcondition
 		assert balance <= oldBalance

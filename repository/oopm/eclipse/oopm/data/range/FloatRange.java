@@ -15,7 +15,7 @@ public class FloatRange {
 	/**
 	 * The invariant of this class
 	 */
-	private void Invariant() {
+	private void invariant() {
 		assert this.min <= this.max;
 	}
 
@@ -33,14 +33,14 @@ public class FloatRange {
 		// Postcondition
 		assert getMin() == min && getMax() == max;
 
-		Invariant();
+		invariant();
 	}
 
 	/**
 	 * Getter for min
 	 */
 	public Float getMin() {
-		Invariant();
+		// invariant(); // Not needed!
 		return min;
 	}
 
@@ -48,13 +48,14 @@ public class FloatRange {
 	 * Setter for min
 	 */
 	public void setMin(Float min) {
-		Invariant();
+		// invariant(); // Not needed!
+
 		// Precondition
 		assert min <= getMax();
 
 		this.min = min;
 
-		Invariant();
+		invariant();
 		// Postcondition
 		assert getMin() == min;
 	}
@@ -63,7 +64,7 @@ public class FloatRange {
 	 * Getter for max
 	 */
 	public Float getMax() {
-		Invariant();
+		// invariant(); // Not needed!
 		return max;
 	}
 
@@ -71,13 +72,13 @@ public class FloatRange {
 	 * Setter for max
 	 */
 	public void setMax(Float max) {
-		Invariant();
+		// invariant(); // Not needed!
 		// Precondition
 		assert getMin() <= max;
 
 		this.max = max;
 
-		Invariant();
+		invariant();
 		// Postcondition
 		assert getMax() == max;
 	}
