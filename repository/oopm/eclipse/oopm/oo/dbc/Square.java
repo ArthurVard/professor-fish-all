@@ -23,7 +23,7 @@ public class Square extends Rectangle {
 	}		
 	
 	public void setWidth(int length) { 		
-		assert length >= 0; // Precondition
+		assert length > 0; // Precondition
 		this.width = length; 
 		this.height = length; 
 		assert invariant();
