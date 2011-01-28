@@ -6,11 +6,11 @@ public class Rectangle {
 	protected int height;
 	
 	protected boolean invariant() {
-		return getWidth() >= 0 && getHeight() >= 00;
+		return getWidth() > 0 && getHeight() > 0;
 	}
 
 	public Rectangle(int width, int heigth) {
-		assert width >= 0 && height >= 0; // Precondition
+		assert width > 0 && height > 0; // Precondition
 		this.width = width;
 		this.height = heigth;
 		assert invariant();
@@ -25,13 +25,13 @@ public class Rectangle {
 	}
 
 	public void setWidth(int width) { 		
-		assert width >= 0; // Precondition
+		assert width > 0; // Precondition
 		this.width = width; 
 		assert invariant();
 	}
 	
 	public void setHeight(int height) { 
-		assert height >= 0; // Precondition
+		assert height > 0; // Precondition
 		this.height = height; 
 		assert invariant();
 	}
