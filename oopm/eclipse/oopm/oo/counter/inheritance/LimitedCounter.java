@@ -10,7 +10,7 @@ public class LimitedCounter extends BasicCounter {
 	private int limit;
     
 	/** Construct a limited counter from the limit */
-    LimitedCounter(int i) {
+    public LimitedCounter(int i) {
         limit = i;
     }
     
