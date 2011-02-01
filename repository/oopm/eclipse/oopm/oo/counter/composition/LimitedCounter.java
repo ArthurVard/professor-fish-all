@@ -11,7 +11,12 @@ public class LimitedCounter implements Counter {
 
 	private BasicCounter inner = new BasicCounter();
 	private int limit;
-    	
+    
+	/** Construct a limited counter from the limit */
+    public LimitedCounter(int i) {
+        limit = i;
+    }
+		
 	/** Return the value of the counter */
 	public int read() {
 		return inner.read();
@@ -21,12 +26,7 @@ public class LimitedCounter implements Counter {
 	public void reset() {
 		inner.reset();
 	}
-	
-	/** Construct a limited counter from the limit */
-    LimitedCounter(int i) {
-        limit = i;
-    }
-    
+	    
     /** Stop stepping when the limit is reached */
     public void step() {
         if (read() < limit)
