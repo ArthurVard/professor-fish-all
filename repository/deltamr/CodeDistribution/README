@@ -1,0 +1,55 @@
+This file contains some example invocations for the benchmarks and example programs in this project, for use with the ExampleDriver class. 
+
+1) WordCount
+
+/*original wordcount*/
+wordcount wordcount/orig_file wordcount/out
+wordcount wordcount/new_file wordcount/outNew
+
+/*create and process delta*/
+linedelta wordcount/orig_file wordcount/new_file wordcount/delta
+wordcountdelta wordcount/delta wordcount/outDelta
+wordcountmerge wordcount/out wordcount/outDelta wordcount/merged
+
+/*validate (should write empty directory)*/
+wordcountmerge wordcount/outNew wordcount/merged wordcount/val
+
+
+2) TeraSort 
+
+/*original sort*/
+gen 1000 sort/in
+sort sort/in sort/out
+validate sort/out sort/val
+
+/*generate new*/
+gennew sort/in sort/inNew 10
+sort sort/inNew sort/outNew
+validate sort/outNew sort/valNew
+
+/*generate delta*/
+gendelta sort/in sort/inNew sort/inDelta
+genbyjoin sort/out sort/outNew sort/inDeltaJoin
+
+/*sort delta*/
+sortdelta sort/inDelta sort/outDelta
+/*sort/inDeltaJoin is already sorted if created from sort/out using genbyjoin */
+
+/*validate delta*/
+validatedelta sort/outDelta sort/valDelta
+validatedelta sort/inDeltaJoin sort/valDeltaJoin
+
+/*merge*/
+merge sort/out sort/outDelta sort/merged
+merge sort/out sort/inDeltaJoin sort/mergedJoin
+
+/*validate merged*/
+validate sort/merged sort/valMerged
+validate sort/mergedJoin sort/valMergedJoin
+
+
+3) Pipelined
+
+pipe sort/out sort/piped 3
+pipedelta sort/outDelta sort/pipedDelta 3
+
