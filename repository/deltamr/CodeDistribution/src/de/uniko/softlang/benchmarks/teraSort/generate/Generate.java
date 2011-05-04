@@ -48,12 +48,11 @@ public class Generate extends Configured implements Tool {
 	private static final Log LOG = LogFactory.getLog(Generate.class);
 
 	public static String NUM_ROWS = "mapreduce.terasort.num-rows";
-	public static int LONG_SIZE = 8;
-
+	
 	/**
 	 * An input format that assigns ranges of longs to each mapper.
 	 */
-	static class RangeInputFormat extends InputFormat<LongWritable, NullWritable> {
+	public static class RangeInputFormat extends InputFormat<LongWritable, NullWritable> {
 
 		/**
 		 * An input split consisting of a range on numbers.
@@ -201,7 +200,7 @@ public class Generate extends Configured implements Tool {
 			KVGenerator.generateRecord(key, value, rand.nextLong(), rowId);
 			context.write(key, value);
 			
-			KVGenerator.longToBytes(keyBuffer, key.get());
+			KVGenerator.longToBytes(keyBuffer, 0, key.get());
 			crc32.reset();
 			crc32.update(keyBuffer, 0, SortInputFormat.KEY_LENGTH);
 			crc32.update(value.getBytes(), 0, SortInputFormat.VALUE_LENGTH);
@@ -225,7 +224,7 @@ public class Generate extends Configured implements Tool {
    * @param str an string integer with an option base {k,m,b,t}.
    * @return the expanded value
    */
-  private static long parseHumanLong(String str) {
+  public static long parseHumanLong(String str) {
     char tail = str.charAt(str.length() - 1);
     long base = 1;
     switch (tail) {
