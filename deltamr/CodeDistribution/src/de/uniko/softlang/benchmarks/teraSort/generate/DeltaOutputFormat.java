@@ -35,8 +35,8 @@ public class DeltaOutputFormat extends TextOutputFormat<LongWritable,PairWritabl
    
     public synchronized void write(LongWritable longKey, PairWritable<Text,Text> value) throws IOException {
     	
-    	KVGenerator.longToBytes(buffer, longKey.get());
-    	for (int i = Generate.LONG_SIZE; i < SortInputFormat.KEY_LENGTH; i++) {
+    	KVGenerator.longToBytes(buffer, 0, longKey.get());
+    	for (int i = KVGenerator.LONG_SIZE; i < SortInputFormat.KEY_LENGTH; i++) {
 				buffer[i] = 0;
 			}
     	key.set(buffer, 0, SortInputFormat.KEY_LENGTH);

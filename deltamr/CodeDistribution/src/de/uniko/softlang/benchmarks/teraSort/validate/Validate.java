@@ -68,8 +68,8 @@ public class Validate extends Configured implements Tool {
       if (lastKey == null) {
         FileSplit fs = (FileSplit) context.getInputSplit();
         filename = getFilename(fs);
-        byte[] tmpBuff = new byte[Generate.LONG_SIZE];
-        KVGenerator.longToBytes(tmpBuff, key.get());
+        byte[] tmpBuff = new byte[KVGenerator.LONG_SIZE];
+        KVGenerator.longToBytes(tmpBuff, 0, key.get());
         context.write(new Text(filename + ":begin"), new Text(tmpBuff));
         lastKey = new LongWritable();
       } else {
@@ -80,7 +80,7 @@ public class Validate extends Configured implements Tool {
         }
       }
       // compute the crc of the key and value and add it to the sum
-      KVGenerator.longToBytes(keyBuffer, key.get());
+      KVGenerator.longToBytes(keyBuffer, 0, key.get());
 			crc32.reset();
       crc32.update(keyBuffer, 0, keyBuffer.length);
       crc32.update(value.getBytes(), 0, value.getLength());
@@ -92,8 +92,8 @@ public class Validate extends Configured implements Tool {
     public void cleanup(Context context) 
         throws IOException, InterruptedException  {
       if (lastKey != null) {
-      	byte[] tmpBuff = new byte[Generate.LONG_SIZE];
-        KVGenerator.longToBytes(tmpBuff, lastKey.get());
+      	byte[] tmpBuff = new byte[KVGenerator.LONG_SIZE];
+        KVGenerator.longToBytes(tmpBuff, 0, lastKey.get());
         context.write(new Text(filename + ":end"), new Text(tmpBuff));
         context.write(CHECKSUM, new Text(checksum.toString()));
       }

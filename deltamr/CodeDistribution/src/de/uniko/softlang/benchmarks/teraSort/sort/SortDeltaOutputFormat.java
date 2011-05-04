@@ -15,6 +15,7 @@ import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 import de.uniko.softlang.benchmarks.teraSort.generate.Generate;
+import de.uniko.softlang.benchmarks.teraSort.generate.GenerateDelta;
 import de.uniko.softlang.benchmarks.teraSort.generate.KVGenerator;
 import de.uniko.softlang.utils.PairWritable;
 
@@ -38,16 +39,17 @@ public class SortDeltaOutputFormat extends TextOutputFormat<LongWritable,PairWri
    
     public synchronized void write(LongWritable longKey, PairWritable<Text,Text> value) throws IOException {
     	
-    	KVGenerator.longToBytes(buffer, longKey.get());
-    	for (int i = Generate.LONG_SIZE; i < SortInputFormat.KEY_LENGTH; i++) {
+    	KVGenerator.longToBytes(buffer, 0, longKey.get());
+    	for (int i = KVGenerator.LONG_SIZE; i < SortInputFormat.KEY_LENGTH; i++) {
 				buffer[i] = 0;
 			}
     	key.set(buffer, 0, SortInputFormat.KEY_LENGTH);
     	try{if(value.getFirst().getLength() != 90){throw new Exception("Supposed to write value with size " + value.getFirst().getLength());}}catch (Exception e) {e.printStackTrace();}
+    	try{if(value.getSecond().getLength() != GenerateDelta.POS_STR.length()){throw new Exception("Supposed to write sign with size " + value.getFirst().getLength());}}catch (Exception e) {e.printStackTrace();}
   		
     	out.write(key.getBytes(), 0, key.getLength());
-      out.write(value.getFirst().getBytes(), 0, value.getFirst().getLength());
-      out.write(value.getSecond().getBytes(), 0, value.getSecond().getLength());
+    	out.write(value.getFirst().getBytes(), 0, value.getFirst().getLength());
+    	out.write(value.getSecond().getBytes(), 0, value.getSecond().getLength());
     }
     
     public void close(TaskAttemptContext context) throws IOException {

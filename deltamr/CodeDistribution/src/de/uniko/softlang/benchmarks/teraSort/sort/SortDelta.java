@@ -1,5 +1,7 @@
 package de.uniko.softlang.benchmarks.teraSort.sort;
 
+import java.io.IOException;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.conf.Configurable;
@@ -101,6 +103,11 @@ public class SortDelta extends Configured implements Tool {
 		}
 		
 	}
+	
+	private static void usage() throws IOException {
+		System.err.println("sortdelta <in> <out>");
+	}
+
   
 	 public int run(String[] args) throws Exception {
 	    LOG.info("starting");

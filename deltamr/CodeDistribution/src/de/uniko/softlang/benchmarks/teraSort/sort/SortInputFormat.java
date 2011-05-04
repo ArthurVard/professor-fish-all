@@ -20,8 +20,8 @@ import de.uniko.softlang.benchmarks.teraSort.generate.KVGenerator;
 public class SortInputFormat extends FileInputFormat<LongWritable,Text>{
 
 	public static final int KEY_LENGTH = 10;
-  public static final int VALUE_LENGTH = 90;
-  public static final int RECORD_LENGTH = KEY_LENGTH + VALUE_LENGTH;
+	public static final int VALUE_LENGTH = 90;
+	public static final int RECORD_LENGTH = KEY_LENGTH + VALUE_LENGTH;
   
   static class MySortRecordReader extends RecordReader<LongWritable,Text> {
   	private FSDataInputStream in;
@@ -33,7 +33,7 @@ public class SortInputFormat extends FileInputFormat<LongWritable,Text>{
   	private Text value;
     
   	public void initialize(InputSplit split,TaskAttemptContext context) throws IOException, InterruptedException {
-  		Path p = ((FileSplit)split).getPath();
+  	  Path p = ((FileSplit)split).getPath();
       FileSystem fs = p.getFileSystem(context.getConfiguration());
       in = fs.open(p);
       long start = ((FileSplit)split).getStart();

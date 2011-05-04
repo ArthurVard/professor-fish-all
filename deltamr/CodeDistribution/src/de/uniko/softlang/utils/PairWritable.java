@@ -118,7 +118,7 @@ public class PairWritable<T extends Writable, V extends Writable> implements Wri
   	WritableComparable thisValue2 = (WritableComparable)this.value.getSecond();
     WritableComparable thatValue1 = (WritableComparable)((PairWritable)o).value.getFirst();
     WritableComparable thatValue2 = (WritableComparable)((PairWritable)o).value.getSecond();
-    if(thisValue1 == thatValue1){
+    if(thisValue1.compareTo(thatValue1) == 0){
     	return thisValue2.compareTo(thatValue2);
     	
     }else{
