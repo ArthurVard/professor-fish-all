@@ -101,6 +101,7 @@ public class GenerateStreamingDelta extends Configured implements Tool {
 				//sort oldValues by first -> iterate and evict
 				if(last == null){
 					last = new PairWritable(next.getFirst(), next.getSecond());
+					//last = next;
 				}else{
 					if(!next.getSecond().toString().equals(last.getSecond().toString())){
 						//they invert each other -> omit both

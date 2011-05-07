@@ -1,48 +1,42 @@
 package de.uniko.softlang.wordcount;
 
 import java.io.IOException;
-import org.apache.hadoop.fs.Path;
+
+import org.apache.hadoop.io.BooleanWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.InputSplit;
-import org.apache.hadoop.mapreduce.JobContext;
 import org.apache.hadoop.mapreduce.RecordReader;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.mapreduce.lib.input.LineRecordReader;
 
-public class FileNameLineInputFormat extends FileInputFormat<Text, Text> {   
+import de.uniko.softlang.utils.PairWritable;
+
+public class LineBasedNewInput extends FileInputFormat<LongWritable, PairWritable<Text, BooleanWritable>> {   
 	
-	public static final String ORIG_FILES_SET = "orig.files.names";
 	  
   @Override
-  public RecordReader createRecordReader(InputSplit split,
+  public RecordReader<LongWritable, PairWritable<Text, BooleanWritable>> createRecordReader(InputSplit split,
                                              TaskAttemptContext context
                                              ) throws IOException {
-    return new RecordReader<Text,Text>(){
+    return new RecordReader<LongWritable, PairWritable<Text, BooleanWritable>>(){
     	private LineRecordReader r;
-      private Text key = null;
-      private Text value = null;
-      private String fileName;
-     
+      private LongWritable key = null;
+      private PairWritable<Text, BooleanWritable> value = null;
+      private BooleanWritable falseWriteable;
 
       public void initialize(InputSplit genericSplit,
                              TaskAttemptContext context) throws IOException {
     	  
-      	this.fileName = ((FileSplit)genericSplit).getPath().toString();	
       	r = new LineRecordReader();
       	r.initialize(genericSplit, context);
+      	falseWriteable = new BooleanWritable(false);
         
       }
       
       @Override
       public boolean nextKeyValue() throws IOException {
-      	if (key == null) {
-          key = new Text(fileName);
-        }
-        if (value == null) {
-          value = new Text();
-        }
         
         boolean retVal = r.nextKeyValue();
         
@@ -51,18 +45,19 @@ public class FileNameLineInputFormat extends FileInputFormat<Text, Text> {
         	value = null;
         	return false;
         }else{
-        	value = r.getCurrentValue();
+        	key = r.getCurrentKey();
+        	value = new PairWritable<Text, BooleanWritable>(r.getCurrentValue(), falseWriteable);
         }
          return true;
       	}
       
       @Override
-      public Text getCurrentKey() {
+      public LongWritable getCurrentKey() {
       	return key;
       }
 
       @Override
-      public Text getCurrentValue() {
+      public PairWritable<Text, BooleanWritable> getCurrentValue() {
     	  return value;
       }
 
