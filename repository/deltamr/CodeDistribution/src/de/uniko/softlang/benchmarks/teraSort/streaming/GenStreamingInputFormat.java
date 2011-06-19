@@ -21,7 +21,7 @@ import de.uniko.softlang.benchmarks.teraSort.generate.GenerateDelta;
 import de.uniko.softlang.benchmarks.teraSort.generate.KVGenerator;
 import de.uniko.softlang.utils.PairWritable;
 
-public class GenerateStreamingInput extends FileInputFormat<LongWritable, PairWritable<Text, Text>>{
+public class GenStreamingInputFormat extends FileInputFormat<LongWritable, PairWritable<Text, Text>>{
 	public static final String DELTA_FILES_SET = "uni-ko.delta.files";
 	private FSDataInputStream in;
 
