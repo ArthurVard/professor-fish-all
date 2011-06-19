@@ -171,7 +171,7 @@ public class GenerateStreamingDelta extends Configured implements Tool {
 
 
 	private static void usage() throws IOException {
-		System.err.println("myGenStreamDelta <delta-size> <output dir> <original version> [<delta>*]");
+		System.err.println("genStreamDelta <delta-size> <output dir> <original version> [<delta>*]");
 	}
 
 
@@ -203,11 +203,11 @@ public class GenerateStreamingDelta extends Configured implements Tool {
 			plist.add(new Path(args[i]));
 			deltaFiles = deltaFiles.concat(args[i] + ",");
 		}
-		job.getConfiguration().set(GenerateStreamingInput.DELTA_FILES_SET, deltaFiles);
+		job.getConfiguration().set(GenStreamingInputFormat.DELTA_FILES_SET, deltaFiles);
 
 		job.setInputFormatClass(CompositeInputFormat.class);
 		job.getConfiguration().set(CompositeInputFormat.JOIN_EXPR, 
-				CompositeInputFormat.compose("outer", GenerateStreamingInput.class,
+				CompositeInputFormat.compose("outer", GenStreamingInputFormat.class,
 						plist.toArray(new Path[0])));
 
 		//output

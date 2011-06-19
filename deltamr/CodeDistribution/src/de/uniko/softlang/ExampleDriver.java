@@ -11,6 +11,8 @@ import de.uniko.softlang.benchmarks.teraSort.generate.GenerateNew;
 import de.uniko.softlang.benchmarks.teraSort.merge.MergeByJoin;
 import de.uniko.softlang.benchmarks.teraSort.sort.Sort;
 import de.uniko.softlang.benchmarks.teraSort.sort.SortDelta;
+import de.uniko.softlang.benchmarks.teraSort.streaming.GenerateStreaming;
+import de.uniko.softlang.benchmarks.teraSort.streaming.GenerateStreamingDelta;
 import de.uniko.softlang.benchmarks.teraSort.validate.Validate;
 import de.uniko.softlang.benchmarks.teraSort.validate.ValidateDelta;
 import de.uniko.softlang.wordcount.DeltaWordCount;
@@ -52,6 +54,9 @@ public class ExampleDriver {
       
       pgd.addClass("pipe", PipelinedJob.class, "Processing the output of TeraSort in subsequent jobs.");
       pgd.addClass("pipedelta", PipelinedDeltaJob.class, "Processing the output of TeraSort applied to a delta in subsequent jobs.");
+      
+      pgd.addClass("genStream", GenerateStreaming.class, "Generate data, suitable to create a streaming-delta from.");
+      pgd.addClass("genStreamDelta", GenerateStreamingDelta.class, "Generate a streaming-delta, from previously generate data.");
       exitCode = pgd.driver(argv);
     }
     catch(Throwable e){

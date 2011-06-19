@@ -84,7 +84,7 @@ public class GenerateStreaming extends Configured implements Tool {
 	}
 
 	private static void usage() throws IOException {
-		System.err.println("myGenStream <num rows> <output dir>");
+		System.err.println("genStream <num rows> <output dir>");
 	}
 
   
