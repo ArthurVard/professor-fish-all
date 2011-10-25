@@ -6,6 +6,19 @@ Peano numbers
 
 */
 
+
+% Natural numbers
+
+nat(zero).
+nat(succ(X)) :- nat(X).
+
+
+% Even natural numbers
+
+even(zero).
+even(succ(succ(X))) :- even(X).
+
+
 % Addition
 
 add(zero,X,X).
