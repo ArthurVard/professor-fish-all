@@ -2,7 +2,7 @@
 
 (C) 2011 Ralf Laemmel
 
-An intriguing variation on "hello world".
+The famous "hello world" program.
 
 */
 

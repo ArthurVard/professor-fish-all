@@ -2,7 +2,7 @@
 
 (C) 2011 Ralf Laemmel
 
-Some play ground for some bits of metaprogramming.
+Using univ (=..) to print terms with indentation.
 
 */
 
