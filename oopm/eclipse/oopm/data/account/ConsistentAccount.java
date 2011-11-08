@@ -37,9 +37,9 @@ public class ConsistentAccount {
 	 * Limit withdrawals to available positive balance.
 	 */
 	public float withdraw(float amount) {
-		float result = 0;
 		if (amount <= 0 || balance < 0) // test for balance not needed
-			return result;
+			return 0;
+		float result = 0;
 		result = amount > balance ? balance : amount;
 		balance -= result;
 		return result;
