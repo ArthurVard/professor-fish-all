@@ -1,0 +1,12 @@
+<?php
+    $this->title = "Company View";
+    $this->headTitle($this->title);
+    echo $this->form;
+?>
+
+<?php
+
+    foreach ($this->departments as $department) {
+        echo $department[name];
+    }
+?>
