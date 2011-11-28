@@ -13,11 +13,15 @@
           <actionMethod actionName="cut"/>
           <actionMethod actionName="save"/>
           <actionMethod actionName="select"/>
+          <actionMethod actionName="department"/>
+          <actionMethod actionName="company"/>
+          <actionMethod actionName="employee"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Company"/>
+        <formFile formName="Department"/>
       </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
@@ -48,6 +52,15 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="select"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="department"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="company"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="employee"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

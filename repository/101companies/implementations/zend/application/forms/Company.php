@@ -14,19 +14,33 @@ class Application_Form_Company extends Zend_Form
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                 ->addValidator('NotEmpty');
+        
+        $submit = new Zend_Form_Element_Submit('save');
+        $submit ->setAttrib('id', 'submitbutton')
+                ->setOptions(array('class' => 'button'));
+        
+        $departmentList = new Zend_Form_Element_Select('departments');
+        $departmentList ->setLabel('Departments');
+        
+        $department = new Application_Model_DbTable_Department();
+        $departments = $department->getDepartmentsForCompany($id);
+        
+        foreach($departments as $dep) {
+            $departmentList->addMultiOption($dep[id], $dep[name]);
+        }
+        
+        $select = new Zend_Form_Element_Submit('select');
+        $select ->setAttrib('id', 'submitbutton');
+        
         $total = new Zend_Form_Element_Text('total', array("readonly" => "readonly"));
         $total  ->setLabel('Total');
         
-        $submit = new Zend_Form_Element_Submit('save');
-        $submit->setAttrib('id', 'submitbutton');
-        
         $cut = new Zend_Form_Element_Submit('cut');
-        $cut->setAttrib('id', 'cutbutton');
-        
-        $select = new Zend_Form_Element_Submit('select');
-        $select->setAttrib('id', 'selectbutton');
-        
-        $this->addElements(array($id, $name, $total, $submit, $cut, $select));
+        $cut->setAttrib('id', 'submitbutton');
+
+        $this->addElements(array($id, $name, $submit));
+        $this->addElements(array($departmentList, $select));
+        $this->addElements(array($total, $cut));
     }
 
 

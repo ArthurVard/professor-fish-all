@@ -15,5 +15,14 @@ class Application_Model_DbTable_Department extends Zend_Db_Table_Abstract
         }
         return $rows->toArray();
     }
+    
+        public function getDepartment($id) {
+        $id = (int)$id;
+        $row = $this->fetchRow('id = ' . $id);
+        if (!$row) {
+            throw new Exception("Could not find row $id");
+        }
+        return $row->toArray();
+    }
 }
 
