@@ -3,6 +3,8 @@
 class Application_Form_Company extends Zend_Form
 {
 
+    var $departmentList;
+    
     public function init()
     {
         $this->setName('company');
@@ -19,15 +21,9 @@ class Application_Form_Company extends Zend_Form
         $submit ->setAttrib('id', 'submitbutton')
                 ->setOptions(array('class' => 'button'));
         
-        $departmentList = new Zend_Form_Element_Select('departments');
-        $departmentList ->setLabel('Departments');
-        
-        $department = new Application_Model_DbTable_Department();
-        $departments = $department->getDepartmentsForCompany($id);
-        
-        foreach($departments as $dep) {
-            $departmentList->addMultiOption($dep[id], $dep[name]);
-        }
+        $this->departmentList = new Zend_Form_Element_Select('departments');
+        $this->departmentList ->setLabel('Departments');
+        $this->departmentList->setRegisterInArrayValidator(false);
         
         $select = new Zend_Form_Element_Submit('select');
         $select ->setAttrib('id', 'submitbutton');
@@ -39,10 +35,17 @@ class Application_Form_Company extends Zend_Form
         $cut->setAttrib('id', 'submitbutton');
 
         $this->addElements(array($id, $name, $submit));
-        $this->addElements(array($departmentList, $select));
+        $this->addElements(array($this->departmentList, $select));
         $this->addElements(array($total, $cut));
     }
 
-
+    public function fillLists($id) {
+        $department = new Application_Model_DbTable_Department();
+        $departments = $department->getDepartmentsForCompany(1);
+        
+        foreach($departments as $dep) {
+            $this->departmentList->addMultiOption($dep[id], $dep[name]);
+        }
+    }
 }
 ?>

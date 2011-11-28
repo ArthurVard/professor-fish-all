@@ -16,7 +16,6 @@ class IndexController extends Zend_Controller_Action
         
         $company = new Application_Model_DbTable_Company();
         $employee = new Application_Model_DbTable_Employee();
-        $department = new Application_Model_DbTable_Department();
         
         $id = 1;
         
@@ -24,6 +23,7 @@ class IndexController extends Zend_Controller_Action
         $c[total] = $employee->getTotalForCompany($id);
 
         $form->populate($c);
+        $form->fillLists($id);
     }
 
     public function companyAction()
@@ -52,7 +52,6 @@ class IndexController extends Zend_Controller_Action
                 $depId = (int)$form->getValue('departments');
                 
                 $this->_helper->redirector('department', 'index', null, array('id' => $depId));
-                
             }
         } else {
             $id = 1;
@@ -61,6 +60,7 @@ class IndexController extends Zend_Controller_Action
             $c[total] = $employee->getTotalForCompany($id);
 
             $form->populate($c);
+            $form->fillLists($id);
         }
     }
     
@@ -75,13 +75,32 @@ class IndexController extends Zend_Controller_Action
             $formData = $this->getRequest()->getPost();
             $form->isValid($formData);
             
-            $id = (int)$form->getValue('id');
-            $this->_helper->redirector('department', 'index', null, array('id' => $id));
+            if ($form->isValid($formData) && $form->save->isChecked()) {
+                $id = (int)$form->getValue('id');
+                $name = $form->getValue('name');
+                $department->updateDepartment($id, $name);
+                $this->_helper->redirector('department', 'index', null, array('id' => $id));
+            } else if ($form->isValid($formData) && $form->cut->isChecked()) {
+                $id = (int)$form->getValue('id');
+                //TODO
+                $this->_helper->redirector('department', 'index', null, array('id' => $id));
+            } else if ($form->isValid($formData) && $form->selectDepartment->isChecked()) {
+                $depId = (int)$form->getValue('departments');
+                
+                $this->_helper->redirector('department', 'index', null, array('id' => $depId));
+            } else if ($form->isValid($formData) && $form->selectEmployee->isChecked()) {
+                $empId = (int)$form->getValue('employees');
+                
+                $this->_helper->redirector('employee', 'index', null, array('id' => $empId));
+            }
         } else {
             $id = $this->_getParam('id', 0);
             
             $d = $department->getDepartment($id);
-            $form->populate($d); 
+            $d[total] = $employee->getTotalForDepartment($id);
+            
+            $form->populate($d);
+            $form->fillLists($id);
         }
         
         
