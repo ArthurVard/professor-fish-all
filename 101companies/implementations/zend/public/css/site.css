@@ -55,6 +55,11 @@ select {
     width:150px;
 }
 
+input {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 form #submitbutton {
     margin-left: 100px;
 }
