@@ -81,19 +81,20 @@ class IndexController extends Zend_Controller_Action
                 $name = $form->getValue('name');
                 $department->updateDepartment($id, $name);
                 $this->_helper->redirector('department', 'index', null, array('id' => $id));
-            } else if ($form->isValid($formData) && $form->cut->isChecked()) {
+            } else if ($form->cut->isChecked()) {
                 $id = (int)$form->getValue('id');
-                //TODO
+                $employee->cutDepartment($id);
+                
                 $this->_helper->redirector('department', 'index', null, array('id' => $id));
-            } else if ($form->isValid($formData) && $form->selectDepartment->isChecked()) {
+            } else if ($form->selectDepartment->isChecked()) {
                 $depId = (int)$form->getValue('departments');
                 
                 $this->_helper->redirector('department', 'index', null, array('id' => $depId));
-            } else if ($form->isValid($formData) && $form->selectEmployee->isChecked()) {
+            } else if ($form->selectEmployee->isChecked()) {
                 $empId = (int)$form->getValue('employees');
                 
                 $this->_helper->redirector('employee', 'index', null, array('id' => $empId));
-            } else if ($form->isValid($formData) && $form->edit->isChecked()) {
+            } else if ($form->edit->isChecked()) {
                 $empId = (int)$form->getValue('managerId');
                 
                 $this->_helper->redirector('employee', 'index', null, array('id' => $empId));
@@ -113,14 +114,37 @@ class IndexController extends Zend_Controller_Action
         
     }
 
-    
-
     public function employeeAction()
     {
         $employee = new Application_Model_DbTable_Employee();
         $form = new Application_Form_Employee();
         $form->setAction('index/employee');
         $this->view->form = $form;
+        
+        if($this->getRequest()->isPost()) {
+            $formData = $this->getRequest()->getPost();
+            $form->isValid($formData);
+            
+            if ($form->isValid($formData) && $form->save->isChecked()) {
+                $id = (int)$form->getValue('id');
+                $name = $form->getValue('name');
+                $address = $form->getValue('address');
+                $salary = $form->getValue('salary');
+                $employee->updateEmployee($id, $name, $address, $salary);
+                $this->_helper->redirector('employee', 'index', null, array('id' => $id));
+            } else if ($form->cut->isChecked()) {
+                $id = (int)$form->getValue('id');
+                $employee->cutEmployee($id);
+                
+                $this->_helper->redirector('employee', 'index', null, array('id' => $id));
+            }
+        } else {
+            $id = $this->_getParam('id', 0);
+            
+            $e = $employee->getEmployee($id);
+            
+            $form->populate($e);
+        }
     }
 
 
