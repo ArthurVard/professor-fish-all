@@ -12,14 +12,23 @@ class Application_Form_Department extends Zend_Form
         $id = new Zend_Form_Element_Hidden('id');
         $id->addFilter('Int');
         $name = new Zend_Form_Element_Text('name');
-        $name ->setLabel('Name')
+        $name   ->setLabel('Name')
                 ->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                 ->addValidator('NotEmpty');
-                
+                        
         $submit = new Zend_Form_Element_Submit('save');
         $submit->setAttrib('id', 'submitbutton');
+        
+        $manager = new Zend_Form_Element_Text('manager', array('readonly' => 'readonly'));
+        $manager->setLabel('Manager');
+        
+        $managerId = new Zend_Form_Element_Hidden('managerId');
+        $managerId->addFilter('Int');
+        
+        $edit = new Zend_Form_Element_Submit('edit');
+        $edit->setAttrib('id', 'submitbutton');
         
         $this->departmentList = new Zend_Form_Element_Select('departments');
         $this->departmentList ->setLabel('Departments');
@@ -44,6 +53,7 @@ class Application_Form_Department extends Zend_Form
         $cut->setAttrib('id', 'submitbutton');
 
         $this->addElements(array($id, $name, $submit));
+        $this->addElements(array($managerId, $manager, $edit));
         $this->addElements(array($this->departmentList, $selectDepartment));
         $this->addElements(array($this->employeeList, $selectEmployee));
         $this->addElements(array($total, $cut));
@@ -61,7 +71,9 @@ class Application_Form_Department extends Zend_Form
         $employees = $employee->getEmployeesForDepartment($id);
         
         foreach($employees as $emp) {
-            $this->employeeList->addMultiOption($emp[id], $emp[name]);
+            if ($emp[manager] == 0) {
+                $this->employeeList->addMultiOption($emp[id], $emp[name]);
+            }
         }
     }
 

@@ -22,6 +22,7 @@
       <formsDirectory>
         <formFile formName="Company"/>
         <formFile formName="Department"/>
+        <formFile formName="Employee"/>
       </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
