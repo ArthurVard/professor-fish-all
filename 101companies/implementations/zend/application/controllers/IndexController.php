@@ -67,6 +67,7 @@ class IndexController extends Zend_Controller_Action
     public function departmentAction()
     {
         $department = new Application_Model_DbTable_Department();
+        $employee = new Application_Model_DbTable_Employee();
         $form = new Application_Form_Department();
         $form->setAction('index/department');
         $this->view->form = $form;
@@ -92,17 +93,23 @@ class IndexController extends Zend_Controller_Action
                 $empId = (int)$form->getValue('employees');
                 
                 $this->_helper->redirector('employee', 'index', null, array('id' => $empId));
+            } else if ($form->isValid($formData) && $form->edit->isChecked()) {
+                $empId = (int)$form->getValue('managerId');
+                
+                $this->_helper->redirector('employee', 'index', null, array('id' => $empId));
             }
         } else {
             $id = $this->_getParam('id', 0);
             
             $d = $department->getDepartment($id);
+            $manager = $employee->getManagerForDepartment($id);
+            $d[manager] = $manager[name];
+            $d[managerId] = $manager[id];
             $d[total] = $employee->getTotalForDepartment($id);
             
             $form->populate($d);
             $form->fillLists($id);
         }
-        
         
     }
 
@@ -110,7 +117,10 @@ class IndexController extends Zend_Controller_Action
 
     public function employeeAction()
     {
-        // action body
+        $employee = new Application_Model_DbTable_Employee();
+        $form = new Application_Form_Employee();
+        $form->setAction('index/employee');
+        $this->view->form = $form;
     }
 
 

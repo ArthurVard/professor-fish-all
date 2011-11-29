@@ -28,11 +28,23 @@ class Application_Model_DbTable_Employee extends Zend_Db_Table_Abstract
         foreach ($rows as $row) {
             $total += $row->salary;
         }
+        $department = new Application_Model_DbTable_Department();
+        $subdepartments = $department->getDepartmentsForDepartment($id);
+        foreach ($subdepartments as $dep) {
+            $depId = $dep[id];
+            $total += $this->getTotalForDepartment($depId);
+        }
         return $total;
     }
     
     public function cutCompany($id) {
         $this->_db->query("UPDATE employee SET salary = salary / 2 WHERE cid = " .$id);
+    }
+    
+    public function getManagerForDepartment($id) {
+        $id = (int)$id;
+        $row = $this->fetchRow('did = ' . $id . ' AND manager = 1');
+        return $row->toArray();
     }
 }
 
