@@ -49,6 +49,8 @@ the SEAM framework.
 ** go to: http://localhost:8080/seam
 ** Access the system with user ''admin'' (pw:''admin''). You can also access the system with user ''user'' (pw: ''user'') but then the cut salaries method is blocked.
 
+[[Category:Web application]]
+
 == Contributors ==
 
 * {{101contributor|Rodrigo Bonifacio|developer}}
