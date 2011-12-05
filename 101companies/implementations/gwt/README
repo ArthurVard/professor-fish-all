@@ -57,6 +57,8 @@ These services allow the client to load and save data and perform scenarios [[10
 ** open http://localhost:8888 in your browser.
 * The server runs until is terminated explicitly in the eclipse console.
 
+[[Category:Web-application]]
+
 == Contributors ==
 
 * {{101contributor|Thomas Schmorleiz|developer}}
