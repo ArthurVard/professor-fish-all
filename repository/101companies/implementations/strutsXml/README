@@ -162,6 +162,8 @@ value of a call to the cutSalaries method.
 * Potentially simplify Controller/Service; no service object needed
 * Add substantial README/code documentation
 
+[[Category:Web application]]
+
 == Contributors ==
 
 * {{101contributor|Betim Sojeva|developer}}
