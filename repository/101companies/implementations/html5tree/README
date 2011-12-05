@@ -82,6 +82,8 @@ The project is provided as a netbeans-project. If you want to change the code, y
 * Download (http://netbeans.org/) and install [[Technology:NetBeans]]
 * "Open project" and select the html5tree-folder
 
+[[Category:Web application]]
+
 == Contributors ==
 
 * {{101contributor|Tobias Zimmer|developer}}
