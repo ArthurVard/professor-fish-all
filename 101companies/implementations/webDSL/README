@@ -35,6 +35,8 @@ We make use of the WebDSL Plugin. Update Site: http://webdsl.org/page/Download
 * Visit http://localhost:8080/webDSL/ 
 (Eventually you will have to re-build or restart the server)
 
+[[Category:Web application]]
+
 == Contributors ==
 
 * {{101contributor|Eelco Visser|assistant}}
