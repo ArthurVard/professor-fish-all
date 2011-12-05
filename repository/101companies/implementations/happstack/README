@@ -178,6 +178,8 @@ They return a function of type <syntaxhighlight lang="haskell" enclose="none">Mo
 There is a [this!!Makefile] with a target ''run'' to do this.
 * Open ''http://localhost:8000/Company/View/CompanyFocus'' to demo, starting with the root view.
 
+[[Category:Web application]]
+
 == Contributors ==
 
 * {{101contributor|Thomas Schmorleiz|developer}}
