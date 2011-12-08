@@ -4,24 +4,54 @@
 
 == Languages ==
 
+* [[Language:PHP]]
+* [[Language:HTML]]
+* [[Language:CSS]]
 
 == Technologies ==
 
+* [[Technology:Zend framework]]
 
 == Features ==
 
+* [[101feature:Company]]
+* [[101feature:Total]]
+* [[101feature:Cut]]
+* [[101feature:Interaction]]
+* [[101feature:Persistence]]
+* [[101feature:Precedence]]
+* [[101feature:Validation]]
 
 == Motivation ==
+
 
 
 == Illustration ==
 
 
+
 == Architecture ==
+
 
 
 == Usage ==
 
+* Download the implementation from the svn
+* Install [[Technology:NetBeans]] (http://netbeans.org/)
+
+This project needs a running [[Technology:MySQL]]-database. We recommend [[Technology:XAMPP]].
+You can use the ''company.sql'' and ''sampleCompany.sql'' of [[101implementation:mySql]] for this project.
+
+* Download and install [[Technology:XAMPP]]
+* Open the "XAMPP Control Panel" and start "Apache" and "MySQL"
+* Use the guideline of [[101implementation:mySql]] up to "Populate tables..."
+
+After the database is started:
+
+* Start [[Technology:NetBeans]]
+* Open the Zend project: right-click on the ''projects''-table in NetBeans and then left-click on ''Open Projects''
+* Import the zend project out of the file system
+* Start the implementation with a click on the ''run''-Button. A [[:Category:Webbrowser|browser]]-window will open automatically.
 
 == Contributors ==
 
