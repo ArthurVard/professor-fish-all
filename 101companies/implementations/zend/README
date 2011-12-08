@@ -24,7 +24,7 @@
 
 == Motivation ==
 
-[[Language:PHP]] is one of the most common [[:Category:Language|languages]] for [[web programming]]. To get a more structured and valuable [[:Category:101implementation|implementation]], the decision for a framework is obvious to choose a [[Language:PHP]] based [[:Category:web-application framework]]. The [[Technology:Zend framework]] provides a good infrastructure and a large amount of pre-assembled components.
+[[Language:PHP]] is one of the most common [[:Category:Language|languages]] for [[web programming]]. To get a more structured and valuable [[:Category:101implementation|implementation]], it is reasonable to choose a [[Language:PHP]] based [[:Category:web-application framework]]. The [[Technology:Zend framework]] provides a good infrastructure and a large amount of pre-assembled components.
 
 == Illustration ==
 
