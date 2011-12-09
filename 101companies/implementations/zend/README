@@ -59,7 +59,6 @@ This method returns the total-value for a company with a given ''$id''.
 == Usage ==
 
 * Download the implementation from the svn
-* Install [[Technology:NetBeans]] (http://netbeans.org/)
 
 This project needs a running [[Technology:MySQL]]-database. We recommend [[Technology:XAMPP]].
 You can use the ''company.sql'' and ''sampleCompany.sql'' of [[101implementation:mySql]] for this project.
@@ -70,10 +69,10 @@ You can use the ''company.sql'' and ''sampleCompany.sql'' of [[101implementation
 
 After the database has started:
 
-* Start [[Technology:NetBeans]]
-* Open the Zend project: right-click on the ''projects''-table in NetBeans and then left-click on ''Open Projects''
-* Import the zend project out of the file system
-* Start the implementation with a click on the ''run''-Button. A [[:Category:Webbrowser|browser]]-window will open automatically.
+* Copy the complete zend folder to the htdocs-directory of your XAMPP-installation
+* Start your [[:Category:Webbrowser]] and go to [http://localhost/zend/public/]
+
+If you want to continue with the development of this [[:Category:101implementation]], please download [[Technology:NetBeans]] and import the project to this [[:Category:IDE]].
 
 == Contributors ==
 
