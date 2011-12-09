@@ -48,11 +48,13 @@ public function getTotalForCompany($id) {
 
 This method returns the total-value for a company with a given ''$id''.
 
-[[:Category:Client]]-side can be easily implemented into the forms (e.g. [this!!application/forms/Employee.php forms/Employee.php]): [TODO]
+[[:Category:Client]]-side can be easily implemented into the forms (e.g. [this!!application/forms/Employee.php forms/Employee.php]): TODO
 
 == Architecture ==
 
-
+* The architecture is strictly based on the [[Model View Controller|MVC]]-pattern. There are different folders for the models, the views and the controllers. This is fundamental, because the [[:Category:framework]] automatically identifies the classes and its concerns with the help of these folders.
+* The adapter for the database connection is also automatically generated. The user only needs to configure the connection parameters and the nature of the adapter (e.g. for [[Technology:MySQL]], [[Technology:OracleDB]] etc.) in the [this!!application/configs/application.ini application.ini].
+* [[Technology:Zend framework]] has a great support for form-based websites. That means, that it is possible to generate forms with almost no [[Language:HTML]]-Code, because the framework automatically generates the website out of the php-objects defined in a given form (e.g. [this!!application/forms/Employee.php forms/Employee.php]).
 
 == Usage ==
 
