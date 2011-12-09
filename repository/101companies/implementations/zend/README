@@ -46,6 +46,12 @@ The features [[101feature:Total]] and [[101feature:Cut]] are both implemented in
     }
 </syntaxhighlight>
 
+This method returns the total-value for a company with a given ''$id''.
+
+[[:Category:Client]]-side validation is implemented in the forms.
+
+TODO
+
 == Architecture ==
 
 
