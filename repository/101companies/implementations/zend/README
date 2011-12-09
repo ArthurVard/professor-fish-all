@@ -28,7 +28,23 @@
 
 == Illustration ==
 
-The features [[101feature:Total]] and [[101feature:Cut]] are both implemented in the [this!!application/models/DbTable/Employee.php Employee.php]
+The features [[101feature:Total]] and [[101feature:Cut]] are both implemented in the [this!!application/models/DbTable/Employee.php Employee.php]-[[Model View Controller|model]]. The reason is, that these methods affect only employees, depend on the corresponding company or department. The automatic detection for the right data-table, provided by the variable ''$_name'' in the specific model, offers a simple structuring of the methods:
+
+<syntaxhighlight lang="php" source="zend/application/models/DbTable/Employee.php" line>
+    protected $_name = 'employee';
+
+    ...
+
+    public function getTotalForCompany($id) {
+        $id = (int)$id;
+        $rows = $this->fetchAll('cid = ' . $id);
+        $total = 0;
+        foreach ($rows as $row) {
+            $total += $row->salary;
+        }
+        return $total;
+    }
+</syntaxhighlight>
 
 == Architecture ==
 
