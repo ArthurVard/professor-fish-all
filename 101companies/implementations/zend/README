@@ -48,9 +48,7 @@ public function getTotalForCompany($id) {
 
 This method returns the total-value for a company with a given ''$id''.
 
-[[:Category:Client]]-side can be easily implemented into the forms (e.g. [this!!application/forms/Employee.php forms/Employee.php]
-
-TODO
+[[:Category:Client]]-side can be easily implemented into the forms (e.g. [this!!application/forms/Employee.php forms/Employee.php]): [TODO]
 
 == Architecture ==
 
