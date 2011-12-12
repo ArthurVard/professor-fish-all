@@ -67,7 +67,7 @@ The second part contains a layer of web-specific components.
 * 5. Select ''101companies-Tests.st'' and click "install" on a toolbar.
 
 At this point you should be able to see 101comanies and 101companiesTests in the components browser.
-Next you have to start a web-server. For this go to the "Seasise Control Panel", select [8080]WAComancheAdaptor and click "Start" button.
+Next you have to start a web-server. For this go to the "Seasise Control Panel", select WAComancheAdaptor and click "Start" button.
 
 If you don't see any adapters:
 * 1. Open the ’Seaside Control Panel’ in the ’Tools’ submenu of the ’World’ menu
