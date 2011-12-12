@@ -70,7 +70,7 @@ At this point you should be able to see 101comanies and 101companiesTests in the
 Next you have to start a web-server. For this go to the "Seasise Control Panel", select WAComancheAdaptor and click "Start" button.
 
 If you don't see any adapters:
-* 1. Open the 'Seaside Control Panel’ in the ’Tools’ submenu of the ’World’ menu
+* 1. Open the 'Seaside Control Panel' in the 'Tools' submenu of the 'World' menu
 * 2. Should there be no WAComancheAdaptor add one by right clicking and selecting 'Add adaptor...'
 * 3. Select the WAComancheAdaptor and press 'Start'.
 
