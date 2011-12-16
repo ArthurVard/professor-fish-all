@@ -28,13 +28,13 @@ This is a simple implementation of the basic [[101section:Features|101companies-
 
 Most of the web application is written in [[Language:JavaScript|JavaScript]]. The data is stored in a storage-object (''localStorage''). During the session, this object provides string-based persistence..
 
- <syntaxhighlight lang="javascript">
+ <syntaxhighlight lang="java">
  var storageObject = localStorage;
  </syntaxhighlight>
 
 The data-structure is defined with classes. The company contains departments and departments contain subdepartments and employees.
 
- <syntaxhighlight lang="javascript">
+ <syntaxhighlight lang="java">
  function Department (name) {
  	this.name = name;
  	this.employees = new Array();
@@ -44,7 +44,7 @@ The data-structure is defined with classes. The company contains departments and
 
 The data-structure is a tree, which can be traversed to [[101feature:Cut|cut]] salaries or determine the [[101feature:Total|total]] of the whole company or individual departments. The tree can be stringified with [[Technology:JSON|JSON]] and stored in the storage-object. The example shows the [[101feature:Total|total]] feature for the company:
 
- <syntaxhighlight lang="javascript">
+ <syntaxhighlight lang="java">
  function totalCompany(company) {
  	var total = 0;
  	var len = company.departments.length;
