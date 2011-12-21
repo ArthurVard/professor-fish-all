@@ -28,7 +28,7 @@
 
 == Illustration ==
 
-The [[101feature:cut]] and [[101feature:total]] features are implemented directly in the company, department and employee classes. The "self"-parameter for the methods represents the current object. The example for department looks like:
+The [[101feature:Cut|cut]] and [[101feature:Total|total]] features are implemented directly in the company, department and employee classes. The ''self''-parameter for the methods represents the current object. The example for department looks like:
 
 <syntaxhighlight lang="python" source="pyjamas/101Companies.py" line>
 # The class for 101Companies departments
@@ -55,7 +55,7 @@ class Department:
 	...
 </syntaxhighlight>
 
-The [[101feature:Interaction|GUI]] is implemented directly with [[Technology:Pyjamas]]-libraries. There is a grid with all necessary components like labels, textfields, listboxes and buttons. Every class is translated directly to [[Language:JavaScript]] and the objects are initialized in the [[Language:JavaScript]]-context. The following method of '''101CompaniesAppGUI''' shows the initialization of the employee-[[101feature:Interaction|GUI]]:
+The [[101feature:Interaction|GUI]] is implemented directly with [[Technology:Pyjamas]]-libraries. There is a grid with all necessary components like labels, textfields, listboxes and buttons. Every class is translated directly to [[Language:JavaScript]] and the objects are initialized in the [[Language:JavaScript]]-context. The following method of ''101CompaniesAppGUI'' shows the initialization of the employee-[[101feature:Interaction|GUI]]:
 
 <syntaxhighlight lang="python" source="pyjamas/101Companies.py" line>
 # initializes the GUI for the employee view
@@ -64,9 +64,9 @@ def initEmployeeGUI(self):
 	self.grid.resize(4, 3)
 		
 	# row 1
-	self.grid.setWidget(0, 0, Label("Name:"))
-	self.grid.setWidget(1, 0, Label("Address:"))
-	self.grid.setWidget(2, 0, Label("Salary:"))
+	self.grid.setWidget(0, 0, Label("Name:"))	# column 1 = name
+	self.grid.setWidget(1, 0, Label("Address:"))	# column 2 = address
+	self.grid.setWidget(2, 0, Label("Salary:"))	# column 3 = salary
 	
 	# row 2
 	self.grid.setWidget(0, 1, self.name)
@@ -77,13 +77,14 @@ def initEmployeeGUI(self):
 	self.grid.setWidget(0, 2, self.save)
 	self.grid.setWidget(2, 2, self.cut)
 	self.grid.setWidget(3, 2, self.back)
-		
+
+	# initialize content for current employee
 	self.name.setText(self.current.name)
 	self.address.setText(self.current.address)
 	self.total.setText(self.current.salary)
 </syntaxhighlight>
 
-The textfields '''self.name''', '''self.address''' and '''self.total''' are initialized in the constructor of the '''101CompaniesAppGUI''' class.
+The textfields ''self.name'', ''self.address'' and ''self.total'' are initialized in the constructor of the ''101CompaniesAppGUI'' class.
 
 == Architecture ==
 
