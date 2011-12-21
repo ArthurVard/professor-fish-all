@@ -24,8 +24,10 @@
 
 == Motivation ==
 
+[[Language:Python]] is a popular [[:Category:programming language]]. [[Technology:Pyjamas]] offers the possibility to generate pure [[Language:JavaScript]]-Code out [[Language:Python]]. The advantages of [[Technology:Pyjamas]] are, that it is very simple to understand. Apart from that, there is no need for complicate [[Language:HTML]]- or [[Language:JavaScript]]-programming. [[Technology:Pyjamas]] is easily combinable with [[Language:CSS]].
 
 == Illustration ==
+
 
 
 == Architecture ==
@@ -33,6 +35,8 @@
 
 == Usage ==
 
+* Download the sources
+* Open output/101Companies.html with your [[:Category:webbrowser]]
 
 == Contributors ==
 
