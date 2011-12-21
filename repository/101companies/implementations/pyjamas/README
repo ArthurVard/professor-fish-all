@@ -32,6 +32,11 @@
 
 == Architecture ==
 
+Scince there is only one file ([this!!101Companies.py]) for the whole application, the program is devided into three (five) main classes:
+
+* The [[101feature:Company|company]]-structure is provided by the classes company, department and employee.
+* The [[101feature:Interaction|GUI]] is provided by the class 101CompaniesAppGUI.
+* The [[101feature:Company|company]]-initialization and the low-level management of the departments and employees is provided by the class 101CompaniesApp.
 
 == Usage ==
 
