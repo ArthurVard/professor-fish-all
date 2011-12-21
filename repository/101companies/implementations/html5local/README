@@ -80,15 +80,16 @@ For every object in the [[101feature:Company|data model]], there is a unique-id 
 
 There are two possible ways to run this application:
 
-* Chrome: Just open the index.html with your web-browser
-* This HTML5-program does not work over file-protocol when using Firefox. In this case, you need access over http. To gain access over http, you can use, for example, XAMPP to create a webserver.
+Chrome: Just open the index.html with your web-browser
 
-# Download XAMPP from http://www.apachefriends.org/en/xampp.html
-# Install XAMPP
-# Deploy the index.html to your htdocs-directory (for example: E:\xampp\htdocs\101implementation-html5\)
-# Start the XAMPP-Control Panel and activate Apache
-# Start your web-browser
-# Call http://localhost/101implementation-html5/index.html
+This HTML5-program does not work over file-protocol when using Firefox. In this case, you need access over http. To gain access over http, you can use, for example, XAMPP to create a webserver.
+
+* Download XAMPP from http://www.apachefriends.org/en/xampp.html
+* Install XAMPP
+* Deploy the index.html to your htdocs-directory (for example: E:\xampp\htdocs\101implementation-html5\)
+* Start the XAMPP-Control Panel and activate Apache
+* Start your web-browser
+* Call http://localhost/101implementation-html5/index.html
 
 [[Category:Web application]]
 
