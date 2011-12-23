@@ -1,0 +1,2 @@
+// Adopted from http://www.nyx.net/~gthompso/quine.htm
+package quine; class Felgenhauer{public static void main(String[]a){String s="package quine; class Felgenhauer{public static void main(String[]a){String s=;char c=34;System.out.println(s.substring(0,77)+c+s+c+s.substring(77));}}";char c=34;System.out.println(s.substring(0,77)+c+s+c+s.substring(77));}}
