@@ -1,3 +1,5 @@
+[[Category:Intergalactical Java programming]]
+
 == Intent ==
 
 parsing textual syntax with [[Technology:ANTLR]] in [[Language:Java]]
@@ -83,5 +85,3 @@ See [[101implementation:antlrAcceptor]] for general instructions on the usage of
 == Contributors ==
 
 * {{101contributor|Ralf Lämmel|developer}}
-
-[[Category:Intergalactical Java programming]]
