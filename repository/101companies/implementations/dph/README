@@ -1,3 +1,5 @@
+[[Category:Parallelism_theme]]
+
 == Intent ==
 
 exercise [[Parallelism|data parallelism]] in [[Language:Haskell]] using [[Technology:DPH|Data Parallel Haskell]]
