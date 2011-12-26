@@ -75,6 +75,10 @@ is changed, then code generation must be re-executed. To this end, run ''ant'' o
 all types in the packages ''...schema'' and ''...schema.impl.std''.  These packages provide
 the API for ''CompanyServices''.
 
+== Resources ==
+
+* TGraph: [http://www.uni-koblenz-landau.de/koblenz/fb4/institute/IST/RGEbert/MainResearch-en/Graphtechnology/tgraphs?set_language=en]
+
 == Contributors ==
 
 * {{101contributor|Tassilo Horn|developer}}
