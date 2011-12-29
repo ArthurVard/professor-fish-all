@@ -15,7 +15,6 @@ modular programming with [[:Category:static method]]s in [[Language:Java]]
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Serialization]]
 
 == Motivation ==
 
@@ -54,7 +53,7 @@ Package ''org.softlang.company'' hosts the object model for [[101feature:Company
 and the general interfaces for void and returning visitors on companies, departments,
 and employees. Package ''org.softlang.features'' hosts implementations of the basic 
 operations [[101feature:Total]] and [[101feature:Cut]] as well as some boilerplate
-code for [[101feature:Serialization]]. Package ''org.softlang.tests'' hosts JUnit tests; see below.
+code for [[closed serialization]]. Package ''org.softlang.tests'' hosts JUnit tests; see below.
 
 == Usage ==
 
