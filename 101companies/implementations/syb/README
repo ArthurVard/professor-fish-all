@@ -27,7 +27,6 @@ style of generic programming.
 * [[101feature:Depth]]
 * [[101feature:Mentoring]]
 * [[101feature:Precedence]]
-* [[101feature:Serialization]]
 
 == Motivation ==
 
@@ -51,17 +50,11 @@ There are Haskell modules for the implemented operations.
 * [[101feature:Mentoring]]: ''Mentoring.hs''
 * [[101feature:Precedence]]: ''Precedence.hs''
 
-[[101feature:Serialization]] is enabled by "deriving" clauses for type classes ''Read'' and ''Show'' in ''Company.hs''.
-[[SYB]] style of generic programming is enabled by "deriving" clauses for type classes ''Typeable'' and ''Data'' in ''Company.hs''.
-Finally, there is a ''Main'' module which collects a few test scenarios; see below.
+Also, [[closed serialization]] is enabled by "deriving" clauses for type classes ''Read'' and ''Show'' in ''Company.hs''. [[SYB]] style of generic programming is enabled by "deriving" clauses for type classes ''Typeable'' and ''Data'' in ''Company.hs''. Finally, there is a ''Main'' module which collects a few test scenarios; see below.
 
 == Usage ==
 
-The Haskell module ''Main'' has to be consulted with GHCi, and the
-''main'' function has to be applied so that output for the test
-scenarios is produced. The ''expected'' output is available through
-the file ''baseline''. There is a ''Makefile'' with a target ''test''
-for [[test automation]].
+The Haskell module ''Main'' has to be consulted with GHCi, and the ''main'' function has to be applied so that output for the test scenarios is produced. The ''expected'' output is available through the file ''baseline''. There is a ''Makefile'' with a target ''test'' for [[test automation]].
 
 == Contributors ==
 
