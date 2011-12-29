@@ -17,10 +17,9 @@
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Interaction]]
+* [[101feature:Navigation]]
 * [[101feature:Persistence]]
 * [[101feature:Precedence]]
-* [[101feature:Validation]]
 
 == Motivation ==
 
@@ -55,7 +54,7 @@ class Department:
 	...
 </syntaxhighlight>
 
-The [[101feature:Interaction|GUI]] is implemented directly with [[Technology:Pyjamas]]-libraries. There is a grid with all necessary components like labels, textfields, listboxes and buttons. Every class is translated directly to [[Language:JavaScript]] and the objects are initialized in the [[Language:JavaScript]]-context. The following method of ''101CompaniesAppGUI'' shows the initialization of the employee-[[101feature:Interaction|GUI]]:
+The GUI is implemented directly with [[Technology:Pyjamas]]-libraries. There is a grid with all necessary components like labels, textfields, listboxes and buttons. Every class is translated directly to [[Language:JavaScript]] and the objects are initialized in the [[Language:JavaScript]]-context. The following method of ''101CompaniesAppGUI'' shows the initialization of the employee part of the GUI:
 
 <syntaxhighlight lang="python" source="pyjamas/101Companies.py" line>
 # initializes the GUI for the employee view
@@ -90,9 +89,9 @@ The textfields ''self.name'', ''self.address'' and ''self.total'' are initialize
 
 Since there is only one file ([this!!101Companies.py]) for the whole application, the program is devided into three (five) main classes:
 
-* The [[101feature:Company|company]]-structure is provided by the classes company, department and employee.
-* The [[101feature:Interaction|GUI]] is provided by the class 101CompaniesAppGUI.
-* The [[101feature:Company|company]]-initialization and the low-level management of the departments and employees is provided by the class 101CompaniesApp.
+* The company structure is provided by the classes company, department and employee.
+* The GUI is provided by the class 101CompaniesAppGUI.
+* The company initialization and the low-level management of the departments and employees is provided by the class 101CompaniesApp.
 
 == Usage ==
 
