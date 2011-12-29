@@ -19,11 +19,12 @@ exercise [[:Category:XML processing]] with [[Language:XPath]] embedded in [[Lang
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Serialization]]
+* [[101feature:Import/Export]]
 
 == Motivation ==
 
-XPath can be embedded in Java code which makes it possible to process
+Companies are represented in [[Language:XML]] and processed by XPath and Java.  
+XPath is embedded into Java code which makes it possible to process
 query results in Java. Query results are bound to DOM-like node sets, and
 one can iterate over those and mutate them, thereby implementing
 impure transformations.
