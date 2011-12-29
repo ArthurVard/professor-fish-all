@@ -22,11 +22,11 @@ Tree based implementation in [[Language:Java]].
 
 ''This project was created at the PTT-Hackathon 2011.''
 
-The tree-based view allows the user to get a large overview of the hierarchy of the [[101companies:System]]. The tree allows easy [[101feature:Interaction#Navigation|navigation]] within this hierarchy. The tree also provides quick adjustment on changes of the [[101feature:Company|company]] data.
+The tree-based view allows the user to get a large overview of the hierarchy of the [[101companies:System]]. The tree allows easy navigation within this hierarchy. The tree also provides quick adjustment on changes of the [[101feature:Company|company]] data.
 
 == Illustration ==
 
-The main features [[101feature:Cut]], [[101feature:Total]] and [[101feature:Company]] are adopted from [[101implementation:javaInheritance]]. The main difference to [[101implementation:swing]] is, that the [[101feature:Interaction#Navigation|navigation]] is simplified with a tree view. This tree has to be initialized recursively with the company as root:
+The main features [[101feature:Cut]], [[101feature:Total]] and [[101feature:Company]] are adopted from [[101implementation:javaInheritance]]. The main difference to [[101implementation:swing]] is, that the navigation is simplified with a tree view. This tree has to be initialized recursively with the company as root:
 
 <syntaxhighlight lang="java">
 /*
