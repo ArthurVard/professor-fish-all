@@ -34,10 +34,9 @@ properties and methods (features implementations).
 
 ''Tests'' folder contains:
 * ''FeaturesTest'' class which covers test cases for the features: [[:101feature:Total|Total]], [[:101feature:Cut|Cut]], [[:101feature:Depth|Depth]].
-* ''SerializationTests'' class which covers test cases for [[serialization]]/de-serialization.
+* ''SerializationTests'' class which covers test cases for de-/serialization.
 
-Also helpers for building in-memory model for meganalysis company and
-serialization are implemented.
+Also, helpers for serialization and building the in-memory model for the meganalysis company are implemented.
 
 == Usage ==
 
