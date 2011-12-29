@@ -22,10 +22,9 @@
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Interaction]]
-* [[101feature:Persistence]]
 * [[101feature:Precedence]]
-* [[101feature:Validation]]
+* [[101feature:Persistence]]
+* [[101feature:Navigation]]
 
 == Motivation ==
 
@@ -71,7 +70,7 @@ public void cut() {
 
 * The [[Technology:Java Beans]] encapsulate business methods to create the webservices, which send the responses to the [[:Category:Client]]-requests. The used [[:Category:Webserver]] for this webservices is [[Technology:GlassFish]].
 
-* The grid for the main [[101feature:Interaction|GUI]] features is implemented via [this!!jsf/web/template.xhtml template]. This template adjusts the headline, content-frame and button-line for each view.
+* The grid for the main GUI features is implemented via [this!!jsf/web/template.xhtml template]. This template adjusts the headline, content-frame and button-line for each view.
 
 * The database connection is realized as [[Data Access Object|DAOs]]. The [[Technology:Java Beans]] call the DAO-methods and the DAOs fill the [this!!jsf/src/java/company/classes/company.java company]-, [this!!jsf/src/java/company/classes/department.java department]- and [this!!jsf/src/java/company/classes/employee.java employee]-objects. In case of this implementation, the DAO connects to a [[Technology:MySQL]]-Database via [[Technology:Hibernate]].
 
