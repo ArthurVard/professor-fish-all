@@ -15,7 +15,6 @@ basic OO programming in [[Language:Java]]
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Serialization]]
 
 == Motivation ==
 
@@ -25,7 +24,7 @@ totaling salaries and a [[:Category:transformation]] for cutting salaries.
 In fact, [[class inheritance]] is leveraged, but see [[101implementation:javaComposition]] 
 for a variation that uses [[object composition]]. Because of the use of class
 inheritance, the aforementioned methods are actually [[virtual method]]s.
-Basic [[:Category:serialization]] in the sense of [[Technology:Object Streams]] 
+[[Closed serialization]] in the sense of [[Technology:Object Streams]] 
 is enabled by means of the [[Marker interface pattern|marker interface]]
 ''Serializable'', which is applied to the [[:Category:class]]es of the object model 
 for companies.
@@ -34,7 +33,7 @@ for companies.
 
 Package ''org.softlang.company'' hosts the object model for companies
 with virtual methods for [[101feature:Total]] and [[101feature:Cut]]. Some 
-boilerplate code for [[101feature:Serialization]] is implemented in the class 
+boilerplate code for serialization is implemented in the class 
 ''org.softlang.features.Serialization'' (see methods ''readObject'' and ''writeObject'').
 Package ''org.softlang.tests'' hosts JUnit tests; see below.
 
