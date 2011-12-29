@@ -1,7 +1,6 @@
 == Intent ==
 
-implement a web application with Struts, but the redirection 
-rules are implemented using Java annotations.
+implement a web application with Struts with Java annotations for redirection rules
 
 == Languages ==
 
@@ -18,13 +17,11 @@ rules are implemented using Java annotations.
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Serialization]]
+* [[101feature:Persistence]]
 
 == Motivation == 
 
-This is a simple web implementation of the basic 101companies-features using  
-Struts2 (XML) and Serialization as persistence mechanism. 
-It provides server-side storage for the data using serialization.
+This is a simple web implementation of the basic 101companies-features using XML-based object streams as persistence mechanism for server-side storage.
 
 == Illustration == 
 
