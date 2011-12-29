@@ -22,27 +22,12 @@
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Serialization]]
+* [[101feature:Import/Export]]
 
 == Motivation ==
 
-O/X mapping within the Java platform is exercised.
-The primary data model for companies is an XML schema. The schema compiler
-[[Technology:xjc]] of [[Technology:JAXB]] is used to generate Java classes
-from the schema. In this manner, operations on an XML representation of
-companies can be implemented in near-to-regular OO fashion while
-using a problem-specific object model. 
-In different terms, one can carry out [[:Category:XML processing]] while
-essentially staying in the technical space of [[objectware]]. It is insightful
-to compare XML schema and schema-derived classes. The XML
-schema is defined in a manner that the resulting object model systematically
-leverages [[object composition]] and no [[class inheritance]]. In fact, the
-schema-derived classes are very similar to a regular OO design; see 
-[[101implementation:javaComposition]]. It is important to note that 
-the operations on companies are not implemented as [[:Category:instance method]]s
-since this would imply modification of schema-derived classes---unless advanced 
-modularization mechanisms were leveraged. Instead, the operations are implemented
-as [[:Category:static method]]s in non-schema-derived classes.
+[[Language:XML]] import and export is supported for a Java-based implementation by means of O/X mapping. The primary data model for companies is an XML schema. The schema compiler [[Technology:xjc]] of [[Technology:JAXB]] is used to generate Java classes from the schema. In this manner, operations on an XML representation of companies can be implemented in near-to-regular OO fashion while using a problem-specific object model. In different terms, one can carry out [[:Category:XML processing]] while essentially staying in the technical space of [[objectware]]. It is insightful to compare XML schema and schema-derived classes. The XML schema is defined in a manner that the resulting object model systematically leverages [[object composition]] and no [[class inheritance]]. In fact, the schema-derived classes are very similar to a regular OO design; see 
+[[101implementation:javaComposition]]. It is important to note that the operations on companies are not implemented as [[:Category:instance method]]s since this would imply modification of schema-derived classes---unless advanced  modularization mechanisms were leveraged. Instead, the operations are implemented as [[:Category:static method]]s in non-schema-derived classes.
 
 == Illustration ==
 
@@ -122,7 +107,7 @@ public class Cut {
 of [[Technology:JAXB]]. Package ''org.softlang.company'' hosts all schema-derived
 classes and interfaces. Package ''org.softlang.features'' hosts 
 implementations for [[101feature:Total]] and [[101feature:Cut]] as well as
-some boilerplate code for [[101feature:Serialization]]. Package ''org.softlang.tests''
+some boilerplate code for importing and exporting XML documents. Package ''org.softlang.tests''
 hosts JUnit tests; see below.
 
 == Usage ==
