@@ -22,7 +22,7 @@
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Interaction]]
+* [[101feature:Navigation]]
 * [[101feature:Distribution]]
 * [[101feature:Validation]]
 
@@ -181,6 +181,7 @@ There is a [this!!Makefile] with a target ''run'' to do this.
 * Open ''http://localhost:8000/Company/View/CompanyFocus'' to demo, starting with the root view.
 
 [[Category:Web application]]
+[[Category:Web theme]]
 
 == Contributors ==
 
