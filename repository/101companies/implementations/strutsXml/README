@@ -21,7 +21,7 @@ implement a web application with Struts with Java annotations for redirection ru
 
 == Motivation == 
 
-This is a simple web implementation of the basic 101companies-features using XML-based object streams as persistence mechanism for server-side storage.
+This is a simple Struts-based web implementation of the basic 101companies-features. Java annotations are used for redirection rules. Server-side storage or persistence relies on XML an object streams.
 
 == Illustration == 
 
