@@ -2,7 +2,7 @@
 
 == Intent ==
 
-Provide [[101feature:Interaction|interaction]] on companies by means of [[Technology:wxHaskell]]
+Provide a Haskell-based implementation with GUI using [[Technology:wxHaskell]]
 
 == Languages ==
 
@@ -19,7 +19,7 @@ Provide [[101feature:Interaction|interaction]] on companies by means of [[Techno
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Interaction]]
+* [[101feature:Navigation]]
 
 == Motivation ==
 
