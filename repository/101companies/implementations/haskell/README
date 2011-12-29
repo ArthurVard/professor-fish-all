@@ -17,7 +17,6 @@ a simple implementation in [[Language:Haskell]]
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Serialization]]
 
 == Motivation ==
 
@@ -26,7 +25,7 @@ Basic style of [[functional programming]] is applied. That is,
 [[Pure computation|pure]] functions implement the [[query]] for
 totaling salaries and the [[:Category:transformation]] for cutting
 salaries. Since (sufficiently restrictive) algebraic datatypes are
-amenable to uniform read and show functions, basic [[serialization]] is
+amenable to uniform read and show functions, [[closed serialization]] is
 immediately enabled.
 
 == Architecture ==
@@ -39,7 +38,7 @@ There are Haskell modules for the basic features.
 * [[101feature:Total]]: ''Total.hs''
 * [[101feature:Cut]]: ''Cut.hs''
 
-[[101feature:Serialization]] is enabled by "deriving" clauses in ''Company.hs''.
+Read and show is enabled by "deriving" clauses in ''Company.hs''.
 Finally, there is a ''Main'' module which collects a few test scenarios; see below.
 
 == Usage ==
