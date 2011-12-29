@@ -18,16 +18,16 @@ an implementation of the basic spec in [[Language:Scala]] providing typeclass ba
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Serialization]]
+* [[101feature:Import/Export]]
 
 == Motivation ==
 
-This implementation utilizes a more idiomatic, functional style approach than [[implementation:scala]]. The model is realized using only immutable data structures and the total and cut computation are realized by recursively mapping over the elements of the Department tree.
+This implementation utilizes a more idiomatic, functional style approach than [[implementation:scala]]. The model is realized using only immutable data structures and the total and cut computation are realized by recursively mapping over the elements of the department tree.
 Because the model is immutable, it is easily serialized. In addition, an example of JSON serialization was implemented using the sjson Library by Debasish Ghosh. Serialization patterns for all types of the Company domain are realized by implementing typeclass for each one.
 
 == Architecture ==
 
-The implementation is straightforward. All of the basic features are contained in ''Company.scala'' and [[101feature:Serialization]] is found in ''JSONSerialization.scala''. Basic test cases are provided.
+The implementation is straightforward. All of the basic features are contained in ''Company.scala'' and serialization is implemented in ''JSONSerialization.scala''. Basic test cases are provided.
 
 == Usage ==
 
@@ -42,4 +42,3 @@ to run the tests.
 == Contributors ==
 
 * {{101contributor|Sebastian Jackel|developer}}
-
