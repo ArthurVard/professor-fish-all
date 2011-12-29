@@ -1,7 +1,6 @@
 == Intent ==
 
-implement a web application with Struts, but the redirections 
-rules are implemented using an XML files.
+implement a web application with Struts with an XML configurationfor redirection rules
 
 == Languages ==
 
@@ -13,13 +12,11 @@ rules are implemented using an XML files.
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Serialization]]
+* [[101feature:Persistence]]
 
 == Motivation == 
 
-This is a simple web implementation of the basic 101companies-features using  
-Struts2 (annotations) and Serialization as persistence mechanism. 
-It provides server-side storage for the data using serialization.
+This is a simple Struts-based web implementation of the basic 101companies-features. An XML configuration is used for redirection rules. Server-side storage or persistence relies on XML an object streams.
 
 == Illustration == 
 
