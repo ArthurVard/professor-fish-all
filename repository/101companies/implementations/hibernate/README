@@ -2,7 +2,7 @@
 
 == Intent == 
 
-[[Object/Relational mapping]] for [[Language:Java]] with [[Technology:Hibernate]]
+[[Object/Relational mapping]] for [[Language:Java]] and [[Language:SQL]]/[[Language:HQL]] with [[Technology:Hibernate]]
 
 == Languages ==
 
