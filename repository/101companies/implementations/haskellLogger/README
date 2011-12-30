@@ -1,5 +1,3 @@
-[[Category:Haskell_theme]]
-
 == Intent ==
 
 [[101feature:Logging|Logging]] in [[Language:Haskell]] by means of the [[Writer Monad|Writer monad]]
