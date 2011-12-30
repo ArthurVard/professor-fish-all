@@ -2,7 +2,7 @@
 
 == Intent ==
 
-Provide a Haskell-based implementation with GUI using [[Technology:wxHaskell]]
+GUI programming in [[Language:Haskell]] with [[Technology:wxHaskell]]
 
 == Languages ==
 
