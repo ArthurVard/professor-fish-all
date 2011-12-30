@@ -26,7 +26,6 @@
 * [[101feature:Persistence]]
 * [[101feature:Navigation]]
 * [[101feature:Precedence]]
-* [[101feature:Validation]]
 
 == Motivation ==
 
@@ -81,7 +80,7 @@ function cut($jsonObject) {
 
 * The concrete data is stored in an [[Language:sql]]-database (comparing [[101implementation:mySql]]).
 
-* The [[client-side]] [[101feature:Validation]] is performed directly. If an exception occurs on the server, the response contains an error-flag and a list of field-identifiers and dedicated messages. This messages are delegated to the concerning fields in the GUI.
+* Some amount of [[client-side]] validation is performed. Additional validation is performed by the server. If an exception occurs on the server, the response contains an error-flag and a list of field-identifiers and dedicated messages. This messages are delegated to the concerning fields in the GUI.
 
 == Usage ==
 
