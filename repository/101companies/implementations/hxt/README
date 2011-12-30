@@ -2,7 +2,7 @@
 
 == Intent ==
 
-tree-based XML processing with [[Technology:HXT]] in [[Language:Haskell]]
+[[in-memory_XML_processing]] in [[Language:Haskell]] with [[Technology:HXT]] 
 
 == Languages ==
 
