@@ -18,7 +18,7 @@
 * [[101feature:Total]]
 * [[101feature:Cut]]
 * [[101feature:Persistence]]
-* [[101feature:Interaction]]
+* [[101feature:Navigation]]
 
 == Motivation ==
 
@@ -71,7 +71,6 @@ Please visit [[101implementation:html5local]], to get more informations about th
 * Open the index.html with your web-browser (check [[Language:HTML5|HTML5]] for the HTML5-support of your browser)
 
 [[Category:Web application]]
-[[Category:Web theme]]
 
 == Contributors ==
 
