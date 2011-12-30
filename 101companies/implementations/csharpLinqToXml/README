@@ -2,6 +2,8 @@
 
 == Intent ==
 
+[[in-memory XML processing]] in [[Language:CSharp|C#]] with [[Technology:LINQ to XML]]
+
 [[Technology:.NET]] Language Integrated Query usage for [[Language:XML]] processing 
 
 == Languages ==
@@ -11,6 +13,7 @@
 == Technologies ==
 
 * [[Technology:csc.exe]]: C# compiler (Version 4.0)
+* [[Technology:LINQ to XML]]: XML API
 * [[Technology:.NET]]: Framework used to execute compiled code (Version 4.0)
 * [[Technology:NUnit]]: Unit testing framework used for testing (Version 2.5)
 
@@ -25,7 +28,7 @@
 == Motivation ==
 Basic style of [[OO programming]] is applied. C# type system is used to create in-memory representation of the [[object model]].
 
-LINQ2XML is used for 2 scenarios:
+LINQ to XML is used for 2 scenarios:
 1. Reconstruct full in-memory model.
 2. Imlement operations directly on top of XMl file where the model is stored.
 
