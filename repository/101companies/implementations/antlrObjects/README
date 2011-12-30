@@ -2,7 +2,7 @@
 
 == Intent ==
 
-parsing textual syntax with [[Technology:ANTLR]] into [[Language:Java]] objects
+[[Object/Text mapping]] for [[Language:Java]] with [[Technology:ANTLR]] for [[parsing]]
 
 == Features ==
 
