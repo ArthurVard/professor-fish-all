@@ -21,7 +21,7 @@ implement a web application with Struts with Java annotations for redirection ru
 
 == Motivation == 
 
-This is a simple Struts-based web implementation of the basic 101companies-features. Java annotations are used for redirection rules. Server-side storage or persistence relies on XML an object streams.
+This is a simple Struts-based web implementation of the basic 101companies-features. Java annotations are used for redirection rules. Server-side storage or persistence relies on XML an object streams.  See [[101implementation:strutsAnnotation]] for a similar implementation that uses annotations instead for the redirection rules.
 
 == Illustration == 
 
@@ -160,7 +160,6 @@ value of a call to the cutSalaries method.
 * Add substantial README/code documentation
 
 [[Category:Web application]]
-[[Category:Web theme]]
 
 == Contributors ==
 
