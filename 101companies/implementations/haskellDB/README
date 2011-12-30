@@ -2,7 +2,7 @@
 
 == Intent ==
 
-type-save [[:Category:Database_management_system|database]] programming with [[Technology:HaskellDB]]
+type-safe database access in  [[Language:Haskell]] with [[Technology:HaskellDB]]
 
 == Languages ==
 
