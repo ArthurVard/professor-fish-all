@@ -1,6 +1,6 @@
 == Intent ==
 
-implement a web application with Struts with an XML configurationfor redirection rules
+implement a web application with Struts with annotations for redirection rules
 
 == Languages ==
 
@@ -16,7 +16,7 @@ implement a web application with Struts with an XML configurationfor redirection
 
 == Motivation == 
 
-This is a simple Struts-based web implementation of the basic 101companies-features. An XML configuration is used for redirection rules. Server-side storage or persistence relies on XML an object streams.
+This is a simple Struts-based web implementation of the basic 101companies-features. An XML configuration is used for redirection rules. Server-side storage or persistence relies on XML an object streams. See [[101implementation:strutsXml]] for a similar implementation that uses an XML configuration file instead for the redirection rules.
 
 == Illustration == 
 
