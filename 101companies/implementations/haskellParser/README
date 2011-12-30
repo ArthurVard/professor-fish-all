@@ -2,7 +2,7 @@
 
 == Intent ==
 
-process textual syntax with [[Technology:Parsec]] in [[Language:Haskell]]
+parsing of concrete textual syntax in [[Language:Haskell]] with [[Technology:Parsec]] 
 
 == Languages ==
 
