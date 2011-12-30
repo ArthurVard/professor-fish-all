@@ -1,0 +1,2 @@
+serviceClass: org.softlang.client.GreetingService
+path: C59243BF57CA0104AAA0D0BC64B55664.gwt.rpc

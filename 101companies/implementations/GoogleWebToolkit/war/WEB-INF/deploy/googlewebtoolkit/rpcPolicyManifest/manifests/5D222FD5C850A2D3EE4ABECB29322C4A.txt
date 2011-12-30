@@ -1,0 +1,2 @@
+serviceClass: org.softlang.client.interfaces.CompanyService
+path: 9BA5DB455EB1DD859FC59F79CA0E6ED1.gwt.rpc
