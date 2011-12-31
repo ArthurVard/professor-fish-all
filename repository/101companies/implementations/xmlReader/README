@@ -2,4 +2,42 @@
 
 == Intent ==
 
-[[Pull-based XML parsing]] in [[Language:CSharp|C#]] with [[Technology:XmlReader]]
+[[pull-based XML parsing]] in [[Language:CSharp|C#]] with [[Technology:XmlReader]]
+
+== Languages ==
+
+* [[Language:CSharp]](C#): Programming language used for all code (Version 4.0)
+
+== Technologies ==
+
+* [[Technology:csc.exe]]: C# compiler (Version 4.0)
+* [[Technology:.NET]]: Framework used to execute compiled code (Version 4.0)
+* [[Technology:NUnit]]: Unit testing framework used for testing (Version 2.5)
+
+== Features ==
+
+* [[101feature:Company]]
+* [[101feature:Total]]
+* [[101feature:Cut]]
+* [[101feature:Depth]]
+* [[101feature:Import/Export]]
+
+== Motivation ==
+
+TODO
+
+
+== Architecture ==
+
+TODO
+
+
+== Usage ==
+
+[[Technology:Visual Studio]] 2010 should be used to open a project file.
+The project itself is a class-library and compiles into a DLL. To run a project you must execute at least one unit test (or all at once).
+Nunit GUI or other Visual studio extension (e.g. Resharper) should be used for executing unit tests.
+
+== Contributors ==
+
+* {{101contributor|Andrei Varanovich|developer}}
