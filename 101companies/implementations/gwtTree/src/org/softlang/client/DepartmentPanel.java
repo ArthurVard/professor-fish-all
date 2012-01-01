@@ -1,5 +1,12 @@
 package org.softlang.client;
 
+import org.softlang.client.guiinfos.DepartmentInfo;
+import org.softlang.client.interfaces.DepartmentService;
+import org.softlang.client.interfaces.DepartmentServiceAsync;
+
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -9,6 +16,8 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class DepartmentPanel extends VerticalPanel {
+	
+	private final DepartmentServiceAsync  departmentService = GWT.create(DepartmentService.class);
 	
 	private TextBox name = new TextBox();
 	private TextBox total = new TextBox();	
@@ -64,6 +73,36 @@ public class DepartmentPanel extends VerticalPanel {
 
 	public void setDepartment(Integer department) {
 		this.department = department;
+		
+		departmentService.getDepartment(department, new AsyncCallback<DepartmentInfo>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert(caught.getMessage());
+			}
+
+			@Override
+			public void onSuccess(DepartmentInfo result) {
+				name.setText(result.getName());
+				total.setText(Double.toString(result.getTotal()));
+				int i = 0;
+				for (Integer key : result.getDepartments().keySet()) {
+					parent.addItem(result.getDepartments().get(key), Integer.toString(key));
+					if (key == result.getParent()) {
+						parent.setSelectedIndex(i);
+					}
+					i++;
+				}
+				i = 0;
+				for (Integer key: result.getEmployees().keySet()) {
+					manager.addItem(result.getEmployees().get(key), Integer.toString(key));
+					if (key == result.getManager()) {
+						manager.setSelectedIndex(i);
+					}
+					i++;
+				}
+			}
+		});
 	}
 	
 }

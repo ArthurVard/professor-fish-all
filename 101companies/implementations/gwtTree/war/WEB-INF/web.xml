@@ -14,6 +14,14 @@
 		<servlet-name>companyServlet</servlet-name>
 		<servlet-class>org.softlang.server.CompanyServiceImpl</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>departmentServlet</servlet-name>
+		<servlet-class>org.softlang.server.DepartmentServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>employeeServlet</servlet-name>
+		<servlet-class>org.softlang.server.EmployeeServiceImpl</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>treeServlet</servlet-name>
@@ -23,7 +31,14 @@
 		<servlet-name>companyServlet</servlet-name>
 		<url-pattern>/gwttree/company</url-pattern>
 	</servlet-mapping>
-
+	<servlet-mapping>
+		<servlet-name>departmentServlet</servlet-name>
+		<url-pattern>/gwttree/department</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>employeeServlet</servlet-name>
+		<url-pattern>/gwttree/employee</url-pattern>
+	</servlet-mapping>
 	
 	<!-- Default page to serve -->
 	<welcome-file-list>

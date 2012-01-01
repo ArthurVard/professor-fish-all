@@ -1,8 +1,6 @@
 package org.softlang.client;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.softlang.client.guiinfos.TreeInfo;
 import org.softlang.client.guiinfos.tree.CompanyItem;
