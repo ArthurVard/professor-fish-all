@@ -1,2 +1,0 @@
-serviceClass: org.softlang.client.interfaces.EmployeeService
-path: 636DD6EC86AE646BF01895CC60231018.gwt.rpc
