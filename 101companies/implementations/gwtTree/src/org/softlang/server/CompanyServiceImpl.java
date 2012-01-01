@@ -1,0 +1,48 @@
+package org.softlang.server;
+
+import org.softlang.client.guiinfos.CompanyInfo;
+import org.softlang.client.interfaces.CompanyService;
+import org.softlang.server.company.Company;
+
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+
+public class CompanyServiceImpl extends RemoteServiceServlet implements CompanyService {
+
+	/**
+	 * automatically generated serial-version UID
+	 */
+	private static final long serialVersionUID = -4414941964797293399L;
+
+	@Override
+	public double cut(int id) {
+		Company company = CompanyApp.getInstance().getCompanies().get(id);
+		
+		company.cut();
+		
+		return company.total();
+	}
+
+	@Override
+	public CompanyInfo getCompany(int id) {
+		CompanyInfo result = new CompanyInfo();
+		
+		Company company = CompanyApp.getInstance().getCompanies().get(id);
+		
+		result.setName(company.getName());
+		result.setTotal(company.total());
+		
+		return result;
+	}
+
+	@Override
+	public String saveCompany(int id, String name) {
+		Company company = CompanyApp.getInstance().getCompanies().get(id);
+		
+		company.setName(name);
+		
+		return CompanyApp.getInstance().getCompanies().get(id).getName();
+	}
+
+
+	
+}
