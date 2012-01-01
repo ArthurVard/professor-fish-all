@@ -24,13 +24,11 @@
 
 == Motivation ==
 
-TODO
-
+[[:Category:XML processing]]
 
 == Architecture ==
 
-TODO
-
+For totaling salaries we read XML file and check for "Salary" nodes.
 
 == Usage ==
 
