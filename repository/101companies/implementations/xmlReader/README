@@ -24,7 +24,7 @@
 
 == Motivation ==
 
-[[:Category:XML processing]]
+[[:Category:XML processing]] with XmlReader which provides a lower-level abstraction over the XML file structure. This implementation retains more complexity than other solutions (e.g. [[101implementation:csharpLinqToXml]]) but benefits performance.
 
 == Architecture ==
 
