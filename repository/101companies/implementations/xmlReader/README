@@ -29,6 +29,8 @@
 == Architecture ==
 
 For totaling salaries we read XML file and check for "Salary" nodes.
+For cutting, we go through the source XML file in a streaming fashion (by using Read() method of XmlReader which reads a current line of an input XML stream and goes to the next one) and write the content as-is into an output string. Every time we reached the "Salary" node, we read the content (which is the actual salary) as a decimal number, cut in, and write into an output string.
+When the end of the source file is reached, we use XmlTextWriter to produce a new XML file from the raw XML content in a string variable.
 
 == Usage ==
 
