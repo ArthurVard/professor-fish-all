@@ -19,7 +19,6 @@
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Depth]]
 * [[101feature:Import/Export]]
 
 == Motivation ==
@@ -38,6 +37,7 @@ When the end of the source file is reached, we use XmlTextWriter to produce a ne
 == Architecture ==
 
 Features.cs contains static methods where Cut and Total are implemented.
+FeaturesTest.cs contains the relates unit tests.
 
 == Usage ==
 
