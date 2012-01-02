@@ -36,7 +36,7 @@ When the end of the source file is reached, we use XmlTextWriter to produce a ne
 
 == Architecture ==
 
-Features.cs contains static methods where Cut and Total are implemented.
+Features.cs contains static methods where [101feature:Cut] and [101feature:Total] are implemented.
 FeaturesTest.cs contains the relates unit tests.
 
 == Usage ==
