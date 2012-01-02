@@ -91,7 +91,7 @@ After the database is running, follow the next steps:
 * Select the project, right click and ''run''
 * The glassfish-server (and a browser window) with the application will start automatically
 
-The project is implemented with [[Technology:NetBeans]] 7.0.1. You will need the full version with an installed [[Technology:GlassFish]] [[:Category:Webserver]].
+The project is implemented with [[Technology:NetBeans]] 7.0.1. You will need the full version with an installed [[Technology:GlassFish]] [[:Category:Application server]].
 
 == Contributors ==
 
