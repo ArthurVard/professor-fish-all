@@ -26,11 +26,18 @@
 
 [[:Category:XML processing]] with XmlReader which provides a lower-level abstraction over the XML file structure. This implementation retains more complexity than other solutions (e.g. [[101implementation:csharpLinqToXml]]) but benefits performance.
 
-== Architecture ==
+== Illustration ==
 
 For totaling salaries we read XML file and check for "Salary" nodes.
-For cutting, we go through the source XML file in a streaming fashion (by using Read() method of XmlReader which reads a current line of an input XML stream and goes to the next one) and write the content as-is into an output string. We maintain a valid XML structure, even temporary it is represented as a string type. Every time we reach the "Salary" node, we read the content (which is the actual salary) as a decimal number, cut it, and write into an output string.
+For cutting, we go through the source XML file in a streaming fashion (by using Read() method of XmlReader which reads a current line of an input XML stream and goes to the next one) and write the content as-is into an output string. We maintain a valid XML structure, even temporary it is represented as a string type. 
+
+Every time we reach the "Salary" node, we read the content (which is the actual salary) as a decimal number, cut it, and write into an output string.
+
 When the end of the source file is reached, we use XmlTextWriter to produce a new XML file from the raw XML content in a string variable.
+
+== Architecture ==
+
+Features.cs contains static methods where Cut and Total are implemented.
 
 == Usage ==
 
