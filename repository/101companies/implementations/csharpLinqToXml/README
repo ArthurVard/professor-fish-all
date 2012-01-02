@@ -26,20 +26,17 @@
 * [[101feature:Import/Export]]
 
 == Motivation ==
-Basic style of [[OO programming]] is applied. C# type system is used to create in-memory representation of the [[object model]].
 
-LINQ to XML is used for 2 scenarios:
-1. Reconstruct full in-memory model.
-2. Imlement operations directly on top of XMl file where the model is stored.
+LINQ to XML is used in 2 scenarios:
 
-TODO
-
+* Reconstruct full in-memory model. Linq2Xml is used to create a full in-memory object tree from the source XML file.
+* Cut and Total operations implemented directly on top of XML file where the model is stored.
 
 == Architecture ==
 C# object-oriented representation of 101companies model iimlemented in [[101implementation:csharp]] is used. It contains classes with required properties and methods(features implementations).
-TODO
-1. manual reconsctruction of object model from xml
-2. transformations for pure xml model representation without using OO-model
+
+* Manual reconsctruction of object model from xml
+* Transformations for pure xml model representation without using OO-model
 
 == Usage ==
 [[Technology:Visual Studio]] 2010 should be used to open a project file.
