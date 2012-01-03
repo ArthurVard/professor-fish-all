@@ -14,7 +14,7 @@ public class EmployeeInfo implements Serializable {
 	private String address;
 	private double total;
 	private Integer parent;
-	private Map<Integer, String> departments;
+	private Map<Integer, String> allDepartments;
 	
 	public String getName() {
 		return name;
@@ -48,12 +48,12 @@ public class EmployeeInfo implements Serializable {
 		this.parent = parent;
 	}
 	
-	public Map<Integer, String> getDepartments() {
-		return departments;
+	public Map<Integer, String> getAllDepartments() {
+		return allDepartments;
 	}
 	
-	public void setDepartments(Map<Integer, String> departments) {
-		this.departments = departments;
+	public void setAllDepartments(Map<Integer, String> departments) {
+		this.allDepartments = departments;
 	}
 	
 	

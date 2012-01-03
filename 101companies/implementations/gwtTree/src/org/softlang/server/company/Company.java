@@ -3,7 +3,7 @@ package org.softlang.server.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Company {
+public class Company implements Parent {
 	
 	private int id;
 	private String name;
@@ -35,6 +35,9 @@ public class Company {
 	
 	public void setDepartments(List<Department> departments) {
 		this.departments = departments;
+		for (Department department : this.departments) {
+			department.setParent(null);
+		}
 	}
 	
 	public int getId() {

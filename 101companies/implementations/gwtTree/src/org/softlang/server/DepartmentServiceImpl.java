@@ -1,5 +1,8 @@
 package org.softlang.server;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.softlang.client.guiinfos.DepartmentInfo;
 import org.softlang.client.interfaces.DepartmentService;
 import org.softlang.server.company.Department;
@@ -15,8 +18,11 @@ public class DepartmentServiceImpl extends RemoteServiceServlet implements Depar
 
 	@Override
 	public double cut(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		Department department = CompanyApp.getInstance().getDepartments().get(id);
+		
+		department.cut();
+		
+		return department.total();
 	}
 
 	@Override
@@ -28,14 +34,49 @@ public class DepartmentServiceImpl extends RemoteServiceServlet implements Depar
 		result.setName(department.getName());
 		result.setTotal(department.total());
 		
+		Map<Integer, String> otherDeps = new HashMap<Integer, String>();
+		for (Integer key : CompanyApp.getInstance().getDepartments().keySet()) {
+			if (key != department.getId()) {
+				otherDeps.put(key, CompanyApp.getInstance().getDepartments().get(key).getName());
+			}
+		}
+		result.setOtherDepartments(otherDeps);
+		if (department.getParent() instanceof Department) {
+			result.setParentDepartment(department.getParent().getId());
+		} else {
+			result.setParentDepartment(null);
+		}
+		
+		Map<Integer, String> emps = new HashMap<Integer, String>();
+		for (Integer key : CompanyApp.getInstance().getEmployees().keySet()) {
+			emps.put(key, CompanyApp.getInstance().getEmployees().get(key).getName());
+		}
+		result.setAllEmployees(emps);
+		
+		if (department.getManager() != null) {
+			result.setManager(department.getManager().getId());
+		} else {
+			result.setManager(null);
+		}
+		
+		
 		return result;
 	}
 
 	@Override
-	public String saveDepartment(int id, String name, Integer parent,
+	public DepartmentInfo saveDepartment(int id, String name, Integer parent,
 			Integer manager) {
-		// TODO Auto-generated method stub
-		return null;
+		Department department = CompanyApp.getInstance().getDepartments().get(id);
+		
+		department.setName(name);
+		if (parent != null) {
+			department.setParent(CompanyApp.getInstance().getDepartments().get(parent));
+		} else {
+			department.setParent(CompanyApp.getInstance().getCompanies().get(1));
+		}
+		department.setManager(CompanyApp.getInstance().getEmployees().get(manager));
+		
+		return getDepartment(id);
 	}
 
 }
