@@ -16,7 +16,7 @@ A [[Language:Clojure|Clojure]]-based implementation that uses [[Refs|transaction
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Parallelism]]
+* [[101feature:Scalability]]
 
 == Motivation == 
 
