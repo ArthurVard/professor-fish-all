@@ -17,11 +17,11 @@ an Erlang-based implementation
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Fault tolerance]]
+* [[101feature:Reliability]]
 
 == Motivation ==
 
-Concurrency is implemented in a simple way. The company itself is a server process with which you communicate through an API (meganalysis for now). If that process has a bug, it crashes, but a supervisor will restart it back up (though it does not yet persist its state under crashes). Thus, it is already an example of fault tolerance as well, albeit naively implemented.
+Concurrency is implemented in a simple way. The company itself is a server process with which you communicate through an API (meganalysis for now). If that process has a bug, it crashes, but a supervisor will restart it back up (though it does not yet persist its state under crashes). Thus, it is already an example of fault tolerance (or reliability) as well, albeit naively implemented.
 
 == Architecture ==
 
