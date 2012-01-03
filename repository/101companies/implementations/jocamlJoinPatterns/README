@@ -18,13 +18,13 @@ A [[Language:JoCaml|JoCaml]]-based implementation that uses [[join patterns]]
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Parallelism]]
+* [[101feature:Scalability]]
 
 == Motivation == 
 
 Nowadays, [[event handling]] is a standard technique in GUI programming. However, 
 there is a lot of research going on to use such an [[event handling|event-based]] 
-approach for [[concurrency|concurrent programming]]. The idea is to [[101feature:Parallelism|parallelize]] 
+approach for [[concurrency|concurrent programming]]. The idea is to [[Parallelism|parallelize]] 
 the [[event handling|handling of events]] by combining simple [[events]] to 
 more complex ones using so called [[join patterns]]. This project demonstrates 
 the usage of [[concurrency]] by [[event handling]] in JoCaml using such 
