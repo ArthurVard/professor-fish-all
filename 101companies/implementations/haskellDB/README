@@ -145,6 +145,8 @@ One can also use the [this!!Makefile] with a target ''test'' covering both datab
 
 * {{101contributor|Thomas Schmorleiz|developer}}
 
+== References ==
+
 <biblio>
 #bringert2004student bibtex=@inproceedings{bringert2004student,
   title={Student paper: HaskellDB improved},
