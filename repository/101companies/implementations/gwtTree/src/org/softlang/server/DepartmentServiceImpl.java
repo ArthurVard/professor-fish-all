@@ -74,7 +74,12 @@ public class DepartmentServiceImpl extends RemoteServiceServlet implements Depar
 		} else {
 			department.setParent(CompanyApp.getInstance().getCompanies().get(1));
 		}
-		department.setManager(CompanyApp.getInstance().getEmployees().get(manager));
+		
+		if (manager != null) {
+			department.setManager(CompanyApp.getInstance().getEmployees().get(manager));
+		} else {
+			department.setManager(null);
+		}
 		
 		return getDepartment(id);
 	}

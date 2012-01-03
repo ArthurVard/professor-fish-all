@@ -70,6 +70,7 @@ public class CompanyPanel extends VerticalPanel {
 					@Override
 					public void onSuccess(String result) {
 						name.setText(result);
+						CompanyPanel.this.tree.refreshTree();
 					}
 					
 				});

@@ -106,10 +106,14 @@ public class Department implements Parent {
 	}
 
 	public void setManager(Employee employee) {
-		Employee ex = getManager();
-		ex.setManager(false);
-		employee.setParent(this);
-		employee.setManager(true);
+		if (employee != null) {
+			Employee ex = getManager();
+			if (ex != null) {
+				ex.setManager(false);
+			}
+			employee.setParent(this);
+			employee.setManager(true);
+		}
 	}
 	
 }

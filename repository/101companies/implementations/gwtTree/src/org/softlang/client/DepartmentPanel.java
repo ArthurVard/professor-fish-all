@@ -154,26 +154,30 @@ public class DepartmentPanel extends VerticalPanel {
 		name.setText(result.getName());
 		total.setText(Double.toString(result.getTotal()));
 		int i = 0;
+		int index = i;
 		
 		parent.addItem(null);
 		
 		for (Integer key : result.getOtherDepartments().keySet()) {
 			parent.addItem(result.getOtherDepartments().get(key), Integer.toString(key));
+			i++;
 			if (key.equals(result.getParentDepartment())) {
-				i = key;
+				index = i;
 			}
 		}
-		parent.setSelectedIndex(i);
+		parent.setSelectedIndex(index);
 		
 		manager.addItem(null);
 		i = 0;
+		index = i;
 		for (Integer key: result.getAllEmployees().keySet()) {
 			manager.addItem(result.getAllEmployees().get(key), Integer.toString(key));
+			i++;
 			if (key.equals(result.getManager())) {
-				i = key;
+				index = i;
 			}
 		}
-		manager.setSelectedIndex(i);
+		manager.setSelectedIndex(index);
 	}
 	
 }

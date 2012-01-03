@@ -46,10 +46,19 @@ public class EmployeeServiceImpl extends RemoteServiceServlet implements Employe
 	}
 
 	@Override
-	public String saveEmployee(int id, String name, String address,
+	public EmployeeInfo saveEmployee(int id, String name, String address,
 			double salary, Integer parent) {
-		// TODO Auto-generated method stub
-		return null;
+		Employee employee = CompanyApp.getInstance().getEmployees().get(id);
+		employee.setName(name);
+		employee.setAddress(address);
+		employee.setSalary(salary);
+		
+		if (employee.getParent().getId() != parent) {
+			employee.setParent(CompanyApp.getInstance().getDepartments().get(parent));
+			employee.setManager(false);
+		}
+
+		return getEmployee(id);
 	}
 
 }
