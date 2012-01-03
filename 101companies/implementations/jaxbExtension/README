@@ -1,6 +1,6 @@
 == Intent ==
 
-[[O/X mapping]] with [[Technology:JAXB]]
+[[Object/XML mapping]] for [[Language:Java]] and [[Language:XSD]] with [[Technology:JAXB]]
 
 == Languages ==
 
@@ -20,6 +20,8 @@
 * [[101feature:Total]]
 * [[101feature:Cut]]
 * [[101feature:Import/Export]]
+* [[101feature:Data mapping]]
+* [[101feature:Code generation]]
 
 == Motivation ==
 
