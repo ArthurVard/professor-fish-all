@@ -19,11 +19,11 @@
 * [[101feature:Total]]
 * [[101feature:Cut]]
 * [[101feature:Import/Export]]
-* [[101feature:Mapping]]
+* [[101feature:Data mapping]]
 
 == Motivation ==
 
-We exercise [[101feature:Mapping|mapping]] from Haskell to XML data by making use of [[Technology:HXT]]'s  [[Technology:XML pickler]] [[Arrow|arrows]] and functions. 
+We exercise [[mapping]] from Haskell to XML data by making use of [[Technology:HXT]]'s  [[Technology:XML pickler]] [[Arrow|arrows]] and functions. 
 That is, we declare <syntaxhighlight lang="haskell" enclose="none">XMLPickler</syntaxhighlight> instances for companies, departments and employees and define appropriate pickler functions. In this context we illustrate predefined picklers and pickler combinators. As a result, companies can be imported and exported as [[Language:XML|XML]] data while using [[algebraic datatype]]s for the in-memory representation.
 
 == Illustration ==
