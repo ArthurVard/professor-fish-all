@@ -18,7 +18,7 @@ A [[Language:Groovy|Groovy]]-based implementation that uses [[data flow variable
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Parallelism]]
+* [[101feature:Scalability]]
 
 == Motivation == 
 
