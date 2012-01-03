@@ -22,7 +22,7 @@ This implementation uses Akka to show how a strong, static type system can serve
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Parallelism]] (inherent to the implementation)
+* [[101feature:Scalability]]
 
 == Architecture ==
 
