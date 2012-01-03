@@ -36,7 +36,7 @@ public class TreeServiceImpl extends RemoteServiceServlet implements TreeService
 			
 			List<DepartmentItem> cDeps = new ArrayList<DepartmentItem>();
 			
-			for (Department department : company.getDepartments()) {
+			for (Department department : company.getDepartments()) {				
 				DepartmentItem dItem = new DepartmentItem();
 				dItem.setId(department.getId());
 				dItem.setName(department.getName());
@@ -50,15 +50,17 @@ public class TreeServiceImpl extends RemoteServiceServlet implements TreeService
 		
 		TreeInfo info = new TreeInfo();
 		info.setCompanies(companyItems);
+		
 		return info;
 	}
 	
 	private List<EmployeeItem> generateEmps(Department current) {
 		List<EmployeeItem> dEmps = new ArrayList<EmployeeItem>();
-		for (Employee employee : current.getEmployees()) {
+		for (Employee employee : current.getEmployees()) {			
 			EmployeeItem eItem = new EmployeeItem();
 			eItem.setId(employee.getId());
 			eItem.setName(employee.getName());
+			eItem.setManager(employee.isManager());
 			dEmps.add(eItem);
 		}
 		return dEmps;

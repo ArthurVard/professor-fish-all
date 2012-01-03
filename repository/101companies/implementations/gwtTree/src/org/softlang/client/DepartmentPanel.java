@@ -5,6 +5,8 @@ import org.softlang.client.interfaces.DepartmentService;
 import org.softlang.client.interfaces.DepartmentServiceAsync;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -29,16 +31,73 @@ public class DepartmentPanel extends VerticalPanel {
 	
 	private Integer department;	
 	
-	private GwtTree app;
+	private TreePanel tree;
 	
-	public DepartmentPanel(GwtTree app) {
-		this.app = app;
+	public DepartmentPanel(TreePanel tree) {
+		this.tree = tree;
 		
 		total.setReadOnly(true);
 		name.setWidth("300px");
 		total.setWidth("300px");
 		manager.setHeight("28px");
 		parent.setHeight("28px");
+		
+		cut.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				departmentService.cut(department, new AsyncCallback<Double>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert(caught.getMessage());
+					}
+
+					@Override
+					public void onSuccess(Double result) {
+						DepartmentPanel.this.total.setText(Double.toString(result));
+					}
+				});
+			}
+		});
+		
+		save.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				
+				int parentIndex;
+				int managerIndex;
+				
+				Integer parentDep = null;
+				Integer managerEmp = null;
+				
+				parentIndex = parent.getSelectedIndex();
+				managerIndex = manager.getSelectedIndex();
+				
+				if (parentIndex > 0) {
+					parentDep = Integer.parseInt(parent.getValue(parentIndex));
+				}
+				
+				if (managerIndex > 0) {
+					managerEmp = Integer.parseInt(manager.getValue(managerIndex));
+				}
+				
+				departmentService.saveDepartment(department, name.getText(), parentDep, managerEmp, new AsyncCallback<DepartmentInfo>() {
+				
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert(caught.getMessage());
+					}
+
+					@Override
+					public void onSuccess(DepartmentInfo result) {
+						initFields(result);
+						DepartmentPanel.this.tree.refreshTree();
+					}
+				});
+			}
+		});
 		
 		Grid grid = new Grid(4, 2);
 		
@@ -74,6 +133,9 @@ public class DepartmentPanel extends VerticalPanel {
 	public void setDepartment(Integer department) {
 		this.department = department;
 		
+		parent.clear();
+		manager.clear();
+		
 		departmentService.getDepartment(department, new AsyncCallback<DepartmentInfo>() {
 
 			@Override
@@ -83,26 +145,35 @@ public class DepartmentPanel extends VerticalPanel {
 
 			@Override
 			public void onSuccess(DepartmentInfo result) {
-				name.setText(result.getName());
-				total.setText(Double.toString(result.getTotal()));
-				int i = 0;
-				for (Integer key : result.getDepartments().keySet()) {
-					parent.addItem(result.getDepartments().get(key), Integer.toString(key));
-					if (key == result.getParent()) {
-						parent.setSelectedIndex(i);
-					}
-					i++;
-				}
-				i = 0;
-				for (Integer key: result.getEmployees().keySet()) {
-					manager.addItem(result.getEmployees().get(key), Integer.toString(key));
-					if (key == result.getManager()) {
-						manager.setSelectedIndex(i);
-					}
-					i++;
-				}
+				initFields(result);
 			}
 		});
+	}
+
+	private void initFields(DepartmentInfo result) {
+		name.setText(result.getName());
+		total.setText(Double.toString(result.getTotal()));
+		int i = 0;
+		
+		parent.addItem(null);
+		
+		for (Integer key : result.getOtherDepartments().keySet()) {
+			parent.addItem(result.getOtherDepartments().get(key), Integer.toString(key));
+			if (key.equals(result.getParentDepartment())) {
+				i = key;
+			}
+		}
+		parent.setSelectedIndex(i);
+		
+		manager.addItem(null);
+		i = 0;
+		for (Integer key: result.getAllEmployees().keySet()) {
+			manager.addItem(result.getAllEmployees().get(key), Integer.toString(key));
+			if (key.equals(result.getManager())) {
+				i = key;
+			}
+		}
+		manager.setSelectedIndex(i);
 	}
 	
 }

@@ -12,6 +12,6 @@ public interface DepartmentService extends RemoteService {
 	
 	public DepartmentInfo getDepartment(int id);
 	
-	public String saveDepartment(int id, String name, Integer parent, Integer manager);
+	public DepartmentInfo saveDepartment(int id, String name, Integer parent, Integer manager);
 	
 }

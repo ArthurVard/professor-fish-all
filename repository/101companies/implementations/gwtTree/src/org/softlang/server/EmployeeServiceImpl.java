@@ -1,7 +1,11 @@
 package org.softlang.server;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.softlang.client.guiinfos.EmployeeInfo;
 import org.softlang.client.interfaces.EmployeeService;
+import org.softlang.server.company.Employee;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -14,14 +18,31 @@ public class EmployeeServiceImpl extends RemoteServiceServlet implements Employe
 
 	@Override
 	public double cut(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		Employee employee = CompanyApp.getInstance().getEmployees().get(id);
+				
+		employee.cut();
+		
+		return employee.getSalary();
 	}
 
 	@Override
 	public EmployeeInfo getEmployee(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		EmployeeInfo result = new EmployeeInfo();
+		
+		Employee employee = CompanyApp.getInstance().getEmployees().get(id);
+		
+		result.setName(employee.getName());
+		result.setAddress(employee.getAddress());
+		result.setTotal(employee.getSalary());
+		
+		Map<Integer, String> allDeps = new HashMap<Integer, String>();
+		for (Integer key : CompanyApp.getInstance().getDepartments().keySet()) {
+			allDeps.put(key, CompanyApp.getInstance().getDepartments().get(key).getName());
+		}
+		result.setAllDepartments(allDeps);
+		result.setParent(employee.getParent().getId());
+		
+		return result;
 	}
 
 	@Override

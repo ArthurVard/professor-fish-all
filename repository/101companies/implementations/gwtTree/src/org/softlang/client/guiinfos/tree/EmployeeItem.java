@@ -11,6 +11,7 @@ public class EmployeeItem implements Serializable {
 	
 	private String name;
 	private Integer id;
+	private boolean manager;
 	
 	public String getName() {
 		return name;
@@ -26,5 +27,13 @@ public class EmployeeItem implements Serializable {
 	
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public void setManager(boolean manager) {
+		this.manager = manager;
+	}
+	
+	public boolean isManager() {
+		return this.manager;
 	}
 }

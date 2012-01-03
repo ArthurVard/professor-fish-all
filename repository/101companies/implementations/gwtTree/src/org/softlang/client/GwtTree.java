@@ -17,7 +17,6 @@ import com.google.gwt.user.client.ui.SplitLayoutPanel;
  */
 public class GwtTree implements EntryPoint {
 
-	private final TreeServiceAsync treeService = GWT.create(TreeService.class);
 	
 	private TreePanel treePanel;
 	private ScrollPanel contentPanel;
@@ -40,21 +39,10 @@ public class GwtTree implements EntryPoint {
 		contentPanel = new ScrollPanel();
 		
 		companyPanel = new CompanyPanel(treePanel);
-		departmentPanel = new DepartmentPanel(this);
-		employeePanel = new EmployeePanel(this);
+		departmentPanel = new DepartmentPanel(treePanel);
+		employeePanel = new EmployeePanel(treePanel);
 		
-		treeService.getTree(new AsyncCallback<TreeInfo>() {
-			
-			@Override
-			public void onSuccess(TreeInfo result) {
-				treePanel.generateTree(result);
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				Window.alert(caught.getMessage());
-			}
-		});
+		treePanel.refreshTree();
 		
 		ScrollPanel treeScroll = new ScrollPanel(treePanel);
 		treeScroll.setStylePrimaryName("tree");

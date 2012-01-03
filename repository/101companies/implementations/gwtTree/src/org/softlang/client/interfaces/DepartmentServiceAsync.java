@@ -11,5 +11,5 @@ public interface DepartmentServiceAsync {
 	void getDepartment(int id, AsyncCallback<DepartmentInfo> callback);
 
 	void saveDepartment(int id, String name, Integer parent, Integer manager,
-			AsyncCallback<String> callback);
+			AsyncCallback<DepartmentInfo> callback);
 }

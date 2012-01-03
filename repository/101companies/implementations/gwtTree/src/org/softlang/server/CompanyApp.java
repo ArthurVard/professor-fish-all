@@ -38,15 +38,13 @@ public class CompanyApp {
 		Department dev1 = new Department(3, "Dev 1");
 		Department dev11 = new Department(4, "Dev 1.1");
 		
-		research.getEmployees().add(craig);
-		research.getEmployees().add(erik);
-		research.getEmployees().add(ralf);
-		development.getEmployees().add(ray);
-		development.getDepartments().add(dev1);
-		dev1.getEmployees().add(klaus);
-		dev1.getDepartments().add(dev11);
-		dev11.getEmployees().add(karl);
-		dev11.getEmployees().add(joe);
+		craig.setParent(research);
+		erik.setParent(research);
+		ralf.setParent(research);
+		ray.setParent(development);
+		klaus.setParent(dev1);
+		karl.setParent(dev11);
+		joe.setParent(dev11);
 		
 		departments = new HashMap<Integer, Department>();
 		departments.put(research.getId(), research);
@@ -56,8 +54,10 @@ public class CompanyApp {
 		
 		Company company = new Company(1, "Meganalysis");
 		
-		company.getDepartments().add(research);
-		company.getDepartments().add(development);
+		research.setParent(company);
+		development.setParent(company);
+		dev1.setParent(development);
+		dev11.setParent(dev1);
 		
 		companies = new HashMap<Integer, Company>();
 		companies.put(company.getId(), company);

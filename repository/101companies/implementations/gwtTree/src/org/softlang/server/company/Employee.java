@@ -7,6 +7,7 @@ public class Employee {
 	private String address;
 	private double salary;
 	private boolean manager;
+	private Department parent;
 	
 	public Employee(int id, String name, String address, double salary, boolean manager) {
 		this.id = id;
@@ -54,6 +55,18 @@ public class Employee {
 
 	public void cut() {
 		this.salary = this.salary / 2;
+	}
+	
+	public void setParent(Department parent) {
+		if (this.parent != null) {
+			this.parent.getEmployees().remove(this);
+		}
+		this.parent = parent;
+		this.parent.getEmployees().add(this);
+	}
+	
+	public Department getParent() {
+		return this.parent;
 	}
 	
 }

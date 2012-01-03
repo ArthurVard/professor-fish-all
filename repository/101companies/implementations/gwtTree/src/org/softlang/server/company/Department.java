@@ -3,12 +3,13 @@ package org.softlang.server.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Department {
+public class Department implements Parent {
 	
 	private int id;
 	private String name;
 	private List<Department> departments;
 	private List<Employee> employees;
+	private Parent parent;
 	
 	public Department(int id, String name) {
 		this.id = id;
@@ -20,8 +21,8 @@ public class Department {
 	public Department(int id, String name, List<Department> departments, List<Employee> employees) {
 		this.id = id;
 		this.name = name;
-		this.departments = departments;
-		this.employees = employees;
+		setDepartments(departments);
+		setEmployees(employees);
 	}
 	
 	public String getName() {
@@ -38,6 +39,9 @@ public class Department {
 	
 	public void setDepartments(List<Department> departments) {
 		this.departments = departments;
+		for (Department department : this.departments) {
+			department.setParent(this);
+		}
 	}
 	
 	public List<Employee> getEmployees() {
@@ -46,6 +50,9 @@ public class Department {
 	
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
+		for (Employee employee : this.employees) {
+			employee.setParent(this);
+		}
 	}
 	
 	public int getId() {
@@ -72,6 +79,37 @@ public class Department {
 		for (Department department : departments) {
 			department.cut();
 		}
+	}
+
+	public void setParent(Parent parent) {
+		if (this.parent != null) {
+			this.parent.getDepartments().remove(this);
+		}
+		this.parent = parent;
+		if (this.parent != null) {
+			this.parent.getDepartments().add(this);
+		}
+	}
+	
+	public Parent getParent() {
+		return this.parent;
+	}
+
+	public Employee getManager() {
+		Employee result = null;
+		for (Employee emp : this.employees) {
+			if (emp.isManager()) {
+				result = emp;
+			}
+		}
+		return result;
+	}
+
+	public void setManager(Employee employee) {
+		Employee ex = getManager();
+		ex.setManager(false);
+		employee.setParent(this);
+		employee.setManager(true);
 	}
 	
 }

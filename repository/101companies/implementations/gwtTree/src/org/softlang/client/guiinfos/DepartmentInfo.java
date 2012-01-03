@@ -12,10 +12,10 @@ public class DepartmentInfo implements Serializable {
 	
 	private String name;
 	private double total;
-	private Integer parent;
-	private Map<Integer, String> departments;
+	private Integer parentDepartment;
+	private Map<Integer, String> otherDepartments;
 	private Integer manager;
-	private Map<Integer, String> employees;
+	private Map<Integer, String> allEmployees;
 	
 	public String getName() {
 		return name;
@@ -33,20 +33,20 @@ public class DepartmentInfo implements Serializable {
 		this.total = total;
 	}
 	
-	public Integer getParent() {
-		return parent;
+	public Integer getParentDepartment() {
+		return parentDepartment;
 	}
 	
-	public void setParent(Integer parent) {
-		this.parent = parent;
+	public void setParentDepartment(Integer parent) {
+		this.parentDepartment = parent;
 	}
 	
-	public Map<Integer, String> getDepartments() {
-		return departments;
+	public Map<Integer, String> getOtherDepartments() {
+		return otherDepartments;
 	}
 	
-	public void setDepartments(Map<Integer, String> departments) {
-		this.departments = departments;
+	public void setOtherDepartments(Map<Integer, String> departments) {
+		this.otherDepartments = departments;
 	}
 	
 	public Integer getManager() {
@@ -57,12 +57,12 @@ public class DepartmentInfo implements Serializable {
 		this.manager = manager;
 	}
 	
-	public Map<Integer, String> getEmployees() {
-		return employees;
+	public Map<Integer, String> getAllEmployees() {
+		return allEmployees;
 	}
 	
-	public void setEmployees(Map<Integer, String> employees) {
-		this.employees = employees;
+	public void setAllEmployees(Map<Integer, String> employees) {
+		this.allEmployees = employees;
 	}
 	
 	
