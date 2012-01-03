@@ -9,7 +9,7 @@ public interface EmployeeServiceAsync {
 	void cut(int id, AsyncCallback<Double> callback);
 
 	void saveEmployee(int id, String name, String address, double salary,
-			Integer parent, AsyncCallback<String> callback);
+			Integer parent, AsyncCallback<EmployeeInfo> callback);
 
 	void getEmployee(int id, AsyncCallback<EmployeeInfo> callback);
 

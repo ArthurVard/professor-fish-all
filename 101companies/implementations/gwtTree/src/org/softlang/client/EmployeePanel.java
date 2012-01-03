@@ -1,8 +1,6 @@
 package org.softlang.client;
 
 import org.softlang.client.guiinfos.EmployeeInfo;
-import org.softlang.client.interfaces.DepartmentService;
-import org.softlang.client.interfaces.DepartmentServiceAsync;
 import org.softlang.client.interfaces.EmployeeService;
 import org.softlang.client.interfaces.EmployeeServiceAsync;
 
@@ -62,6 +60,38 @@ public class EmployeePanel extends VerticalPanel {
 			}
 		});
 		
+		save.addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				
+				int parentIndex;
+				
+				Integer parentDep = null;
+				
+				parentIndex = parent.getSelectedIndex();
+				
+				if (parentIndex > 0) {
+					parentDep = Integer.parseInt(parent.getValue(parentIndex));
+				}
+				
+				employeeService.saveEmployee(employee, name.getText(), address.getText(), Double.parseDouble(total.getText()), parentDep, new AsyncCallback<EmployeeInfo>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert(caught.getMessage());
+					}
+
+					@Override
+					public void onSuccess(EmployeeInfo result) {
+						initFields(result);
+						EmployeePanel.this.tree.refreshTree();
+					}
+				});
+			}
+			
+		});
+		
 		Grid grid = new Grid(4, 2);
 		
 		Label lname = new Label("Name:");
@@ -107,22 +137,28 @@ public class EmployeePanel extends VerticalPanel {
 
 			@Override
 			public void onSuccess(EmployeeInfo result) {
-				name.setText(result.getName());
-				address.setText(result.getAddress());
-				total.setText(Double.toString(result.getTotal()));
-				int i = 0;
-				
-				parent.addItem(null);
-				
-				for (Integer key : result.getAllDepartments().keySet()) {
-					parent.addItem(result.getAllDepartments().get(key), Integer.toString(key));
-					if (key.equals(result.getParent())) {
-						i = key;
-					}
-				}
-				parent.setSelectedIndex(i);
+				initFields(result);
 			}
 		});
+	}
+	
+	private void initFields(EmployeeInfo result) {
+		name.setText(result.getName());
+		address.setText(result.getAddress());
+		total.setText(Double.toString(result.getTotal()));
+		int i = 0;
+		int index = i;
+		
+		parent.addItem(null);
+		
+		for (Integer key : result.getAllDepartments().keySet()) {
+			parent.addItem(result.getAllDepartments().get(key), Integer.toString(key));
+			i++;
+			if (key.equals(result.getAllDepartments())) {
+				index = i;
+			}
+		}
+		parent.setSelectedIndex(index);
 	}
 	
 }

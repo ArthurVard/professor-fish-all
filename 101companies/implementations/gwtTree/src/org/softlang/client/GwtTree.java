@@ -1,13 +1,6 @@
 package org.softlang.client;
 
-import org.softlang.client.guiinfos.TreeInfo;
-import org.softlang.client.interfaces.TreeService;
-import org.softlang.client.interfaces.TreeServiceAsync;
-
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;

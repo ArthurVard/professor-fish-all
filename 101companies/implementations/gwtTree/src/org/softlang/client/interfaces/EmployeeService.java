@@ -12,5 +12,5 @@ public interface EmployeeService extends RemoteService {
 	
 	public EmployeeInfo getEmployee(int id);
 	
-	public String saveEmployee(int id, String name, String address, double salary, Integer parent);
+	public EmployeeInfo saveEmployee(int id, String name, String address, double salary, Integer parent);
 }
