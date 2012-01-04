@@ -22,7 +22,8 @@ a simple [[Techology:ASP .NET]] implementation in [[Language:CSharp|C#]] for the
 
 == Motivation == 
 
-TODO
+A Web implementation in ASP .NET MVC 3.0 which shows the basic features of MVC framework; in particular URL routing mapping to controllers and model/view binding.
+The implementation also serves as a reference solution for MVC framework for statically typed programming languages (e.g. C#, VB .NET) which also motivates its appearance in the GUI theme.
 
 == Illustration ==
 
