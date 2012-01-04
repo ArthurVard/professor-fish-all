@@ -59,7 +59,7 @@ To map routes on controller's actions, the following method is used:
              );
 </syntaxhighlight>
 
-Default engine searching for the following locations:
+Default engine would search for the following locations:
 
 * ~/Views/Home/Index.aspx
 * ~/Views/Home/Index.ascx
