@@ -85,7 +85,7 @@ If the view is returned default engine would search for its tempalte the followi
 * ~/Views/Shared/Index.cshtml
 * ~/Views/Shared/Index.vbhtml
 
- '''Model binding'''
+''' Model binding'''
 
 First we populate the view by model (in this case by the Company object)
 
@@ -119,10 +119,8 @@ Here we see that the "Model" property has the type of "Company".
 
 == Architecture ==
 
-C# object-oriented representation of 101companies model is located in
-the ''CompanyModel folder''. It contains classes with required
-properties and methods (features implementations).
-TODO
+An implementation follows the default MVC folder structure provided by Visual Studio.
+It also reuses an object model AS-IS from the [[101implementation:csharp]] by referencing the project.
 
 == Usage ==
 
