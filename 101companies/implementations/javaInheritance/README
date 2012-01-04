@@ -18,7 +18,7 @@ basic OO programming in [[Language:Java]]
 
 == Motivation ==
 
-Basic style of [[OO programming]] is applied. A simple [[object model]]
+Basic style of [[:Category:OO programming]] is applied. A simple [[object model]]
 for companies is provided with [[method]]s to implement a [[query]] for
 totaling salaries and a [[:Category:transformation]] for cutting salaries.
 In fact, [[class inheritance]] is leveraged, but see [[101implementation:javaComposition]] 
