@@ -26,7 +26,9 @@ Update-Site: http://download.eclipse.org/modeling/emf/updates/releases/
 * [[101feature:Total]]
 * [[101feature:Cut]]
 * [[101feature:Mentoring]]
-* [[101feature:Import/Export]]
+* [[101feature:Import]]
+* [[101feature:Export]]
+* [[101feature:Code generation]]
 
 == Motivation ==
 
