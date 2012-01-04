@@ -63,7 +63,12 @@ public class EmployeeServiceImpl extends RemoteServiceServlet implements Employe
 			employee = CompanyApp.getInstance().createEmployee(name, address, salary);
 		}
 		
-		if (employee.getParent().getId() != parent) {
+		if (employee.getParent() != null) {
+			if (employee.getParent().getId() != parent) {
+				employee.setParent(CompanyApp.getInstance().getDepartments().get(parent));
+				employee.setManager(false);
+			}
+		} else {
 			employee.setParent(CompanyApp.getInstance().getDepartments().get(parent));
 			employee.setManager(false);
 		}

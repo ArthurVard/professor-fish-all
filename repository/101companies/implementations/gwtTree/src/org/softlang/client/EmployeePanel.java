@@ -84,6 +84,7 @@ public class EmployeePanel extends VerticalPanel {
 
 					@Override
 					public void onSuccess(EmployeeInfo result) {
+						clearFields();
 						initFields(result);
 						EmployeePanel.this.tree.refreshTree();
 					}
@@ -170,7 +171,7 @@ public class EmployeePanel extends VerticalPanel {
 			parent.addItem(result.getAllDepartments().get(key), Integer.toString(key));
 			if (!result.isNewEmployee()) {
 				i++;
-				if (key.equals(result.getAllDepartments())) {
+				if (key.equals(result.getParent())) {
 					index = i;
 				}
 			}
