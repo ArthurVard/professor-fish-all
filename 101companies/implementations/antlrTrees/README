@@ -10,7 +10,7 @@ parsing textual syntax with [[Technology:ANTLR]]
 
 Both concrete and abstract syntax is defined for companies.
 To this end, we use an ANTLR-based parser description.
-The resulting context-free parsing implements (the import part of) 101feature:Import/Export.
+The resulting context-free parsing implements [[101feature:Import]].
 The abstract syntax is based on ANTLR's homogeneous tree format.
 A constructed tree can be walked with an ANTLR tree grammar to total all salaries or to cut salaries in half.
 
@@ -18,7 +18,7 @@ A constructed tree can be walked with an ANTLR tree grammar to total all salarie
 
 * [[101feature:Company]] 
 * [[101feature:Total]] 
-* [[101feature:Import/Export]] 
+* [[101feature:Import]] 
 
 == Languages ==
 
