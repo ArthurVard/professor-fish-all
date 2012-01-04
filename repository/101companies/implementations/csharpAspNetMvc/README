@@ -26,6 +26,23 @@ TODO
 
 == Illustration ==
 
+To set up routes we need to implement class derived from System.Web.HttpApplication
+
+<syntaxhighlight lang=csharp>
+public class MvcApplication : System.Web.HttpApplication
+</syntaxhighlight>
+
+There is a method which executed 
+
+<syntaxhighlight lang=csharp>
+protected void Application_Start()
+{
+  .....
+  RegisterRoutes(RouteTable.Routes);
+}
+</syntaxhighlight>
+
+
 Usually there is a need to force MVC to ignore some resources:
 
 <syntaxhighlight lang=csharp>
