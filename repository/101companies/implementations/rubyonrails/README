@@ -1,6 +1,6 @@
 == Intent ==
 
-[[Web programing]]  in [[Language:Ruby]] with [[Technology:Ruby on Rails]]
+[[Web programming]]  in [[Language:Ruby]] with [[Technology:Ruby on Rails]]
 
 == Languages ==
 
@@ -22,9 +22,11 @@
 
 == Motivation ==
 
-We exercise [[Web programing]] using [[Technology:Ruby on Rails]]...
+We exercise [[Web programming]] using [[Technology:Ruby on Rails]]...
 
 == Usage ==
 
 * Run ''rails s'' in the project's root folder.
 * Run ''rake db:migrate'' in the project's root folder
+
+[[Category:GUI theme]]
