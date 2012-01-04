@@ -86,8 +86,20 @@ If the view is returned default engine would search for its tempalte the followi
 * ~/Views/Shared/Index.vbhtml
 
 '''Model binding'''
+First we populate the view by model (in this case by the Company object)
 
-TODO
+<syntaxhighlight lang=csharp>
+public class CompanyController : Controller
+    {
+        //
+        // GET: /Company/
+
+        public ActionResult Index()
+        {
+            return View(CompanyRepository.CreateInMemoryModel());
+        }
+    }
+</syntaxhighlight>
 
 == Architecture ==
 
