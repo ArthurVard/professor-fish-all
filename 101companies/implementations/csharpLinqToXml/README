@@ -22,7 +22,8 @@
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Import/Export]]
+* [[101feature:Import]]
+* [[101feature:Export]]
 
 == Motivation ==
 
@@ -32,6 +33,7 @@ LINQ to XML is used in 2 scenarios:
 * Cut and Total operations implemented directly on top of XML file where the model is stored.
 
 == Architecture ==
+
 C# object-oriented representation of 101companies model iimlemented in [[101implementation:csharp]] is used. It contains classes with required properties and methods(features implementations).
 
 * Manual reconsctruction of object model from xml
@@ -40,7 +42,7 @@ C# object-oriented representation of 101companies model iimlemented in [[101impl
 == Usage ==
 [[Technology:Visual Studio]] 2010 should be used to open a project file.
 The project itself is a class-library and compiles into a DLL. To run a project you must execute at least one unit test (or all at once).
-Nunit GUI or other Visual studio extension (e.g. Resharper) should be used for executing unit tests.
+Nunit GUI or other Visual studio extension (e.g., Resharper) should be used for executing unit tests.
 
 == Contributors ==
 
