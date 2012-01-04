@@ -15,7 +15,8 @@ recursive-descent parsing in [[Language:Java]]
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Import/Export]]
+* [[101feature:Import]]
+* [[101feature:Export]]
 
 == Motivation ==
 
@@ -26,7 +27,7 @@ The lexer reports all tokens excluding whitespace.
 The parser relies on protected handler methods to allow for injection of semantic actions.
 For instance, [[101feature:Total]] is implemented by defining the handler for employees to aggregate salaries.
 The implementation of [[101feature:Cut]] requires ad hoc pretty printing.
-Such a combination of parsing and pretty printing implements [[101feature:Import/Export]].
+Such a combination of parsing and pretty printing implements [[101feature:Import]] and [[101feature:Export]].
 
 == Architecture ==
 
