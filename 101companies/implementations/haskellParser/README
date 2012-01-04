@@ -19,12 +19,11 @@ parsing of concrete textual syntax in [[Language:Haskell]] with [[Technology:Par
 * [[101feature:Total]]
 * [[101feature:Cut]]
 * [[101feature:Mentoring]]
-* [[101feature:Import/Export]]
+* [[101feature:Import]]
 
 == Motivation ==
 
-We make use of [[Language:Haskell]]'s [[Technology:Parsec]] [[Parsing|parser]] combinator [[:Category:Library|library]] to parse concrete textual syntax for [[101feature:Company|companies]]. We combine smaller parsers, say for salaries, to larger parsers, say for departments and employees, to build a parser for companies. In terms of parsing we exercise sequence, alternative and option.
-Such parsing implements (the import part of) [[101feature:Import/Export]]. This implementation also demonstrates [[Functor|applicative functors]] and functor combinators provided by the ''Control.Applicative'' module.
+We make use of [[Language:Haskell]]'s [[Technology:Parsec]] [[Parsing|parser]] combinator [[:Category:Library|library]] to parse concrete textual syntax for [[101feature:Company|companies]]. We combine smaller parsers, say for salaries, to larger parsers, say for departments and employees, to build a parser for companies. In terms of parsing we exercise sequence, alternative and option. Such parsing implements [[101feature:Import]]. This implementation also demonstrates [[Functor|applicative functors]] and functor combinators provided by the ''Control.Applicative'' module.
 
 == Illustration ==
 
