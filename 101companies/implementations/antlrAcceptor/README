@@ -4,12 +4,12 @@ parsing textual syntax with [[Technology:ANTLR]]
 
 == Motivation ==
 
-A concrete syntax for companies is defined using the grammar notation of ANTLR so that a parser can be generated. The underlying grammar is LL(1). Such parsing of concrete syntax is viewed as an instance of (the import part of) [[101feature:Import/Export]]. However, the resulting implementation does not provide no further operations on companies. Hence, this is an incomplete implementation.
+A concrete syntax for companies is defined using the grammar notation of ANTLR so that a parser can be generated. The underlying grammar is LL(1). Such parsing of concrete syntax is viewed as an instance of [[101feature:Import]]. However, the resulting implementation does not provide no further operations on companies. Hence, this is an incomplete implementation.
 
 == Features ==
 
 * [[101feature:Company]] 
-* [[101feature:Import/Export]]
+* [[101feature:Import]]
 
 == Languages ==
 
