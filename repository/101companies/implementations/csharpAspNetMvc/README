@@ -70,8 +70,11 @@ To map routes on controller's actions, the following method is used:
              );
 </syntaxhighlight>
 
-When (if) the action index is reached, as a result it should return a view.
-Default engine would search for the following locations:
+The MVC framework provides a default controller factory (aptly named DefaultControllerFactory) that will search through all the assemblies in an appdomain looking for all types that implement IController and whose name ends with "Controller." Thus, if you tell the factory to look for a "Home" controller, the factory can return a newly instantiated instance of a HomeController class regardless of the namespace or assembly it lives in—as long as it implements IController. This behavior is part of the MVC's "convention over configuration" style.
+Once the MvcHandler has an IController reference from the factory, it invokes Execute on the controller and waits for the controller to work its magic. When execution is complete, the MvcHandler will check if the controller implements the IDisposable interface, and if so, will invoke Dispose on the controller to clean up unmanaged resources.
+
+When (if) the action index is reached, as a result it can return a view or just a plain HTTP response (e.g. JSON, HTTP Error Code).
+If the view is returned default engine would search for its tempalte the following locations:
 
 * ~/Views/Home/Index.aspx
 * ~/Views/Home/Index.ascx
