@@ -24,6 +24,27 @@ a simple [[Techology:ASP .NET]] implementation in [[Language:CSharp|C#]] for the
 
 TODO
 
+== Illustration ==
+
+<syntaxhighlight lang=csharp>
+ routes.MapRoute(
+                "Default", // Route name
+                "{controller}/{action}/{id}", // URL with parameters
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+             );
+</syntaxhighlight>
+
+Default engine searching for the following locations:
+
+* ~/Views/Home/Index.aspx
+* ~/Views/Home/Index.ascx
+* ~/Views/Shared/Index.aspx
+* ~/Views/Shared/Index.ascx
+* ~/Views/Home/Index.cshtml
+* ~/Views/Home/Index.vbhtml
+* ~/Views/Shared/Index.cshtml
+* ~/Views/Shared/Index.vbhtml
+
 == Architecture ==
 
 C# object-oriented representation of 101companies model is located in
