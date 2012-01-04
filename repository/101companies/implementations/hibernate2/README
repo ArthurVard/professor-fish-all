@@ -1,6 +1,6 @@
 == Intent == 
 
-[[O/R mapping]] with [[Technology:Hibernate]]
+[[Object/Relational mapping]] with [[Technology:Hibernate]]
 
 == Implementations ==
 
@@ -33,7 +33,7 @@ That is, this project's object model is mapped to a relational schema, which rep
 == Motivation == 
 
 An [[object model]] for companies is provided, as well as classes to total and cut salaries.
-This is, we apply a basic style of [[OO programming]]. Instances the company model are [[Persistence|persisted]] by making use of the [[Technology:Hibernate]]
+This is, we apply a basic style of [[:Category:OO programming]]. Instances the company model are [[Persistence|persisted]] by making use of the [[Technology:Hibernate]]
 technology. To that end the [[O/R mapping]] is realized by making use of [[Language:XML]]-mapping files for departments, employees, subunits and persons.  
 
 == Architecture ==
