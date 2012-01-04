@@ -27,6 +27,16 @@ The implementation also serves as a reference solution for MVC framework for sta
 
 == Illustration ==
 
+When we speak about MVC Framework for the Web, there are 2 major components are considered:
+
+1. Mapping URIs to handlers (essentially methods) in a source code. In ASP .NET MVC this called "routing" (http://msdn.microsoft.com/en-us/library/cc668201.aspx). Reflection plays an important part in the mapping workflow. A good detailed explanation can be found at http://msdn.microsoft.com/en-us/magazine/dd695917.aspx
+
+2. Template engine (ofter they called "view engines") which allows using target language inside the "view" to generate html parts from the model. ASP .NET MVC, for instance, supports two such engines: aspx and razor (http://weblogs.asp.net/scottgu/archive/2010/07/02/introducing-razor.aspx).
+Razor allows using C#/VB.NET inside the template by using special code blocks. This code is used by a framework to dynamically generate HTML by means of runtime code generation.
+Another important aspect, is how the actual model is binded to such template engine. As soon as the view itself is fully dynamic, traditionally in ASP .NET a dictionary was used to store the model and access it by key from the view code block. When a "dynamic" concept (http://msdn.microsoft.com/en-us/library/dd264741.aspx) was introduced in C# 4.0, it enabled an option making a model available for a view bypassing compile-time checking. Runtime code generation is used to execute all code blocks in a view engine and produce the actual HTML code.
+
+'''Route mapping'''
+
 To set up routes we need to implement class derived from System.Web.HttpApplication
 
 <syntaxhighlight lang=csharp>
@@ -70,6 +80,10 @@ Default engine would search for the following locations:
 * ~/Views/Home/Index.vbhtml
 * ~/Views/Shared/Index.cshtml
 * ~/Views/Shared/Index.vbhtml
+
+'''Model binding'''
+
+TODO
 
 == Architecture ==
 
