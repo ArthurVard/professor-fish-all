@@ -90,16 +90,31 @@ First we populate the view by model (in this case by the Company object)
 
 <syntaxhighlight lang=csharp>
 public class CompanyController : Controller
-    {
-        //
-        // GET: /Company/
-
-        public ActionResult Index()
-        {
-            return View(CompanyRepository.CreateInMemoryModel());
-        }
-    }
+ {
+    //
+   // GET: /Company/
+   public ActionResult Index()
+   {
+      return View(CompanyRepository.CreateInMemoryModel());
+   }
+ }
 </syntaxhighlight>
+
+The result of the action above is the view template located at Views/Company/Index.cshtml.
+In the first line of the template, we need to "type" the model by using 
+<syntaxhighlight lang=csharp>
+@model csharpBaseline.CompanyModel.Company
+</syntaxhighlight>
+Later on we can refer to the "Model" property of the page in the following style
+
+<syntaxhighlight lang=csharp>
+@foreach (var dept in Model.Departments)
+{
+
+    <li>@Html.ActionLink(dept.Name, "Index", "Department", new {id = dept.Id}, null )</li>   
+}
+</syntaxhighlight>
+Here we see that the "Model" property has the type of "Company".
 
 == Architecture ==
 
