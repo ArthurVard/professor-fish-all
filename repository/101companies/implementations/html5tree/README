@@ -1,6 +1,6 @@
 == Intent ==
 
-[[Web programming]] based on the [[Language:HTML5]], extended by [[Ajax]], [[101feature:Editing]] and a tree-view
+[[Web programming]] based on the [[Language:HTML5]] using [[Ajax]] style and a tree view
 
 == Languages ==
 
@@ -28,6 +28,7 @@
 * [[101feature:Persistence]]
 * [[101feature:Navigation]]
 * [[101feature:Structure editing]]
+* [[101feature:Web browser]]
 
 == Motivation ==
 
