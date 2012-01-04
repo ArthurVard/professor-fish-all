@@ -31,7 +31,8 @@ TGraphs are typed, attributed, ordered, and directed graphs. TGraphs can be main
 * [[101feature:Cut]]
 * [[101feature:Depth]]
 * [[101feature:Mentoring]]
-* [[101feature:Import/Export]]
+* [[101feature:Import]]
+* [[101feature:Export]]
 
 == Architecture ==
 
