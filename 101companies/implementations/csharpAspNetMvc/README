@@ -70,6 +70,7 @@ To map routes on controller's actions, the following method is used:
              );
 </syntaxhighlight>
 
+When (if) the action index is reached, as a result it should return a view.
 Default engine would search for the following locations:
 
 * ~/Views/Home/Index.aspx
