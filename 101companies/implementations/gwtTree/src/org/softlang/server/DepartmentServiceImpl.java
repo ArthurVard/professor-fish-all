@@ -17,7 +17,7 @@ public class DepartmentServiceImpl extends RemoteServiceServlet implements Depar
 	private static final long serialVersionUID = 864523380679574211L;
 
 	@Override
-	public double cut(int id) {
+	public double cut(Integer id) {
 		Department department = CompanyApp.getInstance().getDepartments().get(id);
 		
 		department.cut();
@@ -26,25 +26,48 @@ public class DepartmentServiceImpl extends RemoteServiceServlet implements Depar
 	}
 
 	@Override
-	public DepartmentInfo getDepartment(int id) {
+	public DepartmentInfo getDepartment(Integer id) {
 		DepartmentInfo result = new DepartmentInfo();
 		
-		Department department = CompanyApp.getInstance().getDepartments().get(id);
-		
-		result.setName(department.getName());
-		result.setTotal(department.total());
-		
-		Map<Integer, String> otherDeps = new HashMap<Integer, String>();
-		for (Integer key : CompanyApp.getInstance().getDepartments().keySet()) {
-			if (key != department.getId()) {
-				otherDeps.put(key, CompanyApp.getInstance().getDepartments().get(key).getName());
+		if (id != null) {
+			
+			Department department = CompanyApp.getInstance().getDepartments().get(id);
+			
+			result.setName(department.getName());
+			result.setTotal(department.total());
+			
+			Map<Integer, String> otherDeps = new HashMap<Integer, String>();
+			for (Integer key : CompanyApp.getInstance().getDepartments()
+					.keySet()) {
+				if (key != department.getId()) {
+					otherDeps.put(key, CompanyApp.getInstance()
+							.getDepartments().get(key).getName());
+				}
 			}
-		}
-		result.setOtherDepartments(otherDeps);
-		if (department.getParent() instanceof Department) {
-			result.setParentDepartment(department.getParent().getId());
+			
+			result.setOtherDepartments(otherDeps);
+			
+			if (department.getParent() instanceof Department) {
+				result.setParentDepartment(department.getParent().getId());
+			} else {
+				result.setParentDepartment(null);
+			}
+			
+			if (department.getManager() != null) {
+				result.setManager(department.getManager().getId());
+			} else {
+				result.setManager(null);
+			}
+			result.setId(department.getId());
 		} else {
-			result.setParentDepartment(null);
+			
+			Map<Integer, String> otherDeps = new HashMap<Integer, String>();
+			for (Integer key : CompanyApp.getInstance().getDepartments()
+					.keySet()) {
+					otherDeps.put(key, CompanyApp.getInstance()
+							.getDepartments().get(key).getName());
+			}
+			result.setOtherDepartments(otherDeps);
 		}
 		
 		Map<Integer, String> emps = new HashMap<Integer, String>();
@@ -53,22 +76,21 @@ public class DepartmentServiceImpl extends RemoteServiceServlet implements Depar
 		}
 		result.setAllEmployees(emps);
 		
-		if (department.getManager() != null) {
-			result.setManager(department.getManager().getId());
-		} else {
-			result.setManager(null);
-		}
-		
-		
 		return result;
 	}
 
 	@Override
-	public DepartmentInfo saveDepartment(int id, String name, Integer parent,
+	public DepartmentInfo saveDepartment(Integer id, String name, Integer parent,
 			Integer manager) {
-		Department department = CompanyApp.getInstance().getDepartments().get(id);
 		
-		department.setName(name);
+		Department department;
+		if (id != null) {
+			department = CompanyApp.getInstance().getDepartments().get(id);
+			department.setName(name);
+		} else {
+			department = CompanyApp.getInstance().createDepartment(name);
+		}
+		
 		if (parent != null) {
 			department.setParent(CompanyApp.getInstance().getDepartments().get(parent));
 		} else {
@@ -81,6 +103,7 @@ public class DepartmentServiceImpl extends RemoteServiceServlet implements Depar
 			department.setManager(null);
 		}
 		
+		id = department.getId();
 		return getDepartment(id);
 	}
 

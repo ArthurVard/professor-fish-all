@@ -10,6 +10,7 @@ public class DepartmentInfo implements Serializable {
 	 */
 	private static final long serialVersionUID = -3643721159314417030L;
 	
+	private Integer id;
 	private String name;
 	private double total;
 	private Integer parentDepartment;
@@ -64,6 +65,16 @@ public class DepartmentInfo implements Serializable {
 	public void setAllEmployees(Map<Integer, String> employees) {
 		this.allEmployees = employees;
 	}
-	
-	
+
+	public boolean isNewDepartment() {
+		return id == null;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 }

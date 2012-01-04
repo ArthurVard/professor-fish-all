@@ -126,7 +126,7 @@ public class EmployeePanel extends VerticalPanel {
 	public void setEmployee(Integer employee) {
 		this.employee = employee;
 		
-		parent.clear();
+		clearFields();
 		
 		employeeService.getEmployee(employee, new AsyncCallback<EmployeeInfo>() {
 
@@ -139,13 +139,28 @@ public class EmployeePanel extends VerticalPanel {
 			public void onSuccess(EmployeeInfo result) {
 				initFields(result);
 			}
+			
 		});
 	}
 	
+	private void clearFields() {
+		name.setText("");
+		address.setText("");
+		total.setText("");
+		parent.clear();
+	}
+	
 	private void initFields(EmployeeInfo result) {
-		name.setText(result.getName());
-		address.setText(result.getAddress());
-		total.setText(Double.toString(result.getTotal()));
+		employee = result.getId();
+		
+		if (!result.isNewEmployee()) {
+			name.setText(result.getName());
+			address.setText(result.getAddress());
+			total.setText(Double.toString(result.getTotal()));
+		}
+		
+		cut.setEnabled(!result.isNewEmployee());
+		
 		int i = 0;
 		int index = i;
 		
@@ -153,9 +168,11 @@ public class EmployeePanel extends VerticalPanel {
 		
 		for (Integer key : result.getAllDepartments().keySet()) {
 			parent.addItem(result.getAllDepartments().get(key), Integer.toString(key));
-			i++;
-			if (key.equals(result.getAllDepartments())) {
-				index = i;
+			if (!result.isNewEmployee()) {
+				i++;
+				if (key.equals(result.getAllDepartments())) {
+					index = i;
+				}
 			}
 		}
 		parent.setSelectedIndex(index);

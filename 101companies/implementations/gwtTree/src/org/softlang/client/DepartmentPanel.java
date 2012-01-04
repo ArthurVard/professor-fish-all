@@ -133,8 +133,7 @@ public class DepartmentPanel extends VerticalPanel {
 	public void setDepartment(Integer department) {
 		this.department = department;
 		
-		parent.clear();
-		manager.clear();
+		clearFields();
 		
 		departmentService.getDepartment(department, new AsyncCallback<DepartmentInfo>() {
 
@@ -149,10 +148,24 @@ public class DepartmentPanel extends VerticalPanel {
 			}
 		});
 	}
+	
+	private void clearFields() {
+		name.setText("");
+		total.setText("");
+		manager.clear();
+		parent.clear();
+	}
 
 	private void initFields(DepartmentInfo result) {
-		name.setText(result.getName());
-		total.setText(Double.toString(result.getTotal()));
+		department = result.getId();
+		
+		if (!result.isNewDepartment()) {
+			name.setText(result.getName());
+			total.setText(Double.toString(result.getTotal()));
+		}
+		
+		cut.setEnabled(!result.isNewDepartment());
+		
 		int i = 0;
 		int index = i;
 		
@@ -160,9 +173,11 @@ public class DepartmentPanel extends VerticalPanel {
 		
 		for (Integer key : result.getOtherDepartments().keySet()) {
 			parent.addItem(result.getOtherDepartments().get(key), Integer.toString(key));
-			i++;
-			if (key.equals(result.getParentDepartment())) {
-				index = i;
+			if (!result.isNewDepartment()) {
+				i++;
+				if (key.equals(result.getParentDepartment())) {
+					index = i;
+				}
 			}
 		}
 		parent.setSelectedIndex(index);
@@ -172,9 +187,11 @@ public class DepartmentPanel extends VerticalPanel {
 		index = i;
 		for (Integer key: result.getAllEmployees().keySet()) {
 			manager.addItem(result.getAllEmployees().get(key), Integer.toString(key));
-			i++;
-			if (key.equals(result.getManager())) {
-				index = i;
+			if (!result.isNewDepartment()) {
+				i++;
+				if (key.equals(result.getManager())) {
+					index = i;
+				}
 			}
 		}
 		manager.setSelectedIndex(index);

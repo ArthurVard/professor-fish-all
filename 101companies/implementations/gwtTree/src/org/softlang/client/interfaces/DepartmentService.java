@@ -8,10 +8,10 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("department")
 public interface DepartmentService extends RemoteService {
 
-	public double cut(int id);
+	public double cut(Integer id);
 	
-	public DepartmentInfo getDepartment(int id);
+	public DepartmentInfo getDepartment(Integer id);
 	
-	public DepartmentInfo saveDepartment(int id, String name, Integer parent, Integer manager);
+	public DepartmentInfo saveDepartment(Integer id, String name, Integer parent, Integer manager);
 	
 }

@@ -8,9 +8,9 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("company")
 public interface CompanyService extends RemoteService {
 	
-	public double cut(int id);
+	public double cut(Integer id);
 	
-	public CompanyInfo getCompany(int id);
+	public CompanyInfo getCompany(Integer id);
 	
-	public String saveCompany(int id, String name);
+	public String saveCompany(Integer id, String name);
 }
