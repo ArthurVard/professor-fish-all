@@ -14,11 +14,11 @@ parse companies with parser combinators in Java
 
 * [[101feature:Company]]
 * [[101feature:Total]]
-* [[101feature:Import/Export]]
+* [[101feature:Import]]
 
 == Motivation ==
 
-We implement a functor-based combinator library for top-down parsing with which we parse concrete textual syntax for companies. Such parsing implements (the import part of) [[101feature:Import/Export]]. Salaries can be totaled along with parsing. The library supports plain acceptance and proper parsing into an intermediate representation. There are acceptor and parser combinators for all common EBNF constructs as well as building blocks for lexical analysis. Class inheritance can also be used to attach semantic actions to applications of parser combinators. 
+We implement a functor-based combinator library for top-down parsing with which we parse concrete textual syntax for companies. Such parsing implements [[101feature:Import]]. Salaries can be totaled along with parsing. The library supports plain acceptance and proper parsing into an intermediate representation. There are acceptor and parser combinators for all common EBNF constructs as well as building blocks for lexical analysis. Class inheritance can also be used to attach semantic actions to applications of parser combinators. 
 
 == Architecture ==
 
