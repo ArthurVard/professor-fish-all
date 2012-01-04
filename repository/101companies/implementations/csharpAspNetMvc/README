@@ -1,0 +1,44 @@
+== Intent ==
+
+a simple [[Techology:ASP .NET]] implementation in [[Language:CSharp|C#]] for the [[Technology:.NET]] Framework
+
+== Languages ==
+
+* [[Language:CSharp]] (C#): Programming language used for all code (Version 4.0)
+
+== Technologies ==
+
+* [[Technology:csc.exe]]: C# compiler (Version 4.0)
+* [[Technology:.NET]]: framework used to execute compiled code (Version 4.0)
+* [[Technology:NUnit]]: unit testing framework used for testing (Version 2.5)
+* [[Technology:Visual Studio]]: optional IDE (Version 2010)
+
+== Features ==
+
+* [[101feature:Company]]
+* [[101feature:Total]]
+* [[101feature:Cut]]
+* [[101feature:Depth]]
+
+== Motivation == 
+
+TODO
+
+== Architecture ==
+
+C# object-oriented representation of 101companies model is located in
+the ''CompanyModel folder''. It contains classes with required
+properties and methods (features implementations).
+TODO
+
+== Usage ==
+
+TODO
+
+== Contributors ==
+
+* {{101contributor|Andrei Varanovich|developer}}
+
+
+[[Category:101implementation]]
+[[Category:GUI theme]]
