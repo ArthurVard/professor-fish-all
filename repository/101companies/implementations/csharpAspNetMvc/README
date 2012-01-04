@@ -26,6 +26,14 @@ TODO
 
 == Illustration ==
 
+Usually there is a need to force MVC to ignore some resources:
+
+<syntaxhighlight lang=csharp>
+routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+</syntaxhighlight>
+
+
+To map routes on controller's actions, the following method is used:
 <syntaxhighlight lang=csharp>
  routes.MapRoute(
                 "Default", // Route name
