@@ -1,6 +1,6 @@
 == Intent ==
 
- [[H/X mapping]] with  [[Technology:XML pickler|XML picklers]]
+[[Lambda/XML mapping]] for [[Language:Haskell]] with [[Technology:XML pickler]]
 
 == Languages ==
 
@@ -24,7 +24,7 @@
 
 == Motivation ==
 
-We exercise [[mapping]] from Haskell to XML data by making use of [[Technology:HXT]]'s  [[Technology:XML pickler]] [[Arrow|arrows]] and functions. 
+We exercise mapping between Haskell and XML data by making use of [[Technology:HXT]]'s  [[Technology:XML pickler]] [[Arrow|arrows]] and functions. 
 That is, we declare <syntaxhighlight lang="haskell" enclose="none">XMLPickler</syntaxhighlight> instances for companies, departments and employees and define appropriate pickler functions. In this context we illustrate predefined picklers and pickler combinators. As a result, companies can be imported and exported as [[Language:XML|XML]] data while using [[algebraic datatype]]s for the in-memory representation.
 
 == Illustration ==
