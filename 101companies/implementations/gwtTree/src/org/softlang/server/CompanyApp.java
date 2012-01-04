@@ -97,22 +97,22 @@ public class CompanyApp {
 
 	private int getNewDepartmentId() {
 		Set<Integer> keys = departments.keySet();
-		return getMaximum(keys);
+		return getNext(keys);
 	}
 	
 	private int getNewEmployeeId() {
 		Set<Integer> keys = employees.keySet();
-		return getMaximum(keys);
+		return getNext(keys);
 	}
 	
-	private int getMaximum(Set<Integer> list) {
+	private int getNext(Set<Integer> list) {
 		int max = 0;
 		for (Integer item : list) {
 			if (max < item) {
 				max = item;
 			}
 		}
-		return max;
+		return max + 1;
 	}
 
 	public Department createDepartment(String name) {

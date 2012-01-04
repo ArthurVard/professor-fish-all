@@ -92,6 +92,7 @@ public class DepartmentPanel extends VerticalPanel {
 
 					@Override
 					public void onSuccess(DepartmentInfo result) {
+						clearFields();
 						initFields(result);
 						DepartmentPanel.this.tree.refreshTree();
 					}
