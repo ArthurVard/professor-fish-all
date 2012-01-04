@@ -43,7 +43,7 @@ To set up routes we need to implement class derived from System.Web.HttpApplicat
 public class MvcApplication : System.Web.HttpApplication
 </syntaxhighlight>
 
-There is a method which executed 
+There is a method which is called by the framework when the first resource (such as a page) in an ASP.NET application is requested. (see http://msdn.microsoft.com/en-us/library/ms178473.aspx for the details)
 
 <syntaxhighlight lang=csharp>
 protected void Application_Start()
@@ -85,7 +85,8 @@ If the view is returned default engine would search for its tempalte the followi
 * ~/Views/Shared/Index.cshtml
 * ~/Views/Shared/Index.vbhtml
 
-'''Model binding'''
+ '''Model binding'''
+
 First we populate the view by model (in this case by the Company object)
 
 <syntaxhighlight lang=csharp>
