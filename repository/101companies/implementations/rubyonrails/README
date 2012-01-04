@@ -1,0 +1,30 @@
+== Intent ==
+
+[[Web programing]]  in [[Language:Ruby]] with [[Technology:Ruby on Rails]]
+
+== Languages ==
+
+* [[Language:Ruby]]
+* [[Language:JavaScript]]
+* [[Language:HTML]]
+* [[Language:CSS]]
+
+== Technologies == 
+
+* [[Technology:Ruby on Rails]]
+
+== Features ==
+
+* [[101feature:Company]]
+* [[101feature:Client/server]]
+* [[101feature:Attribute editing]]
+* [[101feature:Stuctural editing]]
+
+== Motivatin ==
+
+We exercise [[Web programing]] using [[Technology:Ruby on Rails]]...
+
+== Usage ==
+
+* Run ''rails s'' in the project's root folder.
+* Run ''rake db:migrate'' in the project's root folder
