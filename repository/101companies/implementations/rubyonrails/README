@@ -24,6 +24,44 @@
 
 We exercise [[Web programming]] using [[Technology:Ruby on Rails]]. That is, we use this MVC web application framework to provide  [[101feature:Attribute editing|attribute]] and [[101feature:Structural editing|structural editing]] of companies by using a dynamically typed language. 
 
+== Illustration ==
+
+Most of the implementations code was generated using the ''rails generate scaffold'' command. This generates 
+* a model for the given class
+* a view including pages for editing, indexing and showing instances
+* a controller for actions like creating, updating and removing of instances
+
+=== Routes ===
+
+The ''routes.rb'' file defines a default route when entering the application:
+
+<syntaxhighlight lang="ruby>
+get "home/index"
+</syntaxhighlight>
+
+That is when entering by just providing the host:port information the user is redirected to this page.
+
+This file also defines ruby resources:
+
+<syntaxhighlight lang="ruby>
+resources :employees
+
+resources :departments do
+  resources :departments
+  resources :employees
+end 
+
+resources :companies do
+  resources :departments
+end
+</syntaxhighlight>
+
+These rules define what kind of resources the application contains and which nesting should be applied. For instance, a company has many department resources.
+
+
+
+
+
 == Usage ==
 
 * Run ''rails s'' in the project's root folder.
