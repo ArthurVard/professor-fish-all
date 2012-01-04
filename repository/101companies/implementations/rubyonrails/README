@@ -27,9 +27,9 @@ We exercise [[Web programming]] using [[Technology:Ruby on Rails]]. That is, we 
 == Illustration ==
 
 Most of the implementations code was generated using the ''rails generate scaffold'' command. This generates 
-* a model for the given class
-* a view including pages for editing, indexing and showing instances
-* a controller for actions like creating, updating and removing of instances
+* A model for the given class and attributes
+* A view including pages for editing, indexing and showing instances
+* A controller for actions like creating, updating and removing of instances
 
 === Routes ===
 
@@ -43,7 +43,7 @@ That is when entering by just providing the host:port information the user is re
 
 This file also defines ruby resources:
 
-<syntaxhighlight lang="ruby>
+<syntaxhighlight lang="ruby">
 resources :employees
 
 resources :departments do
@@ -57,6 +57,15 @@ end
 </syntaxhighlight>
 
 These rules define what kind of resources the application contains and which nesting should be applied. For instance, a company has many department resources.
+
+The framework also provides routes for both index pages and pages for showing a concrete instance. For companies these helpers are provided:
+* <syntaxhighlight lang="ruby" enclose="none">companies_path</syntaxhighligth> provides the URL for the index page for all companies.
+* <syntaxhighlight lang="ruby" enclose="none">company_path(someCompany)</syntaxhighligth> provides the URL for the given company.
+
+This example shows the use of pluralisation for name conventions.
+
+=== Model ===
+
 
 
 
