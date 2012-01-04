@@ -9,7 +9,8 @@
 * [[101feature:Company]] 
 * [[101feature:Total]]
 * [[101feature:Cut]]  
-* [[101feature:Import/Export]] 
+* [[101feature:Import]] 
+* [[101feature:Export]] 
 
 == Languages ==
 
@@ -22,7 +23,7 @@
 
 == Motivation ==
 
-An ANTLR-based parser for a concrete syntax of companies is provided. The underlying grammar is LL(1). The parser translates text into company objects. To this end, a straightforward object model for companies is used. (In fact, the object model is very similar to the one of [[101implementation:javaComposition]]. The mapping is described by the semantic actions within the ANTLR-based parser description. Pretty printing is also supported in the manner that objects can be exported in the concrete syntax. Parsing and pretty printing combined provide an implementation of [[101feature:Import/Export]]. Basic operations are implemented on top of the object model in basic OO programming style.
+An ANTLR-based parser for a concrete syntax of companies is provided. The underlying grammar is LL(1). The parser translates text into company objects. To this end, a straightforward object model for companies is used. (In fact, the object model is very similar to the one of [[101implementation:javaComposition]]. The mapping is described by the semantic actions within the ANTLR-based parser description. Parsing provides an implementation of [[101feature:Import]]. Pretty printing is also supported in the manner that objects can be exported in the concrete syntax. Pretty printing provides an implementation of [[101feature:Export]]. Basic operations are implemented on top of the object model in basic OO programming style.
 
 == Illustration ==
 
