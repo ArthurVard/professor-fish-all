@@ -17,7 +17,8 @@ an implementation of the basic spec in [[Language:Scala]] utilizing Scala's buil
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Import/Export]]
+* [[101feature:Import]]
+* [[101feature:Export]]
 
 == Motivation ==
 
