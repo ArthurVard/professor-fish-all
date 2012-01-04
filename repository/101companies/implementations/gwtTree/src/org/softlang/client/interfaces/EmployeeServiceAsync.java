@@ -6,11 +6,11 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface EmployeeServiceAsync {
 
-	void cut(int id, AsyncCallback<Double> callback);
+	void cut(Integer id, AsyncCallback<Double> callback);
 
-	void saveEmployee(int id, String name, String address, double salary,
+	void saveEmployee(Integer id, String name, String address, double salary,
 			Integer parent, AsyncCallback<EmployeeInfo> callback);
 
-	void getEmployee(int id, AsyncCallback<EmployeeInfo> callback);
+	void getEmployee(Integer id, AsyncCallback<EmployeeInfo> callback);
 
 }

@@ -2,6 +2,7 @@ package org.softlang.server;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.softlang.server.company.Company;
 import org.softlang.server.company.Department;
@@ -92,5 +93,39 @@ public class CompanyApp {
 
 	public void setEmployees(Map<Integer, Employee> employees) {
 		this.employees = employees;
+	}
+
+	private int getNewDepartmentId() {
+		Set<Integer> keys = departments.keySet();
+		return getMaximum(keys);
+	}
+	
+	private int getNewEmployeeId() {
+		Set<Integer> keys = employees.keySet();
+		return getMaximum(keys);
+	}
+	
+	private int getMaximum(Set<Integer> list) {
+		int max = 0;
+		for (Integer item : list) {
+			if (max < item) {
+				max = item;
+			}
+		}
+		return max;
+	}
+
+	public Department createDepartment(String name) {
+		int newID = CompanyApp.getInstance().getNewDepartmentId();
+		Department department = new Department(newID, name);
+		departments.put(newID, department);
+		return department;
+	}
+	
+	public Employee createEmployee(String name, String address, Double salary) {
+		int newID = CompanyApp.getInstance().getNewEmployeeId();
+		Employee employee = new Employee(newID, name, address, salary, false);
+		employees.put(newID, employee);
+		return employee;
 	}
 }

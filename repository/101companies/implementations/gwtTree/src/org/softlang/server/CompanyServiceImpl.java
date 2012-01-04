@@ -14,7 +14,7 @@ public class CompanyServiceImpl extends RemoteServiceServlet implements CompanyS
 	private static final long serialVersionUID = -4414941964797293399L;
 
 	@Override
-	public double cut(int id) {
+	public double cut(Integer id) {
 		Company company = CompanyApp.getInstance().getCompanies().get(id);
 		
 		company.cut();
@@ -23,7 +23,7 @@ public class CompanyServiceImpl extends RemoteServiceServlet implements CompanyS
 	}
 
 	@Override
-	public CompanyInfo getCompany(int id) {
+	public CompanyInfo getCompany(Integer id) {
 		CompanyInfo result = new CompanyInfo();
 		
 		Company company = CompanyApp.getInstance().getCompanies().get(id);
@@ -35,7 +35,7 @@ public class CompanyServiceImpl extends RemoteServiceServlet implements CompanyS
 	}
 
 	@Override
-	public String saveCompany(int id, String name) {
+	public String saveCompany(Integer id, String name) {
 		Company company = CompanyApp.getInstance().getCompanies().get(id);
 		
 		company.setName(name);

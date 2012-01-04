@@ -10,6 +10,7 @@ public class EmployeeInfo implements Serializable {
 	 */
 	private static final long serialVersionUID = 7339458164866881122L;
 	
+	private Integer id;
 	private String name;
 	private String address;
 	private double total;
@@ -55,6 +56,16 @@ public class EmployeeInfo implements Serializable {
 	public void setAllDepartments(Map<Integer, String> departments) {
 		this.allDepartments = departments;
 	}
-	
-	
+
+	public boolean isNewEmployee() {
+		return id == null;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 }
