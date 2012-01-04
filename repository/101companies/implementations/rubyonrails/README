@@ -68,26 +68,37 @@ This example shows the use of pluralisation for name conventions.
 
 We will illustrate this topic by showing how one can add an employee to an existing department using the edit page for departments.
 
-In the ''edit.html.erb'' template file for departments we define a form for adding a department:
+In the ''edit.html.erb'' template file for departments we define a form for adding an employee:
 
 <syntaxhighlight lang="rails">
 <%= form_for([@department, @department.employees.build]) do |f| %>
-  	  <div class="field">
-    	<%= f.label :name %><br />
-    	<%= f.text_field :name %>
-    	Set as manager?
-    	<%= f.check_box :isManager %>
-  	  </div>
-  	  <div class="actions">
-        <%= f.submit %>
-      </div>
-  <% end %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+    Set as manager?
+    <%= f.check_box :isManager %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 </syntaxhighlight>
 
+We use <syntaxhighlight lang="ruby" enclose="none">form_for</syntaxhighlight> to generate a form for a new employee. Submitting this form sends a request including the new employee in JSON and the department_id of the owning department. This behavior is caused by the fact that we added employees as a nested resource of departments. 
 
+In the form <syntaxhighlight lang="ruby" enclose="none">f</syntaxhighlight> we then bind the name of the new employee to a textfield and the <syntaxhighlight lang="ruby" enclose="none">isManager</syntaxhighlight> property to a checkbox.
 
+Submitting this form will call the employee controller's <syntaxhighlight lang="ruby" enclose="none">create</syntaxhighlight> method:
 
+<syntaxhighlight lang="ruby">
+def create
+      @department = Department.find(params[:department_id])
+      @employee = @department.employees.create(params[:employee])
+      redirect_to department_path(@department)
+  end
+</syntaxhighlight>
 
+This method starts by searching the department instance by the given id. It then calls the <syntaxhighlight lang="ruby" enclose="none">create</syntaxhighlight> method of the employees collection of this department. Finally the method redirects the user to this department.
 
 == Usage ==
 
