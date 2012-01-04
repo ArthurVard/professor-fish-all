@@ -15,14 +15,15 @@
 * [[101feature:Company]]
 * [[101feature:Total]]
 * [[101feature:Cut]]
-* [[101feature:Import/Export]]
+* [[101feature:Import]]
+* [[101feature:Export]]
 
 == Motivation ==
 
 A simple custom-made lexer is used to process a text-based representation of companies.
 The lexer uses a lookahead of 1.
 The lexer reports all tokens including whitespace.
-Such processing implements (the import part of) [[101feature:Import/Export]].
+Such processing implements [[101feature:Import]].
 [[101feature:Total]] is implemented by means of finding token sequences 
 consisting of keyword "salary" followed by a number while ignoring whitespace
 in between. (Just looking for a number would be sufficient for the situation at hand
@@ -30,7 +31,7 @@ because numbers are used for salaries only, but the extra test makes the
 point that ad hoc tests may be needed when lexers are used for data processing.)
 [[101feature:Cut]] copies lexemes to an output stream while
 modifying salaries. The lexemes for whitespace token transport layout from 
-input to output. Such processing implements (the export part of) [[101feature:Import/Export]].
+input to output. Such processing implements [[101feature:Export]].
 
 == Usage ==
 
