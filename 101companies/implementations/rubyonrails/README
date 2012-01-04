@@ -59,12 +59,30 @@ end
 These rules define what kind of resources the application contains and which nesting should be applied. For instance, a company has many department resources.
 
 The framework also provides routes for both index pages and pages for showing a concrete instance. For companies these helpers are provided:
-* <syntaxhighlight lang="ruby" enclose="none">companies_path</syntaxhighligth> provides the URL for the index page for all companies.
-* <syntaxhighlight lang="ruby" enclose="none">company_path(someCompany)</syntaxhighligth> provides the URL for the given company.
+* <syntaxhighlight lang="ruby" enclose="none">companies_path</syntaxhighlight> provides the URL for the index page for all companies.
+* <syntaxhighlight lang="ruby" enclose="none">company_path(someCompany)</syntaxhighlight> provides the URL for the given company.
 
 This example shows the use of pluralisation for name conventions.
 
-=== Model ===
+=== Model/View binding ===
+
+We will illustrate this topic by showing how one can add an employee to an existing department using the edit page for departments.
+
+In the ''edit.html.erb'' template file for departments we define a form for adding a department:
+
+<syntaxhighlight lang="rails">
+<%= form_for([@department, @department.employees.build]) do |f| %>
+  	  <div class="field">
+    	<%= f.label :name %><br />
+    	<%= f.text_field :name %>
+    	Set as manager?
+    	<%= f.check_box :isManager %>
+  	  </div>
+  	  <div class="actions">
+        <%= f.submit %>
+      </div>
+  <% end %>
+</syntaxhighlight>
 
 
 
