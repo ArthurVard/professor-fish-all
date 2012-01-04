@@ -16,8 +16,7 @@ a simple [[Techology:ASP .NET]] implementation in [[Language:CSharp|C#]] for the
 == Features ==
 
 * [[101feature:Company]]
-* [[101feature:Total]]
-* [[101feature:Cut]]
+* [[101feature:Client/server]]
 * [[101feature:Navigation]]
 
 == Motivation == 
