@@ -4,12 +4,12 @@ parsing textual syntax with [[Technology:ANTLR]]
 
 == Motivation ==
 
-An ANTLR-based parser for a concrete syntax of companies is provided. The underlying grammar is LL(1). The parser uses semantics actions to implement [[101feature:Total]]. Such parsing implements (the import part of) [[101feature:Import/Export]].
+An ANTLR-based parser for a concrete syntax of companies is provided. The underlying grammar is LL(1). The parser uses semantics actions to implement [[101feature:Total]]. Such parsing implements [[101feature:Import]].
 
 == Features ==
 
 * [[101feature:Company]] 
-* [[101feature:Import/Export]] 
+* [[101feature:Import]] 
 
 == Languages ==
 
