@@ -6,6 +6,7 @@ import java.util.Map;
 import org.softlang.client.guiinfos.EmployeeInfo;
 import org.softlang.client.interfaces.EmployeeService;
 import org.softlang.server.company.Employee;
+import org.softlang.shared.ServerValidationException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -50,8 +51,10 @@ public class EmployeeServiceImpl extends RemoteServiceServlet implements Employe
 
 	@Override
 	public EmployeeInfo saveEmployee(Integer id, String name, String address,
-			double salary, Integer parent) {
+			double salary, Integer parent) throws ServerValidationException {
 
+		CompanyApp.getInstance().validateEmployee(id, name, salary, parent);
+		
 		Employee employee;
 		if (id != null) {
 			employee = CompanyApp.getInstance().getEmployees().get(id);

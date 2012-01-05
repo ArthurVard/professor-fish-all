@@ -3,6 +3,7 @@ package org.softlang.client;
 import org.softlang.client.guiinfos.CompanyInfo;
 import org.softlang.client.interfaces.CompanyService;
 import org.softlang.client.interfaces.CompanyServiceAsync;
+import org.softlang.shared.ServerValidationException;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -69,7 +70,12 @@ public class CompanyPanel extends VerticalPanel {
 
 								@Override
 								public void onFailure(Throwable caught) {
-									Window.alert(caught.getMessage());
+									if (caught instanceof ServerValidationException) {
+										lNameFault.setText("*");
+										faultMessages.add(new Label(caught.getMessage()));
+									} else {
+										Window.alert(caught.getMessage());
+									}
 								}
 
 								@Override

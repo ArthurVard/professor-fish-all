@@ -3,6 +3,7 @@ package org.softlang.client;
 import org.softlang.client.guiinfos.EmployeeInfo;
 import org.softlang.client.interfaces.EmployeeService;
 import org.softlang.client.interfaces.EmployeeServiceAsync;
+import org.softlang.shared.ServerValidationException;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -85,7 +86,18 @@ public class EmployeePanel extends VerticalPanel {
 
 								@Override
 								public void onFailure(Throwable caught) {
-									Window.alert(caught.getMessage());
+									if (caught instanceof ServerValidationException) {
+										ServerValidationException ex = (ServerValidationException) caught;
+										if (ex.getField() == ServerValidationException.Field.NAME) {
+											lNameFault.setText("*");
+											
+										} else if (ex.getField() == ServerValidationException.Field.SALARY) {
+											lSalaryFault.setText("*");
+										}
+										faultMessages.add(new Label(caught.getMessage()));
+									} else {
+										Window.alert(caught.getMessage());
+									}
 								}
 
 								@Override
@@ -164,6 +176,7 @@ public class EmployeePanel extends VerticalPanel {
 	}
 	
 	private void clearFields() {
+		resetFaultMessages();
 		name.setText("");
 		address.setText("");
 		total.setText("");

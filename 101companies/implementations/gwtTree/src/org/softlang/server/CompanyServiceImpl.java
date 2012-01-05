@@ -3,6 +3,7 @@ package org.softlang.server;
 import org.softlang.client.guiinfos.CompanyInfo;
 import org.softlang.client.interfaces.CompanyService;
 import org.softlang.server.company.Company;
+import org.softlang.shared.ServerValidationException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -36,7 +37,9 @@ public class CompanyServiceImpl extends RemoteServiceServlet implements CompanyS
 	}
 
 	@Override
-	public String saveCompany(Integer id, String name) {
+	public String saveCompany(Integer id, String name) throws ServerValidationException {
+		CompanyApp.getInstance().validateCompany(id, name);
+		
 		Company company = CompanyApp.getInstance().getCompanies().get(id);
 		
 		company.setName(name);

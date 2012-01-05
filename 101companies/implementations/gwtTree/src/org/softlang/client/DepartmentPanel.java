@@ -3,6 +3,7 @@ package org.softlang.client;
 import org.softlang.client.guiinfos.DepartmentInfo;
 import org.softlang.client.interfaces.DepartmentService;
 import org.softlang.client.interfaces.DepartmentServiceAsync;
+import org.softlang.shared.ServerValidationException;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -94,7 +95,12 @@ public class DepartmentPanel extends VerticalPanel {
 
 								@Override
 								public void onFailure(Throwable caught) {
-									Window.alert(caught.getMessage());
+									if (caught instanceof ServerValidationException) {
+										lNameFault.setText("*");
+										faultMessages.add(new Label(caught.getMessage()));
+									} else {
+										Window.alert(caught.getMessage());
+									}
 								}
 
 								@Override
@@ -169,6 +175,7 @@ public class DepartmentPanel extends VerticalPanel {
 	}
 	
 	private void clearFields() {
+		resetFaultMessages();
 		name.setText("");
 		total.setText("");
 		manager.clear();
