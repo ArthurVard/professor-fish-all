@@ -15,6 +15,8 @@ public class DepartmentItem implements Serializable {
 	private Integer id;
 	private List<DepartmentItem> departments;
 	private List<EmployeeItem> employees;
+	private boolean fault;
+	private String faultMessage;
 
 	public String getName() {
 		return name;
@@ -46,5 +48,21 @@ public class DepartmentItem implements Serializable {
 
 	public void setEmployees(List<EmployeeItem> employees) {
 		this.employees = employees;
+	}
+
+	public String getFaultMessage() {
+		return faultMessage;
+	}
+
+	public void setFaultMessage(String faultMessage) {
+		this.faultMessage = faultMessage;
+	}
+
+	public boolean isFault() {
+		return fault;
+	}
+
+	public void setFault(boolean fault) {
+		this.fault = fault;
 	}
 }
