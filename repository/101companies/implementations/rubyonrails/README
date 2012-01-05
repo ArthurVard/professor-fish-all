@@ -31,6 +31,10 @@ Most of the implementations code was generated using the ''rails generate scaffo
 * A view including pages for editing, indexing and showing instances
 * A controller for actions like creating, updating and removing of instances
 
+We then used ''rake db:migrate'' to migrate the tables in the underlining database.
+
+In the next section we will illustrate how routing rules and resources are defined.
+
 === Routes ===
 
 The ''routes.rb'' file defines a default route when entering the application:
