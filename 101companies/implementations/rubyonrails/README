@@ -100,6 +100,14 @@ def create
 
 This method starts by searching the department instance by the given id. It then calls the <syntaxhighlight lang="ruby" enclose="none">create</syntaxhighlight> method of the employees collection of this department. Finally the method redirects the user to this department.
 
+== Architecture ==
+
+The MVC code for this implementation can be found in [this!!companies/app]. The [this!!companies/app/models models] folder holds models for companies, departments and employees. The [this!!companies/app/controllers controllers] folder holds the controllers for actions like indexing, creating, updating and destroying of instances. The [this!!companies/app/views views] folder contains the views for all classes including editing, showing and indexing views.
+
+The schema for the underlining database can be found in [this!!companies/db/schema.rb schema.rb]. The migration files in the [this!!companies/db/migrate migrate] folder.
+
+The routing rules can be found in  [this!!companies/config/routes.rb routes.rb].
+
 == Usage ==
 
 * Run ''rails s'' in the project's root folder.
