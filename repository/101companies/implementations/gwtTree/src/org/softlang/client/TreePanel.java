@@ -13,11 +13,10 @@ import org.softlang.client.interfaces.TreeService;
 import org.softlang.client.interfaces.TreeServiceAsync;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.TreeItem;
 
@@ -29,6 +28,21 @@ public class TreePanel extends Tree {
 	
 	public TreePanel(GwtTree main) {
 		this.main = main;
+		
+		this.addSelectionHandler(new SelectionHandler<TreeItem>() {
+			
+			@Override
+			public void onSelection(SelectionEvent<TreeItem> event) {
+				Object obj = event.getSelectedItem().getUserObject();
+				if (obj instanceof CompanyItem) {
+					TreePanel.this.main.showCompany(((CompanyItem)obj).getId());
+				} else if (obj instanceof DepartmentItem) {
+					TreePanel.this.main.showDepartment(((DepartmentItem)obj).getId());
+				} else if (obj instanceof EmployeeItem) {
+					TreePanel.this.main.showEmployee(((EmployeeItem)obj).getId());
+				}
+			}
+		});
 	}
 	
 	public void refreshTree() {
@@ -49,10 +63,8 @@ public class TreePanel extends Tree {
 	private void generateTree(TreeInfo info) {
 		clear();
 		for (CompanyItem item : info.getCompanies()) {
-			Button company = new Button(item.getName());
-			company.setStylePrimaryName("companyButton");
-			company.addClickHandler(new CompanyHandler(item.getId()));
-			TreeItem root = new TreeItem(company);
+			TreeItem root = new TreeItem(item.getName());
+			root.setUserObject(item);
 			appendDepsAndEmps(root, item.getDepartments());
 			addItem(root);
 		}
@@ -62,10 +74,15 @@ public class TreePanel extends Tree {
 		Collections.sort(departments, new DepComparator());
 		
 		for (DepartmentItem dItem : departments) {
-			Button department = new Button(dItem.getName());
-			department.addClickHandler(new DepartmentHandler(dItem.getId()));
-			department.setStylePrimaryName("departmentButton");
-			TreeItem treeDItem = new TreeItem(department);
+			TreeItem treeDItem = new TreeItem();
+			if (dItem.isFault()) {
+				treeDItem = new TreeItem(dItem.getName() + " - " + dItem.getFaultMessage());
+				treeDItem.setStylePrimaryName("error");
+			} else {
+				treeDItem = new TreeItem(dItem.getName());
+				treeDItem.setStylePrimaryName("normal");
+			}
+			treeDItem.setUserObject(dItem);
 			root.addItem(treeDItem);
 			
 			List<EmployeeItem> empItems = dItem.getEmployees();
@@ -75,57 +92,18 @@ public class TreePanel extends Tree {
 				if (eItem.isManager()) {
 					name += " (Manager)";
 				}
-				Button employee = new Button(name);
-				employee.addClickHandler(new EmployeeHandler(eItem.getId()));
-				employee.setStylePrimaryName("employeeButton");
-				TreeItem treeEItem = new TreeItem(employee);
+				TreeItem treeEItem;
+				if (eItem.isFault()) {
+					treeEItem = new TreeItem(name + " - " + eItem.getFaultMessage());
+					treeEItem.setStylePrimaryName("error");
+				} else {
+					treeEItem = new TreeItem(name);
+					treeEItem.setStylePrimaryName("normal");
+				}
+				treeEItem.setUserObject(eItem);
 				treeDItem.addItem(treeEItem);
 			}
 			appendDepsAndEmps(treeDItem, dItem.getDepartments());
 		}
-	}
-	
-	private class CompanyHandler implements ClickHandler {
-
-		private Integer companyId;
-		
-		public CompanyHandler(Integer companyId) {
-			this.companyId = companyId;
-		}
-		
-		@Override
-		public void onClick(ClickEvent event) {
-			main.showCompany(companyId);
-		}
-	}
-	
-	private class DepartmentHandler implements ClickHandler {
-
-		private Integer departmentId;
-		
-		public DepartmentHandler(Integer departmentId) {
-			this.departmentId = departmentId;
-		}
-		
-		@Override
-		public void onClick(ClickEvent event) {
-			main.showDepartment(departmentId);
-		}
-		
-	}
-	
-	private class EmployeeHandler implements ClickHandler {
-
-		private Integer employeeId;
-		
-		public EmployeeHandler(Integer employeeId) {
-			this.employeeId = employeeId;
-		}
-		
-		@Override
-		public void onClick(ClickEvent event) {
-			main.showEmployee(employeeId);
-		}
-		
 	}
 }

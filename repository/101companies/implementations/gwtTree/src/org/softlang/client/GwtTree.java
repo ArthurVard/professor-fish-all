@@ -41,7 +41,7 @@ public class GwtTree implements EntryPoint {
 		treeScroll.setStylePrimaryName("tree");
 		
 		mainPanel.addSouth(new ButtonPanel(this), 32);
-		mainPanel.addWest(treeScroll, 200);
+		mainPanel.addWest(treeScroll, 350);
 		mainPanel.add(contentPanel);
 		
 		RootPanel.get("content").add(mainPanel);

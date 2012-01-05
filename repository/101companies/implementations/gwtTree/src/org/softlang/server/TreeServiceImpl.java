@@ -42,6 +42,11 @@ public class TreeServiceImpl extends RemoteServiceServlet implements TreeService
 				dItem.setName(department.getName());
 				dItem.setDepartments(generateDeps(department));
 				dItem.setEmployees(generateEmps(department));
+				
+				if (department.getManager() == null) {
+					dItem.setFaultMessage("No manager");
+				}
+				
 				cDeps.add(dItem);
 			}
 			cItem.setDepartments(cDeps);
@@ -56,11 +61,19 @@ public class TreeServiceImpl extends RemoteServiceServlet implements TreeService
 	
 	private List<EmployeeItem> generateEmps(Department current) {
 		List<EmployeeItem> dEmps = new ArrayList<EmployeeItem>();
-		for (Employee employee : current.getEmployees()) {			
+		for (Employee employee : current.getEmployees()) {
+			
+			Double maximumSalary = CompanyApp.getInstance().getMaximumSalary(employee.getParent());
+			
 			EmployeeItem eItem = new EmployeeItem();
 			eItem.setId(employee.getId());
 			eItem.setName(employee.getName());
 			eItem.setManager(employee.isManager());
+			
+			if (employee.isManager() && maximumSalary > employee.getSalary()) {
+				eItem.setFaultMessage("Salary too low");
+			}
+			
 			dEmps.add(eItem);
 		}
 		return dEmps;

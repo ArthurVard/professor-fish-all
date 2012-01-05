@@ -28,6 +28,7 @@ public class CompanyServiceImpl extends RemoteServiceServlet implements CompanyS
 		
 		Company company = CompanyApp.getInstance().getCompanies().get(id);
 		
+		result.setId(company.getId());
 		result.setName(company.getName());
 		result.setTotal(company.total());
 		
