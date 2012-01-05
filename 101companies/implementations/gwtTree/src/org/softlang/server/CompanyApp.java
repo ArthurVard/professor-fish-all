@@ -128,4 +128,32 @@ public class CompanyApp {
 		employees.put(newID, employee);
 		return employee;
 	}
+
+	public String validateSalary(int id) {
+		Employee employee = employees.get(id);
+		if (employee.isManager()) {
+			Department parent = employee.getParent();
+			Double max = getMaximumSalary(parent);
+			if (max > employee.getSalary()) {
+				return "Salary too low.";
+			}
+		}
+		return null;
+	}
+	
+	public Double getMaximumSalary(Department dep) {
+		Double max = 0d;
+		for (Employee emp : dep.getEmployees()) {
+			if (emp.getSalary() > max) {
+				max = emp.getSalary();
+			}
+		}
+		for (Department sub : dep.getDepartments()) {
+			Double subMax = getMaximumSalary(sub);
+			if (subMax > max) {
+				max = subMax;
+			}
+		}
+		return max;
+	}
 }

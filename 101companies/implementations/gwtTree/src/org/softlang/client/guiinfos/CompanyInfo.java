@@ -9,6 +9,7 @@ public class CompanyInfo implements Serializable {
 	 */
 	private static final long serialVersionUID = -6539729645301595406L;
 	
+	private Integer id;
 	private String name;
 	private double total;
 	
@@ -26,6 +27,14 @@ public class CompanyInfo implements Serializable {
 
 	public void setTotal(double total) {
 		this.total = total;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }

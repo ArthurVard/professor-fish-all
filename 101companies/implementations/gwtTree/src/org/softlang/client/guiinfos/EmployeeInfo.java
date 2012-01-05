@@ -1,6 +1,8 @@
 package org.softlang.client.guiinfos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class EmployeeInfo implements Serializable {
@@ -16,6 +18,7 @@ public class EmployeeInfo implements Serializable {
 	private double total;
 	private Integer parent;
 	private Map<Integer, String> allDepartments;
+	private List<String> faults;
 	
 	public String getName() {
 		return name;
@@ -67,5 +70,20 @@ public class EmployeeInfo implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public List<String> getFaultMessage() {
+		return faults;
+	}
+
+	public void addFaultMessage(String faultMessage) {
+		if (faults == null) {
+			this.faults = new ArrayList<String>();
+		}
+		faults.add(faultMessage);
+	}
+
+	public boolean isFault() {
+		return faults != null && faults.size() > 0;
 	}
 }

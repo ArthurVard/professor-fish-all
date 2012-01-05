@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.softlang.client.guiinfos.EmployeeInfo;
 import org.softlang.client.interfaces.EmployeeService;
-import org.softlang.server.company.Department;
 import org.softlang.server.company.Employee;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;

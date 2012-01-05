@@ -17,6 +17,10 @@ h1 {
 	color: #de3322;
 }
 
+.normal {
+	color: #000000;
+}
+
 input {
 	width: 94%;
 }
@@ -25,38 +29,6 @@ button.gwt-Button {
 	width: 132px;
 	margin-left: auto;
 	margin-right: auto;
-}
-
-.companyButton {
-    color:#000000;
-    font-weight: bold;
-    background-color: #efefef; 
-    border:0px;
-}
-
-.companyButton:HOVER {
-    color:#2244bb;
-}
-
-.departmentButton {
-    color:#000000;
-    font-style: italic;
-    background-color: #efefef; 
-    border:0px;
-}
-
-.departmentButton:HOVER {
-    color:#2244bb;
-}
-
-.employeeButton {
-    color:#000000;
-    background-color: #efefef; 
-    border:0px;
-}
-
-.employeeButton:HOVER {
-    color:#2244bb;
 }
 	
 select {

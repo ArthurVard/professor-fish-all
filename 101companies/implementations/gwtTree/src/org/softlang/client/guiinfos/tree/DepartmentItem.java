@@ -1,7 +1,6 @@
 package org.softlang.client.guiinfos.tree;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentItem implements Serializable {
@@ -15,7 +14,6 @@ public class DepartmentItem implements Serializable {
 	private Integer id;
 	private List<DepartmentItem> departments;
 	private List<EmployeeItem> employees;
-	private boolean fault;
 	private String faultMessage;
 
 	public String getName() {
@@ -59,10 +57,7 @@ public class DepartmentItem implements Serializable {
 	}
 
 	public boolean isFault() {
-		return fault;
+		return faultMessage != null;
 	}
 
-	public void setFault(boolean fault) {
-		this.fault = fault;
-	}
 }
