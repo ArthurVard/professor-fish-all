@@ -22,6 +22,8 @@
 
 == Motivation ==
 
+[[this!!companies/app/views/employees/new.html.erb new.html.erb]]
+
 We exercise [[Web programming]] using [[Technology:Ruby on Rails]]. That is, we use this MVC web application framework to provide  [[101feature:Attribute editing|attribute]] and [[101feature:Structural editing|structural editing]] of companies by using a dynamically typed language. 
 
 == Illustration ==
