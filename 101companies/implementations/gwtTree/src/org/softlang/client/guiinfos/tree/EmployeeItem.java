@@ -12,6 +12,8 @@ public class EmployeeItem implements Serializable {
 	private String name;
 	private Integer id;
 	private boolean manager;
+	private boolean fault;
+	private String faultMessage;
 	
 	public String getName() {
 		return name;
@@ -36,4 +38,22 @@ public class EmployeeItem implements Serializable {
 	public boolean isManager() {
 		return this.manager;
 	}
+
+	public boolean isFault() {
+		return fault;
+	}
+
+	public void setFault(boolean fault) {
+		this.fault = fault;
+	}
+
+	public String getFaultMessage() {
+		return faultMessage;
+	}
+
+	public void setFaultMessage(String faultMessage) {
+		this.faultMessage = faultMessage;
+	}
+	
+	
 }

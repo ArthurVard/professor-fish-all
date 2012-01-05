@@ -21,6 +21,11 @@ public class EmployeePanel extends VerticalPanel {
 	
 	private final EmployeeServiceAsync employeeService = GWT.create(EmployeeService.class);
 	
+	private Label lNameFault = new Label();
+	private Label lAddressFault = new Label();
+	private Label lSalaryFault = new Label();
+	private VerticalPanel faultMessages = new VerticalPanel();
+	
 	private TextBox name = new TextBox();
 	private TextBox address = new TextBox();
 	private TextBox total = new TextBox();
@@ -65,38 +70,46 @@ public class EmployeePanel extends VerticalPanel {
 			@Override
 			public void onClick(ClickEvent event) {
 				
-				int parentIndex;
-				
-				Integer parentDep = null;
-				
-				parentIndex = parent.getSelectedIndex();
-				
-				if (parentIndex > 0) {
-					parentDep = Integer.parseInt(parent.getValue(parentIndex));
+				if (validate()) {
+					int parentIndex;
+					Integer parentDep = null;
+					parentIndex = parent.getSelectedIndex();
+					if (parentIndex > 0) {
+						parentDep = Integer.parseInt(parent
+								.getValue(parentIndex));
+					}
+					employeeService.saveEmployee(employee, name.getText(),
+							address.getText(),
+							Double.parseDouble(total.getText()), parentDep,
+							new AsyncCallback<EmployeeInfo>() {
+
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert(caught.getMessage());
+								}
+
+								@Override
+								public void onSuccess(EmployeeInfo result) {
+									clearFields();
+									initFields(result);
+									EmployeePanel.this.tree.refreshTree();
+								}
+							});
 				}
-				
-				employeeService.saveEmployee(employee, name.getText(), address.getText(), Double.parseDouble(total.getText()), parentDep, new AsyncCallback<EmployeeInfo>() {
-
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert(caught.getMessage());
-					}
-
-					@Override
-					public void onSuccess(EmployeeInfo result) {
-						clearFields();
-						initFields(result);
-						EmployeePanel.this.tree.refreshTree();
-					}
-				});
 			}
 			
 		});
 		
-		Grid grid = new Grid(4, 2);
+		Grid grid = new Grid(4, 3);
 		
 		Label lname = new Label("Name:");
 		lname.setWidth("60px");
+		
+		lNameFault.setStylePrimaryName("error");
+		lAddressFault.setStylePrimaryName("error");
+		lSalaryFault.setStylePrimaryName("error");
+		faultMessages.setStylePrimaryName("error");
+		faultMessages.setSpacing(5);
 		
 		grid.setWidget(0, 0, lname);
 		grid.setWidget(1, 0, new Label("Address:"));
@@ -107,6 +120,10 @@ public class EmployeePanel extends VerticalPanel {
 		grid.setWidget(1, 1, address);
 		grid.setWidget(2, 1, total);
 		grid.setWidget(3, 1, parent);
+		
+		grid.setWidget(0, 2, lNameFault);
+		grid.setWidget(1, 2, lAddressFault);
+		grid.setWidget(2, 2, lSalaryFault);
 
 		add(grid);
 		
@@ -118,6 +135,8 @@ public class EmployeePanel extends VerticalPanel {
 		buttons.add(cut);
 		
 		add(buttons);
+		
+		add(faultMessages);
 	}
 
 	public Integer getEmployee() {
@@ -177,6 +196,44 @@ public class EmployeePanel extends VerticalPanel {
 			}
 		}
 		parent.setSelectedIndex(index);
+	}
+	
+	private boolean validate() {
+		resetFaultMessages();
+		
+		boolean valid = true;
+		
+		if (name.getText() == null || name.getText().length() == 0) {
+			lNameFault.setText("*");
+			faultMessages.add(new Label("Enter a valid name, please."));
+			valid = false;
+		}
+		if (address.getText() == null || address.getText().length() == 0) {
+			lAddressFault.setText("*");
+			faultMessages.add(new Label("Enter a valid address, please."));
+			valid = false;
+		}
+		if (total.getText() == null || total.getText().length() == 0) {
+			lNameFault.setText("*");
+			faultMessages.add(new Label("Enter a valid salary, please."));
+			valid = false;
+		} else {
+			try {
+				Double.parseDouble(total.getText());
+			} catch (NumberFormatException e) {
+				lNameFault.setText("*");
+				faultMessages.add(new Label("Enter a valid salary, please."));
+				valid = false;
+			}
+		}
+		return valid;
+	}
+
+	private void resetFaultMessages() {
+		lNameFault.setText("");
+		lAddressFault.setText("");
+		lSalaryFault.setText("");
+		faultMessages.clear();
 	}
 	
 }

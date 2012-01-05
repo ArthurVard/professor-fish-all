@@ -18,7 +18,10 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CompanyPanel extends VerticalPanel {
 
-	private TextBox name = new TextBox();
+	private Label lNameFault = new Label();
+	private VerticalPanel faultMessages = new VerticalPanel();
+	
+	private TextBox name = new TextBox();	
 	private TextBox total = new TextBox();
 	
 	private Button save = new Button("save");
@@ -60,34 +63,44 @@ public class CompanyPanel extends VerticalPanel {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				companyService.saveCompany(company, name.getText(), new AsyncCallback<String>() {
+				if (validate()) {
+					companyService.saveCompany(company, name.getText(),
+							new AsyncCallback<String>() {
 
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert(caught.getMessage());
-					}
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert(caught.getMessage());
+								}
 
-					@Override
-					public void onSuccess(String result) {
-						name.setText(result);
-						CompanyPanel.this.tree.refreshTree();
-					}
-					
-				});
+								@Override
+								public void onSuccess(String result) {
+									resetFaultMessages();
+									name.setText(result);
+									CompanyPanel.this.tree.refreshTree();
+								}
+
+							});
+				}
 			}
 			
 		});
 		
-		Grid grid = new Grid(2, 2);
+		Grid grid = new Grid(2, 3);
 		
-		Label lname = new Label("Name:");
-		lname.setWidth("60px");
+		Label lName = new Label("Name:");
+		lName.setWidth("60px");
 		
-		grid.setWidget(0, 0, lname);
+		lNameFault.setStylePrimaryName("error");
+		faultMessages.setSpacing(5);
+		faultMessages.setStylePrimaryName("error");
+		
+		grid.setWidget(0, 0, lName);
 		grid.setWidget(1, 0, new Label("Total:"));
 		
 		grid.setWidget(0, 1, name);
 		grid.setWidget(1, 1, total);
+		
+		grid.setWidget(0, 2, lNameFault);
 
 		add(grid);
 		
@@ -99,8 +112,21 @@ public class CompanyPanel extends VerticalPanel {
 		buttons.add(cut);
 		
 		add(buttons);
+		
+		add(faultMessages);
 	}
 	
+	private boolean validate() {
+		resetFaultMessages();
+		
+		if (name.getText() == null || name.getText().length() == 0) {
+			lNameFault.setText("*");
+			faultMessages.add(new Label("Enter a valid name, please."));
+			return false;
+		}
+		return true;
+	}
+
 	public Integer getCompany() {
 		return company;
 	}
@@ -116,11 +142,17 @@ public class CompanyPanel extends VerticalPanel {
 			}
 
 			@Override
-			public void onSuccess(CompanyInfo result) {				
+			public void onSuccess(CompanyInfo result) {
+				resetFaultMessages();
 				name.setText(result.getName());
 				total.setText(Double.toString(result.getTotal()));
 			}
 		});
-	}	
+	}
+	
+	private void resetFaultMessages() {
+		lNameFault.setText("");
+		faultMessages.clear();
+	}
 	
 }

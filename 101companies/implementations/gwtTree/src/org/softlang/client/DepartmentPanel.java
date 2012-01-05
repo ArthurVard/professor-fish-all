@@ -21,6 +21,10 @@ public class DepartmentPanel extends VerticalPanel {
 	
 	private final DepartmentServiceAsync  departmentService = GWT.create(DepartmentService.class);
 	
+	private Label lNameFault = new Label();
+	private Label lManagerFault = new Label();
+	private VerticalPanel faultMessages = new VerticalPanel();
+	
 	private TextBox name = new TextBox();
 	private TextBox total = new TextBox();	
 	private ListBox manager = new ListBox(false);
@@ -65,45 +69,54 @@ public class DepartmentPanel extends VerticalPanel {
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				
-				int parentIndex;
-				int managerIndex;
-				
-				Integer parentDep = null;
-				Integer managerEmp = null;
-				
-				parentIndex = parent.getSelectedIndex();
-				managerIndex = manager.getSelectedIndex();
-				
-				if (parentIndex > 0) {
-					parentDep = Integer.parseInt(parent.getValue(parentIndex));
-				}
-				
-				if (managerIndex > 0) {
-					managerEmp = Integer.parseInt(manager.getValue(managerIndex));
-				}
-				
-				departmentService.saveDepartment(department, name.getText(), parentDep, managerEmp, new AsyncCallback<DepartmentInfo>() {
-				
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert(caught.getMessage());
+				if (validate()) {
+					int parentIndex;
+					int managerIndex;
+					
+					Integer parentDep = null;
+					Integer managerEmp = null;
+					
+					parentIndex = parent.getSelectedIndex();
+					managerIndex = manager.getSelectedIndex();
+					
+					if (parentIndex > 0) {
+						parentDep = Integer.parseInt(parent.getValue(parentIndex));
 					}
+					
+					if (managerIndex > 0) {
+						managerEmp = Integer.parseInt(manager.getValue(managerIndex));
+					}
+				
+				
+					departmentService.saveDepartment(department,
+							name.getText(), parentDep, managerEmp,
+							new AsyncCallback<DepartmentInfo>() {
 
-					@Override
-					public void onSuccess(DepartmentInfo result) {
-						clearFields();
-						initFields(result);
-						DepartmentPanel.this.tree.refreshTree();
-					}
-				});
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert(caught.getMessage());
+								}
+
+								@Override
+								public void onSuccess(DepartmentInfo result) {
+									clearFields();
+									initFields(result);
+									DepartmentPanel.this.tree.refreshTree();
+								}
+							});
+				}
 			}
 		});
 		
-		Grid grid = new Grid(4, 2);
+		Grid grid = new Grid(4, 3);
 		
 		Label lname = new Label("Name:");
 		lname.setWidth("60px");
+		
+		lNameFault.setStylePrimaryName("error");
+		lManagerFault.setStylePrimaryName("error");
+		faultMessages.setStylePrimaryName("error");
+		faultMessages.setSpacing(5);
 		
 		grid.setWidget(0, 0, lname);
 		grid.setWidget(1, 0, new Label("Total:"));
@@ -114,6 +127,9 @@ public class DepartmentPanel extends VerticalPanel {
 		grid.setWidget(1, 1, total);
 		grid.setWidget(2, 1, manager);
 		grid.setWidget(3, 1, parent);
+		
+		grid.setWidget(0, 2, lNameFault);
+		grid.setWidget(2, 2, lManagerFault);
 
 		add(grid);
 		
@@ -125,6 +141,8 @@ public class DepartmentPanel extends VerticalPanel {
 		buttons.add(cut);
 		
 		add(buttons);
+		
+		add(faultMessages);
 	}
 
 	public Integer getDepartment() {
@@ -157,7 +175,33 @@ public class DepartmentPanel extends VerticalPanel {
 		parent.clear();
 	}
 
+	private boolean validate() {
+		resetFaultMessages();
+		
+		boolean valid = true;
+		
+		if (name.getText() == null || name.getText().length() == 0) {
+			lNameFault.setText("*");
+			faultMessages.add(new Label("Enter a valid name, please."));
+			valid = false;
+		}
+		if (manager.getSelectedIndex() == 0) {
+			lManagerFault.setText("*");
+			faultMessages.add(new Label("Select a valid manager, please."));
+			valid = false;
+		}
+		return valid;
+	}
+
+	private void resetFaultMessages() {
+		lNameFault.setText("");
+		lManagerFault.setText("");
+		faultMessages.clear();
+	}
+	
 	private void initFields(DepartmentInfo result) {
+		resetFaultMessages();
+		
 		department = result.getId();
 		
 		if (!result.isNewDepartment()) {
