@@ -7,6 +7,7 @@ import java.util.Set;
 import org.softlang.server.company.Company;
 import org.softlang.server.company.Department;
 import org.softlang.server.company.Employee;
+import org.softlang.shared.ServerValidationException;
 
 public class CompanyApp {
 	
@@ -60,8 +61,11 @@ public class CompanyApp {
 		dev1.setParent(development);
 		dev11.setParent(dev1);
 		
+		Company company2 = new Company(2, "test");
+		
 		companies = new HashMap<Integer, Company>();
 		companies.put(company.getId(), company);
+		companies.put(company2.getId(), company2);
 	}
 	
 	public static CompanyApp getInstance() {
@@ -155,5 +159,37 @@ public class CompanyApp {
 			}
 		}
 		return max;
+	}
+
+	public void validateCompany(Integer id, String name) throws ServerValidationException {
+		for (Company company : companies.values()) {
+			if (company.getName().equals(name) && (id == null || company.getId() != id.intValue())) {
+				throw new ServerValidationException(ServerValidationException.Field.NAME,
+						"There is already a company named " + name + "!");
+			}
+		}
+	}
+
+	public void validateDepartment(Integer id, String name) throws ServerValidationException {
+		for (Department department : departments.values()) {
+			if (department.getName().equals(name) && (id == null || department.getId() != id.intValue())) {
+				throw new ServerValidationException(ServerValidationException.Field.NAME,
+						"There is already a department named " + name + "!");
+			}
+		}
+	}
+
+	public void validateEmployee(Integer id, String name, double salary, Integer parent) throws ServerValidationException {
+		Department parentDepartment = departments.get(parent);
+		if (parentDepartment.getManager().getSalary() < salary && parentDepartment.getManager().getId() != id) {
+			throw new ServerValidationException(ServerValidationException.Field.SALARY,
+					"The salary must not be greater than " + parentDepartment.getManager().getSalary() + "!");
+		}
+		for (Employee employee : employees.values()) {
+			if (employee.getName().equals(name) && (id == null || employee.getId() != id.intValue())) {
+				throw new ServerValidationException(ServerValidationException.Field.NAME,
+						"There is already an employee named " + name + "!");
+			}
+		}
 	}
 }

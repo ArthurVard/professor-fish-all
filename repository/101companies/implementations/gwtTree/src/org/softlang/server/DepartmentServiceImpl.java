@@ -6,6 +6,7 @@ import java.util.Map;
 import org.softlang.client.guiinfos.DepartmentInfo;
 import org.softlang.client.interfaces.DepartmentService;
 import org.softlang.server.company.Department;
+import org.softlang.shared.ServerValidationException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -81,7 +82,9 @@ public class DepartmentServiceImpl extends RemoteServiceServlet implements Depar
 
 	@Override
 	public DepartmentInfo saveDepartment(Integer id, String name, Integer parent,
-			Integer manager) {
+			Integer manager) throws ServerValidationException {
+		
+		CompanyApp.getInstance().validateDepartment(id, name);
 		
 		Department department;
 		if (id != null) {
