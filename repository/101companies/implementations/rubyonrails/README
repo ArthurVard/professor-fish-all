@@ -22,9 +22,7 @@
 
 == Motivation ==
 
-[[this!!companies/app/views/employees/new.html.erb new.html.erb]]
-
-We exercise [[Web programming]] using [[Technology:Ruby on Rails]]. That is, we use this MVC web application framework to provide  [[101feature:Attribute editing|attribute]] and [[101feature:Structural editing|structural editing]] of companies by using a dynamically typed language. 
+We exercise [[Web programming]] using [[Technology:Ruby on Rails]]. That is, we use this MVC [[Category:Web-application framework]]  to provide  [[101feature:Attribute editing|attribute]] and [[101feature:Structural editing|structural editing]] of companies by using a dynamically typed language. We make use of several framework tools for generating code and migrating.
 
 == Illustration ==
 
@@ -106,5 +104,9 @@ This method starts by searching the department instance by the given id. It then
 
 * Run ''rails s'' in the project's root folder.
 * Run ''rake db:migrate'' in the project's root folder
+
+== Contributors ==
+
+* {{101contributor|Thomas Schmorleiz|developer}}
 
 [[Category:GUI theme]]
