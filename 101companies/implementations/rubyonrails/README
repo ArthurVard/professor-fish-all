@@ -43,7 +43,7 @@ The ''routes.rb'' file defines a default route when entering the application:
 get "home/index"
 </syntaxhighlight>
 
-That is when entering by just providing the host:port information the user is redirected to this page.
+That is, when entering by just providing "http://localhost:3000/" as a URL the user is redirected to the specified page.
 
 This file also defines ruby resources:
 
@@ -60,13 +60,15 @@ resources :companies do
 end
 </syntaxhighlight>
 
-These rules define what kind of resources the application contains and which nesting should be applied. For instance, a company has many department resources.
+These rules define what kind of resources the application contains and how these resources should be nested. For instance, a company resource has many department resources.
 
-The framework also provides routes for both index pages and pages for showing a concrete instance. For companies these helpers are provided:
+The framework also provides routes for both index pages and pages for showing a concrete instance. For companies these helpers are provided as follows:
 * <syntaxhighlight lang="ruby" enclose="none">companies_path</syntaxhighlight> provides the URL for the index page for all companies.
 * <syntaxhighlight lang="ruby" enclose="none">company_path(someCompany)</syntaxhighlight> provides the URL for the given company.
 
-This example shows the use of pluralisation for name conventions.
+This example also shows the use of pluralisation for name conventions.
+
+In the next section we will continue by illustration the binding between models and views.
 
 === Model/View binding ===
 
