@@ -7,7 +7,7 @@ package uml.state.methodDispatch;
  */
 public class Turnstile {
 
-	State state = new Locked();
+	State state = State.locked;
 	
 	/** Action: alarm */
 	public void alarm() {
