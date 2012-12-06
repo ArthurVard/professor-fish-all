@@ -27,6 +27,7 @@ public class UnboundedStack<T> implements Stack<T> {
 		top = top.next;
 	}
 	
+	// This code should not be part of the ADT class!
 	public static void main(String[] args) {
 		UnboundedStack<Integer> s = new UnboundedStack<Integer>();
 		s.push(1);

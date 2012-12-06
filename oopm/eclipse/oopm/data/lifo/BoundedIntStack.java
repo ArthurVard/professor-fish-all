@@ -37,6 +37,7 @@ public class BoundedIntStack implements IntStack {
 		top = top.next;
 	}
 	
+	// This code should not be part of the ADT class!
 	public static void main(String[] args) {
 		BoundedIntStack s = new BoundedIntStack(42);
 		s.push(1);

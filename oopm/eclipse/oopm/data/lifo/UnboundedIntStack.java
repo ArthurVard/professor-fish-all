@@ -27,6 +27,7 @@ public class UnboundedIntStack implements IntStack {
 		top = top.next;
 	}
 	
+	// This code should not be part of the ADT class!
 	public static void main(String[] args) {
 		UnboundedIntStack s = new UnboundedIntStack();
 		s.push(1); System.out.println(s.top());

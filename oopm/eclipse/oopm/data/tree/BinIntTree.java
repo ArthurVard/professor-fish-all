@@ -12,20 +12,10 @@ public class BinIntTree {
 		this.left = left;
 		this.right = right;
 	}
-
-	public void print() {
-		print(0);
-	}
-
-	public void print(int indent) {
-		System.out.print('|');
-		for (int i=0; i<3*indent; i++) System.out.print('-'); 
-		System.out.print("- ");
-		System.out.println(info);
-		indent++;
-		if (left!=null) left.print(indent);
-		if (right!=null) right.print(indent);
-	}	
+	
+	public int getInfo() { return info; }
+	public BinIntTree getLeft() { return left; }
+	public BinIntTree getRight() { return right; }
 		
 	public boolean find(int x) {
 		return
@@ -36,29 +26,24 @@ public class BinIntTree {
 					: true;
 	}
 	
-	public int sum() {
-		return 	  this.info
-				+ (this.left != null ? this.left.sum() : 0)
-				+ (this.right != null ? this.right.sum() : 0);
+	/** @return the number of nodes in the tree */
+	public int nodes() {
+		return 1 
+				+ (left==null ? 0 : left.nodes())
+				+ (right==null ? 0 : right.nodes());
 	}
 	
-	public static void main(String[] args) {
-		BinIntTree t1 = 
-			new BinIntTree(4,
-				new BinIntTree(2,
-					new BinIntTree(1,null,null),
-					new BinIntTree(3,null,null)),
-				new BinIntTree(5,
-					null,
-					null));
-		t1.print();
-		System.out.println(t1.find(0));
-		System.out.println(t1.find(1));
-		System.out.println(t1.find(2));
-		System.out.println(t1.find(3));
-		System.out.println(t1.find(4));
-		System.out.println(t1.find(5));
-		System.out.println(t1.find(6));
-		System.out.println(t1.sum());
+	/** @return inorder serialization of the tree */
+	public int[] inorder() {
+		int[] a = new int[nodes()];
+		inorder(a,0);
+		return a;
+	}
+	
+	private int inorder(int[] a, int i) {
+		i = left==null ? i : left.inorder(a, i);
+		a[i++] = info;
+		i = right==null ? i : right.inorder(a, i);
+		return i;
 	}
 }
