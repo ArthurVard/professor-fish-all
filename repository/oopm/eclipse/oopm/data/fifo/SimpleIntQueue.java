@@ -34,6 +34,7 @@ public class SimpleIntQueue implements IntQueue {
 		first = first.next;
 	}
 		
+	// This code should not be part of the ADT class!
 	public static void main(String[] args) {
 		SimpleIntQueue q =
 			new SimpleIntQueue();
