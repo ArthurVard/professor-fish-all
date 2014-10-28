@@ -1,0 +1,10 @@
+A few implementations of the factorial function.
+These variations demonstrate structured programming and goto elimination.
+
+Description of the variants
+* goto1.c: variant with 2 gotos giving rise to spaghetti code
+* goto2.c: variant with a simple goto suggesting a while loop directly
+* nogoto1.c: goto1.c after general goto elimination (Böhm-Jacopini theorem)
+* nogoto2.c: goto2.c after converting simple goto-based loop into while loop
+* switch.c: variation of nogoto1.c to use switch instead of if
+ 
