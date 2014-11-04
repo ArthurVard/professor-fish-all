@@ -1,0 +1,9 @@
+Several Eclipse projects documenting a simple approach to testing.
+
+- gcdImplNaive: naive testing using the "println/main method"
+- gcdImplMono: automatic testing with assertions
+- gcdImplSub: variation on gcdImplMono with extra class for tests
+- gcdImplMod: variation on gcdImplSub with different implementation
+- gcdImplNone: incomplete (missing) implementation
+- gcdImplFake: illustration of cheating by test-case encoding
+- gcdImplClone: illustration of cheating by cloning
