@@ -1,9 +1,10 @@
-// (C) 2009 Ralf Laemmel
+// (C) 2009-2014 Ralf Laemmel
 
 package algorithm.search;
 
 /**
- * Search algorithms on arrays
+ * Instrumented search algorithms on arrays.
+ * Inject assertions to express properties at point 
  */
 public class AssertedProgram {
 
